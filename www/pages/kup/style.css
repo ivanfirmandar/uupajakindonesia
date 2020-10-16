@@ -1,0 +1,167 @@
+p, li{
+    text-align: justify;
+    font-size: 15px;
+}
+.pasal-nama{
+    color: black;
+}
+#refresh-button{
+    color: white;
+    position: fixed;
+    right: 20px;
+    top: 22px;
+}
+#refresh-button svg{
+    height: 20px;
+    width: 20px;
+}
+.search-highlight{
+    background-color: yellow;
+}
+.accordion{
+    padding-top: 60px;
+}
+.toolbar{
+    position: fixed;
+    z-index: 300;
+    background-color: whitesmoke;
+    height: 70px;
+    width: 70px;
+    border-radius: 100%;
+    bottom: 10px;
+    box-shadow: 0px 0px 50px -20px;
+    right: 10px;
+}
+.toolbar .toolbar-icon{
+    position: relative;
+    height: 30px;
+    width: 30px;
+    margin: 20px;
+}
+.card-header{
+    height: 40px;
+    line-height: 40px;
+    padding: 0px;
+}
+.oasal{
+}
+.bab-header {
+    text-align: center;
+    padding: 15px 0px;
+    background-color: #0A0D16;
+    color: black;
+
+}
+.navbar-kup{
+    position: fixed;
+    width: 100%;
+    z-index: 200;
+    background-color: #0A0D16;
+    height: 60px;
+    color: white;
+    line-height: 60px;
+    font-weight: bolder;
+}
+.modal-toolbar{
+    position: fixed;
+    bottom: 90px;
+    transform-origin: bottom right;
+    padding: 20px;
+    right: 50%;
+    transform: translateX(175px);
+    z-index: 1000;
+    height: 150px;
+    transition: ease 1s;
+    width: 350px;
+    background-color: #0A0D16;
+    border-radius: 4px;
+    overflow: hidden;
+}
+.modal-toolbar-hide{
+    transform-origin: bottom right;
+    width: 0px;
+    height: 0px;
+    padding: 0px;
+}
+.modal-toolbar label{
+    color: white;
+    width: 100%;
+    text-align: center;
+}
+.modal-toolbar input{
+    border: none;
+    width: 100%;
+    text-align: center;
+    height: 40px;
+    border-radius: 20px;
+}
+.modal-toolbar button{
+    border: none;
+    height: 40px;
+    position: relative;
+    width: 90px;
+    border-radius: 20px;
+    margin-top: 10px;
+    left: 50%;
+    transform: translateX(-45px);
+}
+.back-button{
+    height: 40px;
+    width: 40px;
+    margin-left: 10px;
+    color: white;
+}
+.bab-title{
+    padding: 20px;
+    background-color: #0A0D16;
+    color: white;
+    border-radius: 0px;
+}
+.bab-title p {
+    margin:  0px;
+}
+.navbar {
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    background-color: #2f2f2f;
+    color: white;
+    height: 60px;
+    top: 0px;
+}
+
+.keterangan {
+    color: tomato;
+    font-weight: bold;
+}
+
+#pasal-wrapper {
+    text-align: justify;
+}
+
+.modal-keterangan {
+    position: fixed;
+    width: 100%;
+    margin-top: 60px;
+    z-index: 200;
+    box-shadow: 2px 2px 50px;
+}
+
+.hide {
+    display: none;
+}
+
+#bab-wrapper {
+    margin-top: 60px;
+}
+
+.subsub {
+    margin-left: -20px;
+    display: flex;
+    flex-direction: row;
+}
+
+.subsub p {
+    margin-left: 2px;
+    margin-bottom: 0px;
+}
