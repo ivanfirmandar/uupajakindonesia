@@ -10,7 +10,7 @@ async function main() {
 }
 
 async function fetchData() {
-    return document.getElementsByClassName("pasal-body")
+    return document.getElementsByClassName("brenden")
 }
 
 function setDatas(datas) {
@@ -18,19 +18,28 @@ function setDatas(datas) {
         let pasalIni = datas[i].getAttribute('data');
         let isiPasal = datas[i].innerHTML;
         let newData = `<span hidden>${pasalIni}</span><span hidden> ${i}</span>${setLink(isiPasal, pasalIni)}`
-        document.getElementsByClassName("pasal-body")[i].innerHTML = newData
+        document.getElementsByClassName("brenden")[i].innerHTML = newData
     }
 }
 
 function setLink(isi, namapasal) {
-    let pattern = "Pasal (\\w\\w|\\w) ayat \\((\\w\\w|\\w)\\) \\huruf \\w|Pasal (\\w\\w|\\w) ayat \\((\\w|\\w\\w)\\)|Pasal (\\w\\w|\\w)|Pasal (\\w\\w|\\w)|ayat \\((\\w|\\w\\w)\\) huruf \\w|ayat \\((\\w|\\w\\w)\\)|huruf \\w$";
+    let pattern = "Pasal\\s+(\\w\\w|\\w)\\s+ayat\\s+\\((\\w\\w|\\w)\\)\\s+\\huruf\\s+\\w|Pasal\\s+(\\w\\w|\\w)\\s+ayat\\s+\\((\\w|\\w\\w)\\)|Pasal\\s+(\\w\\w|\\w)|Pasal\\s+(\\w\\w|\\w)|ayat\\s+\\((\\w|\\w\\w)\\)\\s+huruf\\s+\\w|ayat\\s+\\((\\w|\\w\\w)\\)|huruf\\s+\\w$";
+    // console.log(isi)
     let regexss = new RegExp(pattern, 'gi')
     let regexss2 = new RegExp(pattern, '');
+    // console.log(namapasal)
     namapasal = namapasal.split(" ")[1];
     let matchedIsi = isi.match(regexss);
     if (matchedIsi !== null) {
         matchedIsi.forEach(element => {
             element = element.toUpperCase();
+            console.log("SEBELUM DIGANTI")
+            console.log(element)
+            let regeee = new RegExp('\\s+', 'gim')
+            // console.log(element.match(regeee))
+            element = element.replace(regeee, ' ')
+            console.log("SETELAH DIGANTI")
+            console.log(element)
             isi = isi.replace(regexss2, `<span class='keterangan' data=${namapasal}>${element}</span>`);
         });
     } else {
