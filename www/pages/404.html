@@ -1,0 +1,64 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <style>
+        #alert {
+            display: grid;
+            grid-template-columns: 100px auto;
+            grid-template-rows: 50px 100px 100px;
+            grid-template-areas:
+                "image maaf"
+                "image masih"
+                "image tombol";
+            text-align: center;
+            height: 100%;
+            margin-top: 200px;
+            margin-left: 10px;
+            margin-right: 20px;
+        }
+
+        #alert h1 {
+            grid-area: maaf;
+            margin-bottom: 0px;
+        }
+
+        #alert p {
+            grid-area: masih;
+            padding: 0px 100px;
+            font-weight: 600;
+        }
+
+        #alert button {
+            grid-area: tombol;
+            height: 30px;
+            border: none;
+            width: 150px;
+            background-color: #61C7B9;
+            border-radius: 15px;
+        }
+
+        #alert img {
+            grid-area: image;
+            height: 200px;
+            width: 150px;
+            border-radius: 100px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="alert">
+        <img src="../img/sadgirl.png" alt="">
+        <h1 style="color: #61C7B9;">MAAF :"</h1>
+        <p style="color: white;">Masih Dalam Tahap Pengembangan</p>
+        <a href="../index.html" style="color:white" ;"><button>Halaman Utama</button></a>
+    </div>
+
+</body>
+
+</html>

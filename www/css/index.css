@@ -1,5 +1,5 @@
 body{
-    background-color: rgb(10,13,22);
+    background-color: #1A3B50;
     font-family: 'Source Sans Pro', sans-serif;
 }
 .title-container{
@@ -43,9 +43,23 @@ body{
     font-weight: bolder;
     font-size: 12px;
     border-radius: 5px;
-    background: linear-gradient(90deg, rgba(184,91,230,1) 0%, rgba(76,84,206,1) 35%);
+    background-color: #61C7B9;
+    /* background: linear-gradient(90deg, rgba(184,91,230,1) 0%, rgba(76,84,206,1) 35%); */
     color: white;
     text-transform: uppercase;
     text-align: center;
     line-height: 50px;
+}
+.contributor{
+    display: flex;
+    margin-top: 100px;
+}
+.contributor-button{
+    background-color: white;
+    color:rgb(26,59,80);
+    font-family: 'Source Sans Pro', sans-serif;
+    border: none;
+    width: 100px;
+    margin: 0px auto;
+    bottom: 20px;
 }
