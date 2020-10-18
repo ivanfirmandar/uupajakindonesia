@@ -23,7 +23,7 @@ function setDatas(datas) {
 }
 
 function setLink(isi, namapasal) {
-    let pattern = "Pasal\\s+(\\w\\w|\\w)\\s+ayat\\s+\\((\\w\\w|\\w)\\)\\s+\\huruf\\s+\\w|Pasal\\s+(\\w\\w|\\w)\\s+ayat\\s+\\((\\w|\\w\\w)\\)|Pasal\\s+(\\w\\w|\\w)|Pasal\\s+(\\w\\w|\\w)|ayat\\s+\\((\\w|\\w\\w)\\)\\s+huruf\\s+\\w|ayat\\s+\\((\\w|\\w\\w)\\)|huruf\\s+\\w$";
+    let pattern = "Pasal\\s+(\\w\\w\\w|\\w\\w|\\w)\\s+ayat\\s+\\((\\w\\w|\\w)\\)\\s+\\huruf\\s+\\w|Pasal\\s+(\\w\\w\\w|\\w\\w|\\w)\\s+ayat\\s+\\((\\w|\\w\\w)\\)|Pasal\\s+(\\w\\w\\w|\\w\\w|\\w)|Pasal\\s+(\\w\\w\\w|\\w\\w|\\w)|ayat\\s+\\((\\w|\\w\\w)\\)\\s+huruf\\s+\\w|ayat\\s+\\((\\w|\\w\\w)\\)|huruf\\s+\\w$";
     // console.log(isi)
     let regexss = new RegExp(pattern, 'gi')
     let regexss2 = new RegExp(pattern, '');
@@ -52,11 +52,16 @@ function domHandler(datas) {
     showKeterangan(datas);
     let toolbarButton = document.getElementsByClassName('toolbar')[0]
     toolbarButton.addEventListener('click', () => {
-        document.getElementsByClassName('modal-toolbar')[0].classList.toggle('modal-toolbar-hide')
+        document.getElementsByClassName('toolbar')[1].classList.toggle('find')
+        document.getElementsByClassName('toolbar')[2].classList.toggle('note')
     })
     let buttonCari = document.getElementById('button-cari')
     buttonCari.addEventListener('click', () => {
         findThings();
+    })
+    let toolbarSearch = document.getElementsByClassName('toolbar')[1]
+    toolbarSearch.addEventListener('click', () => {
+        document.getElementsByClassName('modal-toolbar')[0].classList.toggle('modal-toolbar-hide')
     })
 }
 
@@ -145,16 +150,16 @@ function encodeId(pasal, ayat, huruf, attribute) {
             huruf = huruf.charCodeAt(0) - 64;
         }
     }
-    if (hurufs == 0) {
+    if (ayat == 0) {
         return {
             encodedid: `${pasal}-${ayat}-${huruf}`,
-            name: `pasal ${pasal} ayat ${ayat}`
+            name: `pasal ${pasal}`
         };
     } else {
-        if (ayat == 0) {
+        if (hurufs == 0) {
             return {
                 encodedid: `${pasal}-${ayat}-${huruf}`,
-                name: `pasal ${pasal}`
+                name: `pasal ${pasal} ayat ${ayat}`
             }
         }
     }
