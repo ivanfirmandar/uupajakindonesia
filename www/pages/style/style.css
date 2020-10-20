@@ -4,6 +4,69 @@ p, li{
 }
 .pasal-nama{
     color: black;
+    display: flex;
+    align-items: stretch;
+}
+.pasal-nama svg{
+    position: absolute;
+    right: 20px;
+}
+.note-container{
+    position: fixed;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto auto;
+    grid-template-areas: 
+    "note"
+    "addNote";
+    padding: 20px;
+    height: 80%;
+    width: 100%;
+    background-color: transparent;
+    z-index: 9000;
+}
+.note-container .note{
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto 50px;
+    grid-template-areas: 
+    "a"
+    "b";
+    grid-area: note;
+    /* margin-top: 10px; */
+    height: 500px;
+    width: 100%;
+    border-radius: 5px;
+    background-color: white;
+    border: solid gray 0,5px;
+}
+.note-container .addNote{
+    background-color: white;
+    display: flex;
+    grid-area: b;
+}
+.note-container .addNote #namaPasalNote{
+    line-height: 50px ;
+    width: 100%;
+    text-align: center;
+}
+.note-container .addNote button{
+    border: none;
+    width: 100px;
+    height: 100%;
+    margin: 0px;
+    background-color: #1A3B50 ;
+    color: white;
+}
+#judulUU{
+    width: 400px;
+    position: absolute;
+    line-height: 12px;
+    top: 23px;
+    left: 50px;
+}
+#noteText{
+    padding: 10px;
 }
 #refresh-button{
     color: white;
@@ -120,6 +183,8 @@ p, li{
     transform: translateX(-45px);
 }
 .back-button{
+    position: absolute;
+    top: 10px;
     height: 40px;
     width: 40px;
     margin-left: 10px;
@@ -169,7 +234,7 @@ p, li{
     margin-top: 60px;
 }
 #keteranganAyat{
-    height: 250px;
+    max-height: 250px;
     overflow: scroll;
 }
 #keteranganAyat .card-body{
@@ -189,9 +254,6 @@ p, li{
     "angka isi"
     "angka isi2";
     flex-direction: row;
-}
-.subsub div{
-
 }
 .subsub p {
     grid-area: isi;
