@@ -25,7 +25,7 @@ function setDatas(datas) {
 }
 
 function setLink(isi, namapasal) {
-    let pattern = "Pasal\\s+(\\w\\w\\w|\\w\\w|\\w)\\s+ayat\\s+\\((\\w\\w|\\w)\\)\\s+\\huruf\\s+\\w|Pasal\\s+(\\w\\w\\w|\\w\\w|\\w)\\s+ayat\\s+\\((\\w|\\w\\w)\\)|Pasal\\s+(\\w\\w\\w|\\w\\w|\\w)|Pasal\\s+(\\w\\w\\w|\\w\\w|\\w)|ayat\\s+\\((\\w|\\w\\w)\\)\\s+huruf\\s+\\w|ayat\\s+\\((\\w|\\w\\w)\\)|huruf\\s+\\w$";
+    let pattern = "Pasal\\s+(\\w\\w\\w|\\w\\w|\\w)\\s+ayat\\s+\\((\\w\\w|\\w)\\)\\s+\\huruf\\s+\\w|Pasal\\s+(\\w\\w\\w|\\w\\w|\\w)\\s+ayat\\s+\\((\\w|\\w\\w)\\)|Pasal\\s+(\\w\\w\\w|\\w\\w|\\w)|Pasal\\s+(\\w\\w\\w|\\w\\w|\\w)|ayat\\s+\\((\\w|\\w\\w)\\)\\s+huruf\\s+\\w|ayat\\s+\\((\\w|\\w\\w)\\)|huruf\\s+\\w";
     let regexss = new RegExp(pattern, 'gi')
     let regexss2 = new RegExp(pattern, '')
     namapasal = namapasal.split(" ")[1]

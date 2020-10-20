@@ -1,0 +1,2820 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pajak Bumi dan Bangunan</title>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../style/style.css">
+</head>
+
+<body>
+    <div class="note-container hide">
+
+    </div>
+    <div class="modal-toolbar modal-toolbar-hide">
+        <label for="cari">Search</label>
+        <input type="text" id="cari" name="cari" placeholder="Kata Kunci">
+        <button id="button-cari">Cari</button>
+    </div>
+    <div class="card modal-keterangan hide" id="keteranganAyat">
+        <div class="card-body">
+            <h6>Judul</h6>
+            <p class="card-text"></p>
+            <button href="#" class="card-link" onclick="closeKeterangan()">Close</button>
+        </div>
+    </div>
+    <div class="toolbar toolbar-main">
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cursor-fill toolbar-icon" fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+                d="M14.082 2.182a.5.5 0 0 1 .103.557L8.528 15.467a.5.5 0 0 1-.917-.007L5.57 10.694.803 8.652a.5.5 0 0 1-.006-.916l12.728-5.657a.5.5 0 0 1 .556.103z" />
+        </svg>
+    </div>
+    <div class="toolbar toolbar2">
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search  toolbar-icon" fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+                d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z" />
+            <path fill-rule="evenodd"
+                d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
+        </svg>
+    </div>
+    <div class="toolbar toolbar2">
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-journal-text toolbar-icon" fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z" />
+            <path
+                d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z" />
+            <path fill-rule="evenodd"
+                d="M5 10.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z" />
+        </svg>
+    </div>
+    <nav>
+        <div class="navbar-kup">
+            <a href="../../index.html">
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-left-short back-button"
+                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z" />
+                </svg>
+            </a>
+            <div id="judulUU">Penagihan Pajak</div>
+            <a href="" onclick="refresh()" id="refresh-button">
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-repeat" fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z" />
+                    <path fill-rule="evenodd"
+                        d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z" />
+                </svg>
+            </a>
+        </div>
+    </nav>
+    <div class="accordion" id="accordionExample">
+        <div class="card bab-title">
+            <p>Bab I Ketentuan Umum</p>
+        </div>
+        <div class="card pasal1">
+            <div class="card-header" id="headingpasal1">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal1" aria-expanded="true" aria-controls="pasal1">
+                        Pasal 1
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal1" class="collapse" aria-labelledby="headingpasal1" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 1'>
+                                <ol id='1-0-0'>
+                                    <li id='1-1-0'> Pajak adalah semua jenis pajak yang dipungut oleh Pemerintah Pusat,
+                                        termasuk
+                                        Bea Masuk dan Cukai, dan pajak yang dipungut oleh Pemerintah Daerah, menurut
+                                        peraturan
+                                        perundang-undangan yang berlaku’ </li>
+                                    <li id='1-2-0'> Wajib Pajak adalah orang pribadi atau badan yang menurut peraturan
+                                        perundang-undangan perpajakan ditentukan untuk melakukan kewajiban perpajakan,
+                                        termasuk
+                                        pemungut pajak atau pemotong pajak tertentu; </li>
+                                    <li id='1-3-0'> Penanggung Pajak adalah orang pribadi atau badan yang bertanggung
+                                        jawab atas
+                                        pembayaran pajak, termasuk wakil yang menjalankan hak dan memenuhi kewajiban
+                                        Wajib Pajak
+                                        menurut peraturan perundang-undangan perpajakan; </li>
+                                    <li id='1-4-0'> Badan adalah suatu bentuk badan usaha yang meliputi perseroan
+                                        terbatas,
+                                        perseroan komanditer, perseroan lainnya, Badan Usaha Milik Negara atau Daerah
+                                        dengan
+                                        nama dan dalam bentuk apapun, persekutuan, perkumpulan, firma,kongsi koperasi,
+                                        yayasan
+                                        atau organisasi yang sejenis, lembaga, dana pensiun, bentuk usaha tetap, serta
+                                        bentuk
+                                        badan usaha lainnya; </li>
+                                    <li id='1-5-0'> Pejabat adalah pejabat yang berwenang mengangkat dan memberhentikan
+                                        Jurusita
+                                        Pajak, menerbitkan Surat Perintah Penagihan Seketika dan Sekaligus, Surat Paksa,
+                                        Surat
+                                        Perintah Melaksanakan Penyitaan, Surat Pencabutan Sita, Pengumuman Lelang,
+                                        Pembatalan
+                                        Lelang, Surat Perintah Penyanderaan dan surat lain yang diperlukan untuk
+                                        penagihan pajak
+                                        sehubungan dengan Penanggung Pajak tidak melunasi sebagian atau seluruh utang
+                                        pajak
+                                        menurut peraturan perundang-undangan yang berlaku; </li>
+                                    <li id='1-6-0'> Jurusita Pajak adalah pelaksana tindakan penagihan pajak yang
+                                        meliputi
+                                        penagihan seketika dan sekaligus, pemberitahuan Surat Paksa, penyitaan dan
+                                        penyanderaan;
+                                    </li>
+                                    <li id='1-7-0'> Pengadilan Negeri adalah Pengadilan Negeri yang daerah hukumnya
+                                        meliputi
+                                        tempat tindakan penagihan pajak dilaksanakan; </li>
+                                    <li id='1-8-0'> Utang Pajak adalah pajak yang masih harus dibayar termasuk sanksi
+                                        administrasi berupa bunga, denda atau kenaikan yang tercantum dalam surat
+                                        ketetapan
+                                        pajak atau surat sejenisnya berdasarkan peraturan perundang-undangan perpajakan;
+                                    </li>
+                                    <li id='1-9-0'> Penagihan seketika dan sekaligus adalah tindakan penagihan pajak
+                                        yang
+                                        dilaksanakan oleh Jurusita Pajak kepada Penanggung Pajak tanpa menunggu tanggal
+                                        jatuh
+                                        tempo pembayaran yang meliputi seluruh utang pajak dari semua jenis pajak, masa
+                                        pajak,
+                                        dan tahun pajak; </li>
+                                    <li id='1-10-0'> Penagihan seketika dan sekaligus adalah tindakan penagihan pajak
+                                        yang
+                                        dilaksanakan oleh Jurusita ajak kepada Penanggung Pajak tanpa menunggu tanggal
+                                        jatuh
+                                        tempo pemayaran yang meliputi seluruh utang pajak dari semua jenis pajak, masa
+                                        pajak,
+                                        dan tahun pajak; </li>
+                                    <li id='1-11-0'> Surat Paksa adalah surat perintah membayar utang pajak dan biaya
+                                        penagihan
+                                        pajak; </li>
+                                    <li id='1-12-0'> Biaya penagihan pajak adalah biaya pelaksanaan Surat Paksa, Surat
+                                        Perintah
+                                        Melaksanakan Penyitaan, Pengumuman Lelang, Pembatalan Lelang dan biaya lainnya
+                                        sehubungan dengan penagihan pajak; </li>
+                                    <li id='1-13-0'> Penyitaan adalah tindakan Jurusita Pajak untuk menguasai barang
+                                        Penanggung
+                                        Pajak, guna dijadikan jaminan untuk melunasi utang pajak menurut peraturan
+                                        perundang-undangan yang berlaku; </li>
+                                    <li id='1-14-0'> Objek sita adalah barang Penanggung Pajak yang dapat dijadikan
+                                        jaminan
+                                        utang pajak; </li>
+                                    <li id='1-15-0'> Lelang adalah setiap penjualan barang di muka umum dengan cara
+                                        penawaran
+                                        harga secara lisan dan atau tertulis melalui usaha pengumpulan peminat atau
+                                        calon
+                                        pembeli; </li>
+                                    <li id='1-16-0'> Kantor lelang adalah kantor yang berwenang melaksanakan penjualan
+                                        secara
+                                        lelang; </li>
+                                    <li id='1-17-0'> Risalah Lelang adalah Berita Acara Pelaksanaan Lelang yang dibuat
+                                        oleh
+                                        Pejabat Lelang atau kuasanya dalam bentuk yang ditentukan oleh peraturan
+                                        perundang-undangan lelang yang berlaku; </li>
+                                    <li id='1-18-0'> Pencegahan adalah larangan yang bersifat sementara terhadap
+                                        Penanggung
+                                        Pajak tertentu untuk keluar dari wilayah Negara Republik Indonesia berdasarkan
+                                        alasan
+                                        tertentu sesuai dengan peraturan perundang-undangan yang berlaku; </li>
+                                    <li id='1-19-0'> Penyanderaan adalah pengekangan sementara waktu kebebasan
+                                        Penanggung Pajak
+                                        dengan menempatkannya di tempat tertentu; </li>
+                                    <li id='1-20-0'> Gugatan adalah upaya hukum terhadap pelaksanaan penagihan pajak dan
+                                        kepemilikan barang sebagaimana diatur dalam peraturan perundang-undangan yang
+                                        bersangkutan </li>
+                                    <li id='1-21-0'> Penagihan pajak adalah serangkaian tindakan agar Penanggung Pajak
+                                        melunasi
+                                        utang pajak dan biaya penangihan pajak dengan menegur atau memperingatkan,
+                                        melaksanakan
+                                        penagihan seketika dan sekaligus, memberitahukan Surat Paksa, mengusulkan
+                                        pencegahan,
+                                        melaksanaan penyitaan, melaksanakan penyanderaan, menjual barang yang telah
+                                        disita;
+                                    </li>
+                                    <li id='1-22-0'> Barang adalah tiap benda atau hak yang dapat dijadikan objek sita;
+                                    </li>
+                                    <li id='1-23-0'> Kepala Daerah adalah Gubernur Kepala Daerah Tingkat I, Bupati atau
+                                        Walikota
+                                        Madya Kepala Daerah Tingkat II; </li>
+                                    <li id='1-24-0'> Pemerintah Daerah adalah pemerintah daerah yang wilayah hukumnya
+                                        meliputi
+                                        tempat tindakan penagihan pajak dilaksanakan; </li>
+                                    <li id='1-25-0'> Menteri adalah Menteri Keuangan Republik Indonesia. </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card bab-title">
+            <p>Bab II Pejabat dan Jurusita Pajak</p>
+        </div>
+        <div class="card pasal2">
+            <div class="card-header" id="headingpasal2">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal2" aria-expanded="true" aria-controls="pasal2">
+                        Pasal 2
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal2" class="collapse" aria-labelledby="headingpasal2" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 2'>
+                                <ol id='2-0-0'>
+                                    <li id='2-1-0'> Menteri berwenang menunjuk Pajabat untuk penagihan pajak pusat.
+                                    </li>
+                                    <li id='2-2-0'> Kepala Daerah berwenang menunjuk Pajabat untuk penagihan pajak
+                                        daerah. </li>
+                                    <li id='2-3-0'> Pejabat sebagaimana dimaksud pada ayat (1) dan ayat (2) berwenang:
+                                        <ol type='a'>
+                                            <li id='2-3-1'> mengangkat dan memberhentikan Jurusita Pajak; </li>
+                                            <li id='2-3-2'> menerbitkan:
+                                                <ol type="1">
+                                                    <li>Surat Perintah Penagihan Seketika dan Sekaligus;</li>
+                                                    <li>Surat Paksa;</li>
+                                                    <li>Surat Perintah Melaksanakan Penyitaan;</li>
+                                                    <li>Surat Perintah Penyanderaan;</li>
+                                                    <li>Surat Pencabutan Sita;</li>
+                                                    <li>Pengumuman Lelang;</li>
+                                                    <li>Pembatalan Lelang; dan</li>
+                                                    <li>surat lain yang diperlukan untuk pelaksanaan penagihan pajak.
+                                                    </li>
+                                                </ol>
+                                            </li>
+                                        </ol>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal3">
+            <div class="card-header" id="headingpasal3">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal3" aria-expanded="true" aria-controls="pasal3">
+                        Pasal 3
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal3" class="collapse" aria-labelledby="headingpasal3" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 3'>
+                                <ol id='3-0-0'>
+                                    <li id='3-1-0'> Jurusita Pajak diangkat dan diberhentikan oleh Pejabat. </li>
+                                    <li id='3-2-0'> Syarat-syarat, tata cara pengangkatan dan pemberhentian sebagai
+                                        Jurusita
+                                        Pajak ditetapkan oleh Menteri. </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal4">
+            <div class="card-header" id="headingpasal4">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal4" aria-expanded="true" aria-controls="pasal4">
+                        Pasal 4
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal4" class="collapse" aria-labelledby="headingpasal4" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 4'>
+                                <p id='4-0-0'> Sebelum memangku jabatannya, Jurusita Pajak diambil sumpah atau janji
+                                    menurut
+                                    agama atau kepercayaan oleh Pejabat yang berbunyi sebagai berikut:
+                                    Saya bersumpah/berjanji dengan sungguh-sungguh bahwa saya, untuk memangku jabatan
+                                    saya ini,
+                                    langsung atau tidak langsung, dengan menggunakan nama atau cara apapun juga, tidak
+                                    memberikan atau menjanjikan barang sesuatu kepada siapaun juga”.
+
+                                    Saya bersumpah/berjanji bahwa saya, untuk melakukan atau tidak melakukan sesuatu
+                                    dalam
+                                    jabatan saya ini, tiada sekali-kali akan menerima langsung atau tidak langsung dari
+                                    siapapun
+                                    juga sesuatu janji atau pemberian”.
+
+                                    Saya bersumpah/berjanji bahwa saya akan setia kepada dan akan mempertahankan serta
+                                    mengamalkan Pancasila sebagai dasar dan ideologi negara, Undang-Undang Dasar 1945,
+                                    dan
+                                    segala Undang-undang serta peraturan lain yang berlaku bagi Negara Republik
+                                    Indonesia”.
+
+                                    Saya bersumpah/berjanji bahwa saya senantiasa akan menjalankan jabatan saya ini
+                                    dengan
+                                    jujur, saksama dan dengan tidak membeda-bedakan orang dalam melaksanakan kewajiban
+                                    saya dan
+                                    akan berlaku sebaik-baiknya dan seadil-adilnya seperti layaknya bagi seorang
+                                    Jurusita Pajak
+                                    yang berbudi baik dan jujur, menegakkan hukum dan keadilan”,
+                                </p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal5">
+            <div class="card-header" id="headingpasal5">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal5" aria-expanded="true" aria-controls="pasal5">
+                        Pasal 5
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal5" class="collapse" aria-labelledby="headingpasal5" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 5'>
+                                <ol id='5-0-0'>
+                                    <li id='5-1-0'> Jurusita Pajak bertugas: <ol type='a'>
+                                            <li id='5-1-1'> melaksanakan Surat Perintah Penagihan Seketika dan
+                                                Sekaligus; </li>
+                                            <li id='5-1-2'> memberitahukan Surat Paksa; </li>
+                                            <li id='5-1-3'> melaksanakan penyitaan atas barang Penanggung Pajak
+                                                berdasarkan Surat Perintah Melaksanakan Penyitaan;
+                                                dan </li>
+                                            <li id='5-1-4'> melaksanakan penyanderaan berdasarkan Surat Perintah
+                                                Penyanderaan. </li>
+                                        </ol>
+                                    </li>
+                                    <li id='5-2-0'> Jurusita Pajak dalam melaksanakan tugasnya harus dilengkapi dengan
+                                        kartu
+                                        tanda pengenal Jurusita Pajak dan harus diperlihatkan kepada Penanggung Pajak.
+                                    </li>
+                                    <li id='5-3-0'> Dalam melaksanakan tugasnya, Jurusita Pajak berwenang memasuki dan
+                                        memeriksa
+                                        semua ruangan termasuk membuka lemari, laci, dan tempat lain untuk menemukan
+                                        objek sita
+                                        di tempat usaha dan melakukan penyitaan di tempat kedudukan, atau di tempat
+                                        tinggal
+                                        Penanggung Pajak, atau di tempat lain yang dapat diduga sebagai tempat
+                                        penyimpanan objek
+                                        sita. </li>
+                                    <li id='5-4-0'> Dalam melaksanakan tugasnya, Jurusita Pajak dapat meminta bantuan
+                                        Kepolisian, Kejaksaan, Departemen Kehakiman, Pemerintah Daerah setempat, Badan
+                                        Pertanahan Nasional, Direktorat Jenderal Perhubungan Laut, Pengadilan Negeri,
+                                        Bank atau
+                                        pihak lain dalam rangka melaksanakan penagihan pajak. </li>
+                                    <li id='5-5-0'> Jurusita Pajak menjalankan tugas di wilayah kerja Pejabat yang
+                                        mengangkatnya, kecuali ditetapkan lain oleh Menteri atau Kepala Daerah. </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal6">
+            <div class="card-header" id="headingpasal6">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal6" aria-expanded="true" aria-controls="pasal6">
+                        Pasal 6
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal6" class="collapse" aria-labelledby="headingpasal6" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 6'>
+                                <ol id='6-0-0'>
+                                    <li id='6-1-0'> Jurusita Pajak melaksanakan penagihan seketika dan sekaligus tanpa
+                                        menunggu
+                                        tanggal jatuh tempo pembayaran berdasarkan Surat Perintah Penagihan Seketika dan
+                                        Sekaligus yang diterbitkan oleh Pejabat apabila: <ol type='a'>
+                                            <li id='6-1-1'> Penanggung Pajak akan meninggalkan Indonesia untuk
+                                                selama-lamanya atau berniat untuk itu; </li>
+                                            <li id='6-1-2'> Penanggung Pajak menghentikan atau secara nyata mengecilkan
+                                                kegiatan perusahaan, atau pekerjaan yang
+                                                dilakukannya di Indonesia, ataupun memindahtangankan barang yang
+                                                dimiliki atau dikuasainya; </li>
+                                            <li id='6-1-3'> terdapat tanda-tanda bahwa Penanggung Pajak akan membubarkan
+                                                badan usahanya atau berniat untuk itu;
+                                            </li>
+                                            <li id='6-1-4'> badan usaha akan dibubarkan oleh Negara; atau </li>
+                                            <li id='6-1-5'> terjadi penyitaan atas barang Penanggung Pajak oleh pihak
+                                                ketiga atau terdapat tanda-tanda kepailitan.
+                                            </li>
+                                        </ol>
+                                    </li>
+                                    <li id='6-2-0'> Surat Perintah Penagihan Seketika dan Sekaligus sekurang-kurangnya
+                                        memuat: <ol type='a'>
+                                            <li id='6-2-1'> besarnya uang pajak; </li>
+                                            <li id='6-2-2'> perintah untuk membayar; dan </li>
+                                            <li id='6-2-3'> saat pelunasan utang pajak. </li>
+                                        </ol>
+                                    </li>
+                                    <li id='6-3-0'> Surat Perintah Penagihan Seketika dan Sekaligus diterbitkan sebelum
+                                        penerbitan Surat Paksa. </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card bab-title">
+            <p>Bab III Surat Paksa</p>
+        </div>
+        <div class="card pasal7">
+            <div class="card-header" id="headingpasal7">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal7" aria-expanded="true" aria-controls="pasal7">
+                        Pasal 7
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal7" class="collapse" aria-labelledby="headingpasal7" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 7'>
+                                <ol id='7-0-0'>
+                                    <li id='7-1-0'> Surat Paksa berkepala kata-kata “DEMI KEADILAN BERDASARKAN KETUHANAN
+                                        YANG
+                                        MAHA ESA”, mempunyai kekuatan eksekutorial dan kedudukn hukum yang sama dengan
+                                        putusan
+                                        pengadilan yang telah mempunyai kekuatan hukum tetap. </li>
+                                    <li id='7-2-0'> Surat Paksa sekurang-kurangnya harus memuat: <ol type='a'>
+                                            <li id='7-2-1'> nama Wajib Pajak, atau nama Wajib Pajak dan Penanggung
+                                                Pajak; </li>
+                                            <li id='7-2-2'> besarnya utang pajak; dan </li>
+                                            <li id='7-2-3'> perintah untuk membayar. </li>
+                                        </ol>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal8">
+            <div class="card-header" id="headingpasal8">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal8" aria-expanded="true" aria-controls="pasal8">
+                        Pasal 8
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal8" class="collapse" aria-labelledby="headingpasal8" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 8'>
+                                <p id='8-0-0'> Surat Paksa diterbitkan apabila:
+                                <ol type='a'>
+                                    <li id='8-0-1'> Penanggung Pajak tidak melunasi utang pajak sampai dengan tanggal
+                                        jatuh tempo pembayaran dan kepadanya
+                                        telah diterbitkan Surat Teguran atau Surat Peringatan atau surat lain yang
+                                        sejenis; </li>
+                                    <li id='8-0-2'> terhadap Penanggung Pajak telah dilaksanakan penagihan seketika dan
+                                        sekaligus; atau </li>
+                                    <li id='8-0-3'> Penanggung Pajak tidak memenuhi ketentuan sebagimana tercantum dalam
+                                        keputusan persetujuan angsuran atau
+                                        penundaan pembayaran pajak. </li>
+                                </ol>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal9">
+            <div class="card-header" id="headingpasal9">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal9" aria-expanded="true" aria-controls="pasal9">
+                        Pasal 9
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal9" class="collapse" aria-labelledby="headingpasal9" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 9'>
+                                <ol id='9-0-0'>
+                                    <li id='9-1-0'> Dalam hal terjadi keadaan di luar kekuasaan Pejabat, Surat Paksa
+                                        pengganti
+                                        dapat diterbitkan oleh Pejabat karena jabatan. </li>
+                                    <li id='9-2-0'> Surat Paksa pengganti sebagaimana dimaksud pada ayat (1) mempunyai
+                                        kekuatan
+                                        eksekutorial dan kedudukan hukum yang sama dengan Surat Paksa sebagaimana
+                                        dimaksud dalam
+                                        Pasal 7 ayat (1). </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal10">
+            <div class="card-header" id="headingpasal10">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal10" aria-expanded="true" aria-controls="pasal10">
+                        Pasal 10
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal10" class="collapse" aria-labelledby="headingpasal10" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 10'>
+                                <ol id='10-0-0'>
+                                    <li id='10-1-0'> Surat Paksa diberitahukan oleh Jurusita Pajak dengan pernyataan dan
+                                        penyerahan Surat Paksa kepada Penanggung Pajak. </li>
+                                    <li id='10-2-0'> Pemberitahuan Surat Paksa sebagaimana dimaksud pada ayat (1)
+                                        dituangkan
+                                        dalam Berita Acara yang sekurang-kurangnya memuat hari dan tanggal pemberitahuan
+                                        Surat
+                                        Paksa, nama Jurusita Pajak, nama yang menerima, dan tempat pemberitahuan Surat
+                                        Paksa.
+                                    </li>
+                                    <li id='10-3-0'> Surat Paksa terhadap orang pribadi diberitahukan oleh Jurusita
+                                        Pajak
+                                        kepada: <ol type='a'>
+                                            <li id='10-3-1'> Penanggung Pajak di tempat tinggal, tempat usaha atau di
+                                                tempat lain yang memungkinkan; </li>
+                                            <li id='10-3-2'> orang dewasa yang bertempat tinggal bersama ataupun yang
+                                                bekerja di tempat usaha Penanggung Pajak,
+                                                apabila Penanggung Pajak yang bersangkutan tidak dapat dijumpai; </li>
+                                            <li id='10-3-3'> salah seorang ahli waris atau pelaksana wasiat atau yang
+                                                mengurus harta peninggalannya, apabila Wajib
+                                                Pajak telah meninggal dunia dan harta warisan belum dibagi; atau </li>
+                                            <li id='10-3-4'> para ahli waris, apabila Wajib Pajak telah meninggal dunia
+                                                dan harta warisan telah dibagi. </li>
+                                        </ol>
+                                    </li>
+                                    <li id='10-4-0'> Surat Paksa terhadap badan diberitahukan oleh Jurusita Pajak
+                                        kepada: <ol type='a'>
+                                            <li id='10-4-1'> pengurus, pemegang saham, dan pemilik modal baik di tempat
+                                                kedudukan badan yang bersangkutan, di tempat
+                                                tinggal mereka maupun di tempat lain yang memungkinkan; atau </li>
+                                            <li id='10-4-2'> pegawai tingkat pimpinan di tempat kedudukan atau tempat
+                                                usaha badan yang bersangkutan apabila Jurusita
+                                                Pajak tidak dapat menjumpai salah seorang sebagimana dimaksud pada huruf
+                                                a. </li>
+                                        </ol>
+                                    </li>
+                                    <li id='10-5-0'> Dalam hal Wajib Pajak dinyatakan pailit, Surat Paksa diberitahukan
+                                        kepada
+                                        Hakim Komisaris atau Balai Harta Peninggalan, dan dalam hal Wajib Pajak
+                                        dinyatakan bubar
+                                        atau dalam likuidasi, Surat Paksa diberitahukan kepada orang atau badan yang
+                                        dibebani
+                                        untuk melakukan pemberesan, atau likuidator. </li>
+                                    <li id='10-6-0'> Dalam hal Wajib Pajak menunjuk seorang kuasa dengan surat kuasa
+                                        khusus
+                                        untuk menjalankan hak dan kewajiban perpajakan, Surat Paksa dapat diberitahukan
+                                        kepada
+                                        penerima kuasa dimaksud. </li>
+                                    <li id='10-7-0'> Apabila pemberitahuan Surat Paksa sebagaimana dimaksud pada ayat
+                                        (3) dan
+                                        ayat (4) tidak dapat dilaksanakan, Surat Paksa disampaikan melalui Perintah
+                                        Daerah
+                                        setempat. </li>
+                                    <li id='10-8-0'> Dalam hal Wajib Pajak atau Penanggung Pajak tidak diketahui tempat
+                                        tinggalnya, tempat usaha, atau tempat kedudukannya, penyampaian Surat Paksa
+                                        dilaksanakan
+                                        dengan cara menempelkan Surat Paksa pada papan pengumuman kantor Pejabat yang
+                                        menerbitkannya, mengumumkan melalui media massa, atau cara lain yang ditetapkan
+                                        oleh
+                                        Menteri atau Kepala Daerah. </li>
+                                    <li id='10-9-0'> Dalam hal Surat Paksa harus dilaksanakan di luar wilayah kerja
+                                        Pejabat,
+                                        Pejabat dimaksud meminta bantuan kepada Pejabat yang wilayah kerjanya meliputi
+                                        tempat
+                                        pelaksana Surat Paksa, kecuali ditempat lain oleh Menteri atau kepala Daerah.
+                                    </li>
+                                    <li id='10-10-0'> Pejabat yang diminta bantuan sebagimana dimaksud pada ayat (9)
+                                        wajib
+                                        membantu dan memberitahukan tindakan yang telah dilaksanakannya kepada Pejabat
+                                        yang
+                                        meminta bantuan </li>
+                                    <li id='10-11-0'> Dalam hal Penanggung Pajak menolak untuk menerima Surat Paksa,
+                                        Jurusita
+                                        Pajak meninggalkan Surat Paksa dimaksud dan mencatatnya dalam Berita Acara bahwa
+                                        Penanggung Pajak tidak mau menerima Surat Paksa, dan Surat Paksa dianggap telah
+                                        diberitahukan. </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal11">
+            <div class="card-header" id="headingpasal11">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal11" aria-expanded="true" aria-controls="pasal11">
+                        Pasal 11
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal11" class="collapse" aria-labelledby="headingpasal11" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 11'>
+                                <p id='11-0-0'> Pelaksanaan Surat Paksa tidak dapat dilanjutkan dengan penyitaan sebelum
+                                    lewat
+                                    waktu 2 (dua) kali 24 (dua puluh empat) jam setelah Surat Paksa diberitahukan
+                                    sebagaimana
+                                    dimaksud dalam Pasal 10. </p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card bab-title">
+            <p>Bab IV Penyitaan</p>
+        </div>
+        <div class="card pasal12">
+            <div class="card-header" id="headingpasal12">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal12" aria-expanded="true" aria-controls="pasal12">
+                        Pasal 12
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal12" class="collapse" aria-labelledby="headingpasal12" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 12'>
+                                <ol id='12-0-0'>
+                                    <li id='12-1-0'> Apabila utang pajak tidak dilunasi oleh Penanggung Pajak dalam
+                                        jangka waktu
+                                        sebagaimana dimaksud dalam Pasal 11, Pejabat menerbitkan Surat Perintah
+                                        melaksanakan
+                                        Penyitaan. </li>
+                                    <li id='12-2-0'> Penyitaan dilaksanakan oleh Jurusita Pajak dengan disaksikan oleh
+                                        sekurang-kurangnya 2 (dua) orang yang telah dewasa, penduduk Indonesia, dikenal
+                                        oleh
+                                        Jurusita Pajak, dan dapat dipercaya. </li>
+                                    <li id='12-3-0'> Setiap melaksanakan penyitaan, jurusita Pajak membuat Berita Acara
+                                        Pelaksanaan Sita yang ditandatangani oleh Jurusita Pajak, Penanggung Pajak dan
+                                        saksi-saksi. </li>
+                                    <li id='12-4-0'> Walaupun Penanggung Pajak tidak hadir, penyitaan tetap dapat
+                                        dilaksanakan
+                                        dengan syarat seorang saksi sebagaimana dimaksud pada ayat (2), berasal dari
+                                        Pemerintah
+                                        Daerah setempat. </li>
+                                    <li id='12-5-0'> Dalam hal penyitaan dilaksanakan tidak dihadiri oleh Penanggung
+                                        Pajak
+                                        sebagaimana dimaksud pada ayat (4), Berita Acara Pelaksanaan Sita ditandatangani
+                                        Jurusita Pajak dan saksi-saksi. </li>
+                                    <li id='12-6-0'> Berita Acara Pelaksanaan Sita tetap mempunyai kekuatan mengikat,
+                                        meskipun
+                                        Penanggung Pajak menolak menandatangani Berita Acara Pelaksanaan Sita
+                                        sebagaimana
+                                        dimaksud pada ayat (3). </li>
+                                    <li id='12-7-0'> Salinan Berita Acara Pelaksanaan Sita dapat ditempelkan pada barang
+                                        bergerak atau barang tidak bergerak yang disita, atau di tempat barang bergerak
+                                        atau
+                                        barang tidak bergerak yang disita berada, dan atau di tempat-tempat umum. </li>
+                                    <li id='12-8-0'> Atas barang yang disita dapat ditempel atau diberi segel sita.
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal13">
+            <div class="card-header" id="headingpasal13">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal13" aria-expanded="true" aria-controls="pasal13">
+                        Pasal 13
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal13" class="collapse" aria-labelledby="headingpasal13" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 13'>
+                                <p id='13-0-0'> Pengajuan keberatan oleh Wajib Pajak tidak mengakibatkan penundaan
+                                    pelaksanaan
+                                    penyitaan. </p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal14">
+            <div class="card-header" id="headingpasal14">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal14" aria-expanded="true" aria-controls="pasal14">
+                        Pasal 14
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal14" class="collapse" aria-labelledby="headingpasal14" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 14'>
+                                <ol id='14-0-0'>
+                                    <li id='14-1-0'> Penyitaan dapat dilaksanakan terhadap milik Penanggung Pajak yang
+                                        berada di
+                                        tempat tinggal, tempat usaha, tempat kedudukan, atau di tempat lain, termasuk
+                                        yang
+                                        penguasaannya berada di tangan pihak lain atau yang dibebani dengan hak
+                                        tanggungan
+                                        sebagai jaminan pelunasan utang tertentu berupa: <ol type='a'>
+                                            <li id='14-1-1'> barang bergerak termasuk mobil, perhiasan, uang tunai, dan
+                                                deposito berjangka, tabungan, saldo rekening
+                                                koran, giro, atau bentuk lainnya yang dipersamakan dengan itu, obligasi,
+                                                saham, atau surat berharga lainnya,
+                                                piutang, dan penyertaaan modal pada perusahaan lain; dan atau </li>
+                                            <li id='14-1-2'> barang tidak bergerak termasuk tanah, bangunan, dan kapal
+                                                dengan isi kotor tertentu. </li>
+                                        </ol>
+                                    </li>
+                                    <li id='14-2-0'> Penyitaan sebagaimana dimaksud pada ayat (1) dilaksanakan sampai
+                                        dengan
+                                        nilai barang yang disita diperkirakan cukup untuk melunasi utang pajak dan biaya
+                                        penagihan pajak. </li>
+                                    <li id='14-3-0'> Hak lainnya yang dapat disita selain sebagaimana dimaksud pada ayat
+                                        (1)
+                                        diatur dengan Peraturan Pemerintah. </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal15">
+            <div class="card-header" id="headingpasal15">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal15" aria-expanded="true" aria-controls="pasal15">
+                        Pasal 15
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal15" class="collapse" aria-labelledby="headingpasal15" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 15'>
+                                <ol id='15-0-0'>
+                                    <li id='15-1-0'> Barang bergerak milik Penanggung Pajak yang dikecualikan dari
+                                        penyitaan
+                                        adalah: <ol type='a'>
+                                            <li id='15-1-1'> pakaian dan tempat tidur beserta perlengkapannya yang
+                                                digunakan oleh Penanggung Pajak dan keluarga yang
+                                                menjadi tanggungannya; </li>
+                                            <li id='15-1-2'> persediaan makanan dan minuman untuk keperluan satu bulan
+                                                beserta peralatan memasak yang berada di
+                                                rumah; </li>
+                                            <li id='15-1-3'> perlengkapan Penanggung Pajak yang bersifat dinas; </li>
+                                            <li id='15-1-4'> buku-buku yang bertalian dengan jabatan atau pekerjaan
+                                                Penanggung Pajak dan alat-alat yang dipergunakan
+                                                untuk pendidikan, kebudayaan dan keilmuan; </li>
+                                            <li id='15-1-5'> peralatan dalam keadaan jalan yang masih digunakan untuk
+                                                melaksanakan pekerjaan atau usaha sehari-hari
+                                                dengan jumlah seluruhnya tidak lebih dari Rp. 10.000.000,00 (sepuluh
+                                                juta rupiah); dan </li>
+                                            <li id='15-1-6'> peralatan penyandang cacat yang digunakan oleh Penanggung
+                                                Pajak dan keluarga yang menjadi
+                                                tanggungannya. </li>
+                                        </ol>
+                                    </li>
+                                    <li id='15-2-0'> Perubahan besarnya nilai peralatan sebagaimana dimaksud pada ayat
+                                        (1) huruf
+                                        e ditetapkan oleh Menteri. </li>
+                                    <li id='15-3-0'> Penambahan jenis barang bergerak yang dikecualikan dari penyitaan
+                                        sebagaimana dimaksud pada ayat (1) huruf a, huruf b, huruf c, huruf d, dan huruf
+                                        f
+                                        diatur dengan Peraturan Pemerintah. </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal16">
+            <div class="card-header" id="headingpasal16">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal16" aria-expanded="true" aria-controls="pasal16">
+                        Pasal 16
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal16" class="collapse" aria-labelledby="headingpasal16" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 16'>
+                                <p id='16-0-0'> Barang yang telah disita dititipkan kepada Penanggung Pajak, kecuali
+                                    apabila
+                                    menurut Jurusita Pajak barang dimaksud perlu disimpan di kantor Pejabat atau di
+                                    tempat lain.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal17">
+            <div class="card-header" id="headingpasal17">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal17" aria-expanded="true" aria-controls="pasal17">
+                        Pasal 17
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal17" class="collapse" aria-labelledby="headingpasal17" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 17'>
+                                <ol id='17-0-0'>
+                                    <li id='17-1-0'> Penyitaan terhadap deposito berjangka, tabungan, saldo rekening
+                                        koran,
+                                        giro, atau bentuk lainnya yang dipersamakan dengan itu dilaksanakan dengan
+                                        pemblokiran
+                                        terlebih dahulu. </li>
+                                    <li id='17-2-0'> Dalam hal penyitaan dilaksanakan terhadap barang yang
+                                        kepemilikannya
+                                        terdaftar, salinan Berita Acara Pelaksanaan Sita diserahkan kepada instansi
+                                        tempat
+                                        kepemilikan barang dimaksud terdaftar. </li>
+                                    <li id='17-3-0'> Dalam hal penyitaan dilaksanakan terhadap barang tidak bergerak
+                                        yang
+                                        kepemilikannya belum terdaftar, Jurusita Pajak menyampaikan salinan Berita Acara
+                                        Pelaksanaan Sita kepada Pemerintah Daerah dan Pengadilan Negeri setempat untuk
+                                        diumumkan
+                                        menurut cara yang lazim di tempat itu. </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal18">
+            <div class="card-header" id="headingpasal18">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal18" aria-expanded="true" aria-controls="pasal18">
+                        Pasal 18
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal18" class="collapse" aria-labelledby="headingpasal18" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 18'>
+                                <ol id='18-0-0'>
+                                    <li id='18-1-0'> Terhadap barang yang telah disita oleh Kejaksaan atau Kepolisian
+                                        sebagai
+                                        barang bukti dalam kasus pidana, Jurusita Pajak menyampaikan Surat Paksa dengan
+                                        dilampiri surat pemberitahuan yang menyatakan bahwa barang dimaksud akan disita
+                                        apabila
+                                        proses pembuktian telah selesai dan diputuskan bahwa barang bukti dikembalikan
+                                        kepada
+                                        Penanggung Pajak. </li>
+                                    <li id='18-2-0'> Kejaksanaan atau Kepolisian segera memberitahukan kepada Pejabat
+                                        yang
+                                        menerbitkan Surat Paksa agar segera melaksanakan penyitaan sebelum barang
+                                        dimaksud
+                                        dikembalikan kepada Penanggung Pajak. </li>
+                                    <li id='18-3-0'> Dalam hal barang yang disita oleh Kejaksanaan atau Kepolisian telah
+                                        dikembalikan kepada Penanggung Pajak tanpa pemberitahuan kepada Pejabat,
+                                        penyitaan
+                                        terhadap barang dimaksud tetap dapat dilaksanakan. </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal19">
+            <div class="card-header" id="headingpasal19">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal19" aria-expanded="true" aria-controls="pasal19">
+                        Pasal 19
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal19" class="collapse" aria-labelledby="headingpasal19" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 19'>
+                                <ol id='19-0-0'>
+                                    <li id='19-1-0'> Penyitaan tidak dapat dilaksanakan terhadap barang yang telah
+                                        disita oleh
+                                        Pengadilan Negeri atau instansi lain yang berwenang. </li>
+                                    <li id='19-2-0'> Terhadap barang yang telah disita sebagaimana dimaksud pada ayat
+                                        (1),
+                                        Jurusita Pajak menyampaikan Surat Paksa kepada Pengadilan Negeri atau instansi
+                                        lain yang
+                                        berwenang. </li>
+                                    <li id='19-3-0'> Pengadilan Negeri sebagaimana dimaksud pada ayat (2) dalam sidang
+                                        berikutnya menetapkan barang yang telah disita dimaksud sebagai jaminan
+                                        pelunasan utang
+                                        pajak. </li>
+                                    <li id='19-4-0'> Instansi lain yang berwenang sebagiamana dimaksud pada ayat (2),
+                                        setelah
+                                        menerima Surat Paksa menjadikan barang yang telah disita dimaksud sebagai
+                                        jaminan
+                                        pelunasan utang pajak. </li>
+                                    <li id='19-5-0'> Pengadilan Negeri atau instansi lain yang berwenang menentukan
+                                        pembagian
+                                        hasil penjualan barang dimaksud berdasarkan ketentuan hak mendahulu negara untuk
+                                        tagihan
+                                        pajak. </li>
+                                    <li id='19-6-0'> Hak mendahulu untuk tagihan pajak melebihi segala hak mendahulu
+                                        lainnya,
+                                        kecuali terhadap: <ol type='a'>
+                                            <li id='19-6-1'> biaya perkara yang semata-mata disebabkan oleh suatu
+                                                penghukuman untuk melelang suatu barang bergerak
+                                                maupun barang tidak bergerak; </li>
+                                            <li id='19-6-2'> biaya yang telah dikeluarkan untuk menyelamatkan barang
+                                                dimaksud; dan </li>
+                                            <li id='19-6-3'> biaya perkara yang semata-mata disebabkan oleh pelelangan
+                                                dan penyelesaian suatu warisan. </li>
+                                        </ol>
+                                    </li>
+                                    <li id='19-7-0'> Putusan yang telah mempunyai kekuatan hukum tetap segera
+                                        disampaikan oleh
+                                        Pengadilan Negeri kepada Kantor Lelang untuk dipergunakan sebagai dasar
+                                        pembagian hasil
+                                        lelang. </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal20">
+            <div class="card-header" id="headingpasal20">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal20" aria-expanded="true" aria-controls="pasal20">
+                        Pasal 20
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal20" class="collapse" aria-labelledby="headingpasal20" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 20'>
+                                <ol id='20-0-0'>
+                                    <li id='20-1-0'> Dalam hal objek sita berada di luar wilayah kerja Pejabat yang
+                                        menerbitkan
+                                        Surat Paksa, Pejabat meminta bantuan kepada Pejabat yang wilayah kerjanya
+                                        meliputi
+                                        tempat objek sita berada untuk menerbitkan Surat Perintah Melaksanakan Penyitaan
+                                        terhadap objek sita dimaksud, kecuali ditetapkan lain oleh Menteri atau Kepala
+                                        Daerah.
+                                    </li>
+                                    <li id='20-2-0'> Dalam hal objek sita letaknya berjauhan dengan tempat kedudukan
+                                        Pejabat
+                                        tetapi masih dalam wilayah kerjanya, Pejabat dimaksud dapat meminta bantuan
+                                        kepada
+                                        Pejabat yang wilayah kerjanya juga meliputi tempat objek sita berada untuk
+                                        menerbitkan
+                                        Surat Perintah Melaksanakan Penyitaan. </li>
+                                    <li id='20-3-0'> Pejabat yang diminta bantuan sebagaimana dimaksud pada ayat (1) dan
+                                        ayat
+                                        (2) memberitahukan pelaksanaan Surat Perintah Melaksanakan Penyitaan dimaksud
+                                        kepada
+                                        Pejabat yang meminta bantuan segera setelah penyitaan dilaksanakan dengan
+                                        mengirimkan
+                                        Berita Acara Pelaksanaan Sita. </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal21">
+            <div class="card-header" id="headingpasal21">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal21" aria-expanded="true" aria-controls="pasal21">
+                        Pasal 21
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal21" class="collapse" aria-labelledby="headingpasal21" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 21'>
+                                <p id='21-0-0'> Penyitaan tambahan dapat dilaksanakan apabila hasil lelang barang yang
+                                    telah
+                                    disita tidak cukup untuk melunasi biaya penagihan pajak dan utang pajak. </p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal22">
+            <div class="card-header" id="headingpasal22">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal22" aria-expanded="true" aria-controls="pasal22">
+                        Pasal 22
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal22" class="collapse" aria-labelledby="headingpasal22" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 22'>
+                                <ol id='22-0-0'>
+                                    <li id='22-1-0'> Pencabutan sita silaksankan apabila Penanggung Pajak telah melunasi
+                                        biaya
+                                        penagihan pajak dan utang pajak atau berdasarkan putusan pengadlan atau putusan
+                                        Badan
+                                        Penyelesaian Sengketa Pajak atau ditetapkan lain oleh Menteri atau Kepala
+                                        Daerah. </li>
+                                    <li id='22-2-0'> Pencabutan sita sebagaimana dimaksud pada ayat (1) dilakasanakan
+                                        berdasarkan Surat Pencabutan Sita yang diterbitkan oleh Pejabat. </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal23">
+            <div class="card-header" id="headingpasal23">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal23" aria-expanded="true" aria-controls="pasal23">
+                        Pasal 23
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal23" class="collapse" aria-labelledby="headingpasal23" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 23'>
+                                <ol id='23-0-0'>
+                                    <li id='23-1-0'> Penanggung Pajak dilarang: </li>
+                                    <li id='23-2-0'> Penanggung Pajak yang melanggar ketentuan sebagaimana dimaksud pada
+                                        ayat
+                                        (1) dikenakan sanksi pidana sesuai dengan peraturan perundang-undangan yang
+                                        berlaku.
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal24">
+            <div class="card-header" id="headingpasal24">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal24" aria-expanded="true" aria-controls="pasal24">
+                        Pasal 24
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal24" class="collapse" aria-labelledby="headingpasal24" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 24'>
+                                <p id='24-0-0'> Ketentuan mengenai tata cara penyitaan diatur dengan Peraturan
+                                    Pemerintah. </p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal25">
+            <div class="card-header" id="headingpasal25">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal25" aria-expanded="true" aria-controls="pasal25">
+                        Pasal 25
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal25" class="collapse" aria-labelledby="headingpasal25" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 25'>
+                                <ol id='25-0-0'>
+                                    <li id='25-1-0'> Apabila utang pajak dan atau biaya penagihan pajak tidak dilunasi
+                                        setelah
+                                        dilaksanakan penyitaan, Pejabat berwenang melaksanakan penjualan secara lelang
+                                        terhadap
+                                        barang yang disita melalui Kantar Lelang. </li>
+                                    <li id='25-2-0'> Barang yang disita berupa uang tunai, deposito berjangka, tabungan,
+                                        saldo
+                                        rekening koran, giro, atau bentuk lainnya yang dipersamakan dengan itu,
+                                        obligasi, saham,
+                                        atau surat berharga lainnya, piutang, dan penyertaan modal pada perusahaan lain,
+                                        dikecualikan dari penjualan secara lelang sebagaimana dimaksud pada ayat (1).
+                                    </li>
+                                    <li id='25-3-0'> Barang yang disita sebagaimana dimaksud pada ayat (2) digunakan
+                                        untuk
+                                        membayar biaya penagihan pajak dan utang pajak dengan cara: <ol type='a'>
+                                            <li id='25-3-1'> uang tunai disetor ke kas Negara atau Kas Daerah; </li>
+                                            <li id='25-3-2'> deposito berjangka, tabungan, saldo rekening koran, giro,
+                                                atau bentuk lainnya yang dipersamakan dengan
+                                                itu, dipindahbukukan ke rekening Kas Negara atau Kas Daerah atas
+                                                permintaan Pejabat kepada Bank yang bersangkutan;
+                                            </li>
+                                            <li id='25-3-3'> obligasi, saham, atau surat berharga lainnya yang
+                                                diperdagangkan di bursa efek dijual di bursa efek
+                                                atas permintaan Pejabat; </li>
+                                            <li id='25-3-4'> obligasi, saham, atau surat berharga lainnya yang tidak
+                                                diperdagangkan di bursa efek segera dijual oleh
+                                                Pejabat; </li>
+                                            <li id='25-3-5'> piutang dibuatkan berita acara persetujuan tentang
+                                                pengalihan hak menagih dari Penanggung Pajak kepada
+                                                Pejabat; </li>
+                                            <li id='25-3-6'> penyertaan modal pada perusahaan lain dibuatkan akte
+                                                persetujuan pengalihan hak menjual dari Penanggung
+                                                Pajak kepada Pejabat. </li>
+                                        </ol>
+                                    </li>
+                                    <li id='25-4-0'> Apabila pihak-pihak sebagaimana dimaksud pada ayat (3) huruf b,
+                                        huruf c,
+                                        huruf d, huruf c, dan huruf f tidak melaksanakan kewajibannya, dikenakan sanksi
+                                        pidana
+                                        sesuai dengan peraturan perundang-undangan yang berlaku. </li>
+                                    <li id='25-5-0'> Ketentuan mengenai tata cara penjualan barang yang dikecualikan
+                                        dari
+                                        penjualan secara lelang sebagaimana dimaksud pada ayat (2) diatur dengan
+                                        Peraturan
+                                        Pemerintah. </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal26">
+            <div class="card-header" id="headingpasal26">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal26" aria-expanded="true" aria-controls="pasal26">
+                        Pasal 26
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal26" class="collapse" aria-labelledby="headingpasal26" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 26'>
+                                <ol id='26-0-0'>
+                                    <li id='26-1-0'> Penjualan secara lelang terhadap barang yang disita sebagaimana
+                                        dimaksud
+                                        dalam Pasal 25 ayat (1) dilaksanakan sekurang-kurangnya 14 (empat belas) hari
+                                        setelah
+                                        penyitaan. </li>
+                                    <li id='26-2-0'> Pejabat bertindak sebagai penjual atas barang yang disita
+                                        mengajukan
+                                        permintaan lelang kepada Kantor Lelang sebelum lelang dilaksanakan. </li>
+                                    <li id='26-3-0'> Pejabat atau yang mewakilinya menghadiri pelaksanaan lelang untuk
+                                        menentukan dilepas atau tidaknya barang yang dilelang dan menandatangani asli
+                                        Risalah
+                                        Lelang. </li>
+                                    <li id='26-4-0'> Pejabat dan Jurusita Pajak tidak diperbolehkan membeli barang
+                                        sitaan yang
+                                        dilelang. </li>
+                                    <li id='26-5-0'> Larangan terhadap Pejabat dan Jurusita Pajak untuk membeli barang
+                                        sitaan
+                                        yang dilelang, berlaku juga terhadap istri, keluarga sedarah dan semenda dalam
+                                        keturunan
+                                        garis lurus, serta anak angkat. </li>
+                                    <li id='26-6-0'> Pejabat dan Jurusita Pajak yang melanggar ketentuan sebagimana
+                                        dimaksud
+                                        pada ayat (4) dikenakan sanksi sesuai dengan peraturan perundang-undangan yang
+                                        berlaku.
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal27">
+            <div class="card-header" id="headingpasal27">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal27" aria-expanded="true" aria-controls="pasal27">
+                        Pasal 27
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal27" class="collapse" aria-labelledby="headingpasal27" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 27'>
+                                <ol id='27-0-0'>
+                                    <li id='27-1-0'> Lelang tetap dapat dilaksanakan walaupun keberatan yang diajukan
+                                        oleh Wajib
+                                        Pajak belum memperoleh keputusan keberatan. </li>
+                                    <li id='27-2-0'> Lelang tetap dapat dilaksanakan tanpa dihadiri oleh Penanggung
+                                        Pajak. </li>
+                                    <li id='27-3-0'> Lelang tidak dilaksanakan apabila Penanggung Pajak telah melunasi
+                                        utang
+                                        pajak dan biaya penagihan pajak, atau berdasarkan putusan pengadilan, atau
+                                        putusan Badan
+                                        Penyelesaian Sengketa Pajak, atau objek lelang musnah. </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal28">
+            <div class="card-header" id="headingpasal28">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal28" aria-expanded="true" aria-controls="pasal28">
+                        Pasal 28
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal28" class="collapse" aria-labelledby="headingpasal28" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 28'>
+                                <ol id='28-0-0'>
+                                    <li id='28-1-0'> Hasil lelang dipergunakan terlebih dahulu untuk membayar biaya
+                                        penagihan
+                                        pajak yang belum dibayar dan sisanya untuk membayar utang pajak. </li>
+                                    <li id='28-2-0'> Dalam hal hasil lelang sudah mencapai jumlah yang cukup untuk
+                                        melunasi
+                                        biaya penagihan pajak dan utang pajak, pelaksanaan lelang dihentikan walaupun
+                                        barang
+                                        yang akan dilelang masih ada. </li>
+                                    <li id='28-3-0'> Sisa barang beserta kelebihan uang hasil lelang dikembalikan oleh
+                                        Pejabat
+                                        kepada Penanggung Pajak segera setelah pelaksanaan lelang. </li>
+                                    <li id='28-4-0'> Pejabat yang lalai melaksanakan ketentuan sebagaimana dimaksud pada
+                                        ayat
+                                        (2) dan ayat (3), dikenakan sanksi sesuai dengan peraturan perundang-undangan
+                                        yang
+                                        berlaku. </li>
+                                    <li id='28-5-0'> Hak Penanggung Pajak atas barang yang telah dilelang berpindah
+                                        kepada
+                                        pembeli dan kepadanya diberikan Risalah Lelang yang merupakan bukti otentik
+                                        sebagai
+                                        dasar pendaftaran dan pengalihan hak. </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card bab-title">
+            <p>Bab V Pencegahan dan Penyanderaan</p>
+        </div>
+        <div class="card pasal29">
+            <div class="card-header" id="headingpasal29">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal29" aria-expanded="true" aria-controls="pasal29">
+                        Pasal 29
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal29" class="collapse" aria-labelledby="headingpasal29" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 29'>
+                                <p id='29-0-0'> Pencegahan hanya dapat dilakukan terhadap Penanggung Pajak yang
+                                    mempunyai jumlah
+                                    utang pajak sekurang-kurangnya sebesar Rp. 100.000.000,00 (seratus juta rupiah) dan
+                                    diragukan itikad baiknya dalam melunasi utang pajak. </p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal30">
+            <div class="card-header" id="headingpasal30">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal30" aria-expanded="true" aria-controls="pasal30">
+                        Pasal 30
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal30" class="collapse" aria-labelledby="headingpasal30" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 30'>
+                                <ol id='30-0-0'>
+                                    <li id='30-1-0'> Pencegahan sebagaimana dimaksud dalam Pasal 29 hanya dapat
+                                        dilakukan
+                                        berdasarkan keputusan pencegahan yang diterbitkan oleh Menteri atas permintaan
+                                        Pejabat
+                                        atau atasan Pejabat yang bersangkutan </li>
+                                    <li id='30-2-0'> Keputusan pencegahan memuat sekurang-kurangnya: <ol type='a'>
+                                            <li id='30-2-1'> identitas Penanggung Pajak yang dikenakan pencegahan; </li>
+                                            <li id='30-2-2'> alasan untuk melakukan pencegahan; dan </li>
+                                            <li id='30-2-3'> jangka waktu pencegahan. </li>
+                                        </ol>
+                                    </li>
+                                    <li id='30-3-0'> jangka waktu pencegahan sebagimana dimaksud pada ayat (2) huruf c
+                                        paling
+                                        lama 6 (enam) bulan dan dapat diperpanjang untuk selama-lamanya 6 (enam) bulan.
+                                    </li>
+                                    <li id='30-4-0'> Keputusan pencegahan sebagaimana dimaksud pada ayat (1) disampaikan
+                                        kepada
+                                        Penanggung Pajak yang dikenakan pencegahan, Menteri Kehakiman, Pejabat yang
+                                        memohon
+                                        pencegahan, atasan Pejabat yang bersangkutan, dan Kepala Daerah setempat. </li>
+                                    <li id='30-5-0'> Pencegahan dapat dilaksanakan terhadap beberapa orang sebagai
+                                        Penanggung
+                                        Pajak Wajib Pajak badan atau ahli waris. </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal31">
+            <div class="card-header" id="headingpasal31">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal31" aria-expanded="true" aria-controls="pasal31">
+                        Pasal 31
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal31" class="collapse" aria-labelledby="headingpasal31" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 31'>
+                                <p id='31-0-0'> Pencegahan terhadap Penanggung Pajak tidak mengakibatkan hapusnya utang
+                                    pajak
+                                    dan terhentinya pelaksanaan penagihan pajak. </p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal32">
+            <div class="card-header" id="headingpasal32">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal32" aria-expanded="true" aria-controls="pasal32">
+                        Pasal 32
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal32" class="collapse" aria-labelledby="headingpasal32" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 32'>
+                                <p id='32-0-0'> Pencegahan dilaksanakan berdasarkan peraturan perundang-undangan yang
+                                    berlaku.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal33">
+            <div class="card-header" id="headingpasal33">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal33" aria-expanded="true" aria-controls="pasal33">
+                        Pasal 33
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal33" class="collapse" aria-labelledby="headingpasal33" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 33'>
+                                <ol id='33-0-0'>
+                                    <li id='33-1-0'> Penyanderaan hanya dapat dilakukan Penanggung Pajak yang mempunyai
+                                        utang
+                                        pajak sekurang-kurangnya sebesar Rp.100.000.000,00 (seratus juta rupiah) dan
+                                        diragukan
+                                        itikad baiknya dalam melunasi utang pajak. </li>
+                                    <li id='33-2-0'> Penyanderaan sebagaimana dimaksud pada ayat (1) hanya dapat
+                                        dilaksanakan
+                                        berdasarkan Surat Perintah Penyanderaan yang diterbitkan oleh Pejabat setelah
+                                        mendapat
+                                        izin tertulis dari Menteri atau Gubernur Kepala Daerah Tingkat I. </li>
+                                    <li id='33-3-0'> Masa penyanderaan paling lama 6 (enam) bulan dan dapat diperpanjang
+                                        untuk
+                                        selama-lamanya 6 (enam) bulan. </li>
+                                    <li id='33-4-0'> Surat Perintah Penyanderaan memuat sekurang-kurangnya: <ol
+                                            type='a'>
+                                            <li id='33-4-1'> identitas Penanggung Pajak; </li>
+                                            <li id='33-4-2'> alasan penyanderaan; </li>
+                                            <li id='33-4-3'> izin penyanderaan; </li>
+                                            <li id='33-4-4'> lamanya penyanderaan; dan </li>
+                                            <li id='33-4-5'> tempat penyanderaan. </li>
+                                        </ol>
+                                    </li>
+                                    <li id='33-5-0'> Penyanderaan tidak boleh dilaksanakan dalam hal Penanggung Pajak
+                                        sedang
+                                        beribadah, atau sedang mengikuti sidang resmi, atau sedang mengikuti Pemilihan
+                                        Umum.
+                                    </li>
+                                    <li id='33-6-0'> Besarnya jumlah utang pajak sebagaimana dimaksud pada ayat (1) dan
+                                        dalam
+                                        Pasal 29 dapat diubah dengan Peraturan Pemerintah. </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal34">
+            <div class="card-header" id="headingpasal34">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal34" aria-expanded="true" aria-controls="pasal34">
+                        Pasal 34
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal34" class="collapse" aria-labelledby="headingpasal34" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 34'>
+                                <ol id='34-0-0'>
+                                    <li id='34-1-0'> Penanggung Pajak yang disandera dilepas: <ol type='a'>
+                                            <li id='34-1-1'> apabila utang pajak dan biaya penagihan pajak telah dibayar
+                                                lunas; </li>
+                                            <li id='34-1-2'> apabila jangka waktu yang ditetapkan dalam Surat Perintah
+                                                Penyanderaan itu telah terpenuhi; </li>
+                                            <li id='34-1-3'> berdasarkan putusan pengadilan yang telah mempunyai
+                                                kekuatan hukum tetap; atau </li>
+                                            <li id='34-1-4'> berdasarkan pertimbangan tertentu dari Menteri atau
+                                                Gubernur Kepala Daerah Tingkat I. </li>
+                                        </ol>
+                                    </li>
+                                    <li id='34-2-0'> Sebelum Penanggung Pajak dilepas sebagaimana dimaksud pada ayat (1)
+                                        huruf
+                                        a, huruf c, dan huruf d, Pejabat segera memberitahukan secara tertulis kepada
+                                        kepala
+                                        tempat penyanderaan sebagaimana tercantum dalam Surat Perintah Penyanderaan.
+                                    </li>
+                                    <li id='34-3-0'> Penanggung Pajak yang disandera dapat mengajukan gugatan terhadap
+                                        pelaksanaan penyanderaan hanya kepada Pengadilan Negeri. </li>
+                                    <li id='34-4-0'> Dalam hal gugatan Penanggung Pajak sebagaimana dimaksud pada ayat
+                                        (3)
+                                        dikabulkan dan putusan pengadilan telah mempunyai kekuatan hukum tetap,
+                                        Penanggung Pajak
+                                        dapat memohon rehabilitasi nama baik dan ganti rugi atas masa penyanderaan yang
+                                        telah
+                                        dijalaninya. </li>
+                                    <li id='34-5-0'> Besarnya ganti rugi sebagaimana dimaksud pada ayat (4) adalah Rp.
+                                        100.000,00 (sertus ribu rupiah) setiap hari. </li>
+                                    <li id='34-6-0'> Perubahan besarnya nilai ganti rugi sebagaimana dimaksud pada ayat
+                                        (5)
+                                        ditetapkan oleh Menteri. </li>
+                                    <li id='34-7-0'> Penanggung Pajak tidak dapat mengajukan gugatan terhadap
+                                        pelaksanaan
+                                        penyanderaan setelah masa penyanderaan berakhir. </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal35">
+            <div class="card-header" id="headingpasal35">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal35" aria-expanded="true" aria-controls="pasal35">
+                        Pasal 35
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal35" class="collapse" aria-labelledby="headingpasal35" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 35'>
+                                <p id='35-0-0'> Penyanderaan terhadap Penanggung Pajak tidak mengakibatkan hapusnya
+                                    utang pajak
+                                    dan terhentinya pelaksanaan penagihan pajak. </p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal36">
+            <div class="card-header" id="headingpasal36">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal36" aria-expanded="true" aria-controls="pasal36">
+                        Pasal 36
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal36" class="collapse" aria-labelledby="headingpasal36" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 36'>
+                                <p id='36-0-0'> Ketentuan mengenai tempat penyanderaan, tata cara penyanderaan,
+                                    rehabilitasi
+                                    nama baik Penanggung Pajak, dan pemberian ganti rugi diatur dengan Peraturan
+                                    Pemerintah.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card bab-title">
+            <p>Bab VI Gugatan</p>
+        </div>
+        <div class="card pasal37">
+            <div class="card-header" id="headingpasal37">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal37" aria-expanded="true" aria-controls="pasal37">
+                        Pasal 37
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal37" class="collapse" aria-labelledby="headingpasal37" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 37'>
+                                <ol id='37-0-0'>
+                                    <li id='37-1-0'> Gugatan Penanggung Pajak terhadap pelaksanaan Surat Paksa, sita,
+                                        atau
+                                        lelang hanya dapat diajukan kepada Badan Penyelesaian Sengketa Pajak. </li>
+                                    <li id='37-2-0'> Gugatan Penanggung Pajak sebagaimana dimaksud pada ayat (1)
+                                        diajukan dalam
+                                        jangka waktu 14 (empat belas) hari sejak Surat Paksa, sita, atau pengumuman
+                                        lelang
+                                        dilaksanakan. </li>
+                                    <li id='37-3-0'> Gugatan sebagaimana dimaksud pada ayat (1) dan dalam Pasal 34 ayat
+                                        (3)
+                                        tidak menunda pelaksanaan penagihan pajak. </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal38">
+            <div class="card-header" id="headingpasal38">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal38" aria-expanded="true" aria-controls="pasal38">
+                        Pasal 38
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal38" class="collapse" aria-labelledby="headingpasal38" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 38'>
+                                <ol id='38-0-0'>
+                                    <li id='38-1-0'> Gugatan pihak ketiga terhadap kepemilikan barang yang disita hanya
+                                        dapat
+                                        diajukan kepada Pengadilan Negeri. </li>
+                                    <li id='38-2-0'> Pengadilan Negeri yang menerima surat gugatan sebagimana dimaksud
+                                        pada ayat
+                                        (1) memberitahukan secara tertulis kepada Pejabat. </li>
+                                    <li id='38-3-0'> Pejabat menangguhkan pelaksanaan penagihan pajak hanya terhadap
+                                        barang yang
+                                        digugat kepemilikannya sejak menerima pemberitahuan sebagaimana dimaksud pada
+                                        ayat (2).
+                                    </li>
+                                    <li id='38-4-0'> Gugatan pihak ketiga terhadap kepemilikan barang yang disita tidak
+                                        dapat
+                                        diajukan setelah lelang dilaksanakan. </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card bab-title">
+            <p>Bab VII Ketentuan Khusus</p>
+        </div>
+        <div class="card pasal39">
+            <div class="card-header" id="headingpasal39">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal39" aria-expanded="true" aria-controls="pasal39">
+                        Pasal 39
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal39" class="collapse" aria-labelledby="headingpasal39" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 39'>
+                                <ol id='39-0-0'>
+                                    <li id='39-1-0'> Penanggung Pajak dapat mengajukan permohonan pembetulan atau
+                                        penggantian
+                                        kepada Pejabat terhadap Surat Perintah Penagihan Seketika dan Sekaligus, Surat
+                                        Paksa,
+                                        Surat Perintah Melaksanakan Penyitaan, Surat Perintah Penyanderaan, dan
+                                        Pengumuman
+                                        Lelang yang dalam penerbitannya terdapat kesalahan atau kekeliruan. </li>
+                                    <li id='39-2-0'> Pejabat karena jabatan dapat membetulkan Surat Perintah Penagihan
+                                        Seketika
+                                        dan Sekaligus, Surat Paksa, Surat Pemerintah Melaksanakan Penyitaan, Surat
+                                        Perintah
+                                        Penyanderaan, dan Pengumuman Lelang yang dalam penerbitannya terdapat kesalahan
+                                        atau
+                                        kekeliruan. </li>
+                                    <li id='39-3-0'> Tindakan pelaksanaan penagihan pajak dilanjutkan setelah kesalahan
+                                        atau
+                                        kekeliruan dibetulkan oleh Pejabat. </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal40">
+            <div class="card-header" id="headingpasal40">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal40" aria-expanded="true" aria-controls="pasal40">
+                        Pasal 40
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal40" class="collapse" aria-labelledby="headingpasal40" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 40'>
+                                <ol id='40-0-0'>
+                                    <li id='40-1-0'> Apabila setelah pelaksanaan lelang Wajib Pajak memperoleh keputusan
+                                        keberatan atau putusan banding yang mengakibatkan utang pajak menjadi berkurang
+                                        sehingga
+                                        menimbulkan kelebihan pembayaran pajak, Wajib Pajak tidak dapat meminta atau
+                                        tidak
+                                        berhak menuntut pengembalian barang yang telah dilelang. </li>
+                                    <li id='40-2-0'> Pejabat mengembalikan kelebihan pembayaran pajak sebagaimana
+                                        dimaksud pada
+                                        ayat (1) dalam bentuk uang sesuai dengan peraturan perundang-undangan perpajakan
+                                        yang
+                                        berlaku. </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal41">
+            <div class="card-header" id="headingpasal41">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal41" aria-expanded="true" aria-controls="pasal41">
+                        Pasal 41
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal41" class="collapse" aria-labelledby="headingpasal41" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 41'>
+                                <p id='41-0-0'> Penagihan pajak tidak dilaksanakan apabila telah kedaluarsa sebagaimana
+                                    diatur
+                                    dalam peraturan perundang-undangan perpajakan yang berlaku. </p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card bab-title">
+            <p>Bab VIII Ketentuan Peralihan</p>
+        </div>
+        <div class="card pasal42">
+            <div class="card-header" id="headingpasal42">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal42" aria-expanded="true" aria-controls="pasal42">
+                        Pasal 42
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal42" class="collapse" aria-labelledby="headingpasal42" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 42'>
+                                <ol id='42-0-0'>
+                                    <li id='42-1-0'> Tindakan pelaksanaan penagihan pajak berdasarkan Undang-undang
+                                        Nomor 19
+                                        Tahun 1959 tentang Penagihan Pajak Negara Dengan Surat Paksa (Lembaran Negara
+                                        Tahun 1959
+                                        Nomor 63 dan Tambahan Lembaran Negara Nomor 1850) yang belum dapat diselesaikan
+                                        pada
+                                        saat berlakunya Undang-undang ini ditetapkan sebagai berikut: <ol type='a'>
+                                            <li id='42-1-1'> dalam hal Surat Paksa sudah diterbitkan tetapi belum
+                                                diberitahukan kepada Penanggung Pajak yang
+                                                bersangkutan, Surat Paksa dimaksud dinyatakan batal demi hukum; </li>
+                                            <li id='42-1-2'> dalam hal Surat Paksa sudah diberikan kepada Penanggung
+                                                Pajak yang bersangkutan, pelaksanaan sita yang
+                                                belum diproses diselesaikan berdasarkan Undang-undang ini; </li>
+                                            <li id='42-1-3'> dalam hal Surat Perintah Melaksanakan Penyitaan sudah
+                                                diterbitkan tetapi belum dilaksanakan, Surat
+                                                Perintah Melaksanakan Penyitaan dimaksud dinyatakan batal demi hukum;
+                                            </li>
+                                            <li id='42-1-4'> dalam hal lelang sudah diproses tetapi belum diselesaikan,
+                                                tetap diselesaikan berdasarkan Undang-undang
+                                                Nomor 19 Tahun 1959 tentang Penagihan Pajak Negara Dengan Surat Paksa
+                                                (Lembaran Negara Tahun 1959 Nomor 63 dan
+                                                Tambahan Lembaran Negara Nomor 1850). </li>
+                                        </ol>
+                                    </li>
+                                    <li id='42-2-0'> Gugatan Penanggung Pajak terhadap tindakan pelaksanaan penagihan
+                                        pajak
+                                        sebelum tanggal 1 Januari 1998 diajukan kepada badan peradilan yang
+                                        bersangkutan. </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card bab-title">
+            <p>Bab IX Ketentuan Penutup</p>
+        </div>
+        <div class="card pasal43">
+            <div class="card-header" id="headingpasal43">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal43" aria-expanded="true" aria-controls="pasal43">
+                        Pasal 43
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal43" class="collapse" aria-labelledby="headingpasal43" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 43'>
+                                <ol id='43-0-0'>
+                                    <li id='43-1-0'> Dengan berlakunya Undang-undang ini, Undang-undang Nomor 19 Tahun
+                                        1959
+                                        tentang Penagihan Pajak Negara Dengan Surat Paksa (Lembaran Negara Tahun 1959
+                                        Nomor 63
+                                        dan Tambahan Lembaran Negara Nomor 1850) dinyatakan tidak berlaku. </li>
+                                    <li id='43-2-0'> Dengan berlakunya Undang-undang ini, semua peraturan pelaksanaan di
+                                        bidang
+                                        penagihan pajak tetap berlaku sepanjang tidak bertentangan dengan Undang-undang
+                                        ini atau
+                                        belum diganti dengan peraturan pelaksanaan yang baru. </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal44">
+            <div class="card-header" id="headingpasal44">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal44" aria-expanded="true" aria-controls="pasal44">
+                        Pasal 44
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal44" class="collapse" aria-labelledby="headingpasal44" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 44'>
+                                <p id='44-0-0'> Undang-undang ini mulai dinamakan Undang-undang Penagihan Pajak dengan
+                                    Surat
+                                    Paksa </p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal45">
+            <div class="card-header" id="headingpasal45">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal45" aria-expanded="true" aria-controls="pasal45">
+                        Pasal 45
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal45" class="collapse" aria-labelledby="headingpasal45" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 45'>
+                                <p id='45-0-0'> Undang-undang ini mulai berlaku pada tanggal diundangkan. </p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../../js/jquery-3.5.1.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../script/script.js"></script>
+
+</html>
