@@ -1,6 +1,7 @@
 p, li{
     text-align: justify;
     font-size: 15px;
+    margin-bottom: 5px;
 }
 .pasal-nama{
     color: black;
@@ -212,6 +213,7 @@ p, li{
 .keterangan {
     color: tomato;
     font-weight: bold;
+    display: contents;
 }
 
 #pasal-wrapper {
@@ -246,7 +248,7 @@ p, li{
     width: 100%;
 }
 .subsub {
-    margin-left: -20px;
+    margin-left: -40px;
     display: grid;
     grid-template-columns: auto auto;
     grid-template-rows: auto auto;
@@ -257,9 +259,89 @@ p, li{
 }
 .subsub p {
     grid-area: isi;
-    margin-left: 2px;
-    margin-bottom: 0px;
+    margin-left: 3.5px;
+    margin-bottom: 5px;
 }
 .subsub ol{
     grid-area: isi2;
+}
+.huruf {
+    grid-area: sub;
+}
+.angka {
+    grid-area: angka;
+}
+.custom-counter {
+    list-style: none ;
+    counter-reset: item ;
+}
+.custom-counter li {
+    margin-bottom: 5px ;
+    margin-left: -40px;
+    display: grid;
+    grid-template-columns: 30px auto;
+    grid-template-rows: auto;
+    grid-template-areas: 
+    "auto auto"
+    ". sub"
+}
+.custom-counter li:before {
+    counter-increment: item ;
+    content: "(" counter(item) ")" ;
+    margin-right: 0rem ;
+}
+.custom-counter li ol {
+    counter-reset: def ;
+}
+.custom-counter li ol li {
+    margin-left: -30px;
+    margin-bottom: 0px;
+    display: grid ;
+    grid-template-columns: 30px auto;
+    grid-template-rows: auto;
+    grid-template-areas: 
+    "auto auto"
+    ". angka"
+}
+.custom-counter li ol li:before {
+    counter-increment: def ;
+    content: counter(def, lower-alpha) ".";
+    margin-right: 0.2rem ;
+}
+.custom-counter li ol p {
+    margin-left: -40px;
+    margin-bottom: 0px;
+}
+.custom-counter .subsub ol {
+    counter-reset: alfa ;
+}
+.custom-counter .subsub ol li {
+    margin-left: -30px;
+    margin-bottom: 0px;
+    display: grid ;
+    grid-template-columns: 30px auto;
+    grid-template-rows: auto;
+    grid-template-areas: 
+    "auto auto"
+    ". angka"
+}
+.custom-counter .subsub ol li:before {
+    counter-increment: alfa ;
+    content: counter(alfa, lower-alpha) ".";
+    margin-right: 0.2rem ;
+}
+.custom-counter li ol li ol {
+    counter-reset: unit ;
+}
+.custom-counter li ol li ol li {
+    margin-left: -30px;
+    margin-bottom: 0px;
+    display: grid ;
+    grid-template-columns: 30px auto;
+    grid-template-rows: auto;
+}
+.custom-counter li ol li ol li:before {
+    counter-increment: unit ;
+    content: counter(unit, decimal) "." ;
+    margin-right: 0.2rem ;
 }
