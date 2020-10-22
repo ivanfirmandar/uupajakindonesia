@@ -1,0 +1,2438 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pajak Penghasilan</title>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../style/style.css">
+</head>
+
+<body>
+    <div class="note-container hide">
+
+    </div>
+    <div class="modal-toolbar modal-toolbar-hide">
+        <label for="cari">Search</label>
+        <input type="text" id="cari" name="cari" placeholder="Kata Kunci">
+        <button id="button-cari">Cari</button>
+    </div>
+    <div class="card modal-keterangan hide" id="keteranganAyat">
+        <div class="card-body">
+            <h6>Judul</h6>
+            <p class="card-text"></p>
+            <button href="#" class="card-link" onclick="closeKeterangan()">Close</button>
+        </div>
+    </div>
+    <div class="toolbar toolbar-main">
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cursor-fill toolbar-icon" fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+                d="M14.082 2.182a.5.5 0 0 1 .103.557L8.528 15.467a.5.5 0 0 1-.917-.007L5.57 10.694.803 8.652a.5.5 0 0 1-.006-.916l12.728-5.657a.5.5 0 0 1 .556.103z" />
+        </svg>
+    </div>
+    <div class="toolbar toolbar2">
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search  toolbar-icon" fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+                d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z" />
+            <path fill-rule="evenodd"
+                d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
+        </svg>
+    </div>
+    <div class="toolbar toolbar2">
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-journal-text toolbar-icon" fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z" />
+            <path
+                d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z" />
+            <path fill-rule="evenodd"
+                d="M5 10.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z" />
+        </svg>
+    </div>
+    <nav>
+        <div class="navbar-kup">
+            <a href="../../index.html">
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-left-short back-button"
+                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z" />
+                </svg>
+            </a>
+            <div id="judulUU">Pajak Penghasilan</div>
+            <a href="" onclick="refresh()" id="refresh-button">
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-repeat" fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z" />
+                    <path fill-rule="evenodd"
+                        d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z" />
+                </svg>
+            </a>
+        </div>
+    </nav>
+    <div class="accordion" id="accordionExample">
+        <div class="card bab-title">
+            <p>Bab I Ketentuan Umum</p>
+        </div>
+        <div class="card pasal1">
+            <div class="card-header" id="headingpasal1">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal1" aria-expanded="true" aria-controls="pasal1">
+                        Pasal 1
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal1" class="collapse" aria-labelledby="headingpasal1" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 1'>
+                                <ol id='1-0-0'>
+                                    <li id='1-1-0'> Daerah Pabean adalah wilayah Republik Indonesia yang meliputi
+                                        wilayah darat,
+                                        perairan, dan ruang udara di atasnya, serta tempat-tempat tertentu di Zona
+                                        Ekonomi
+                                        Eksklusif dan landas kontinen yang di dalamnya berlaku Undang-Undang yang
+                                        mengatur
+                                        mengenai kepabeanan. </li>
+                                    <li id='1-2-0'> Barang adalah barang berwujud, yang menurut sifat atau hukumnya
+                                        dapat berupa
+                                        barang bergerak atau barang tidak bergerak, dan barang tidak berwujud. </li>
+                                    <li id='1-3-0'> Barang Kena Pajak adalah barang yang dikenai pajak berdasarkan
+                                        Undang-Undang
+                                        ini. </li>
+                                    <li id='1-4-0'> Penyerahan Barang Kena Pajak adalah setiap kegiatan penyerahan
+                                        Barang Kena
+                                        Pajak. </li>
+                                    <li id='1-5-0'> Jasa adalah setiap kegiatan pelayanan yang berdasarkan suatu
+                                        perikatan atau
+                                        perbuatan hukum yang menyebabkan suatu barang, fasilitas, kemudahan, atau hak
+                                        tersedia
+                                        untuk dipakai, termasuk jasa yang dilakukan untuk menghasilkan barang karena
+                                        pesanan
+                                        atau permintaan dengan bahan dan atas petunjuk dari pemesan. </li>
+                                    <li id='1-6-0'> Jasa Kena Pajak adalah jasa yang dikenai pajak berdasarkan
+                                        Undang-Undang
+                                        ini. </li>
+                                    <li id='1-7-0'> Penyerahan Jasa Kena Pajak adalah setiap kegiatan pemberian Jasa
+                                        Kena Pajak.
+                                    </li>
+                                    <li id='1-8-0'> Pemanfaatan Jasa Kena Pajak dari luar Daerah Pabean adalah setiap
+                                        kegiatan
+                                        pemanfaatan Jasa Kena Pajak dari luar Daerah Pabean di dalam Daerah Pabean.
+                                    </li>
+                                    <li id='1-9-0'> Impor adalah setiap kegiatan memasukkan barang dari luar Daerah
+                                        Pabean ke
+                                        dalam Daerah Pabean. </li>
+                                    <li id='1-10-0'> Pemanfaatan Barang Kena Pajak Tidak Berwujud dari luar Daerah
+                                        Pabean adalah
+                                        setiap kegiatan pemanfaatan Barang Kena Pajak Tidak Berwujud dari luar Daerah
+                                        Pabean di
+                                        dalam Daerah Pabean. </li>
+                                    <li id='1-11-0'> Ekspor Barang Kena Pajak Berwujud adalah setiap kegiatan
+                                        mengeluarkan
+                                        Barang Kena Pajak Berwujud dari dalam Daerah Pabean ke luar Daerah Pabean. </li>
+                                    <li id='1-12-0'> Perdagangan adalah kegiatan usaha membeli dan menjual, termasuk
+                                        kegiatan
+                                        tukar-menukar barang, tanpa mengubah bentuk dan/atau sifatnya. </li>
+                                    <li id='1-13-0'> Badan adalah sekumpulan orang dan/atau modal yang merupakan
+                                        kesatuan baik
+                                        yang melakukan usaha maupun yang tidak melakukan usaha yang meliputi perseroan
+                                        terbatas,
+                                        perseroan komanditer, perseroan lainnya, badan usaha milik negara atau badan
+                                        usaha milik
+                                        daerah dengan nama dan dalam bentuk apapun, firma, kongsi, koperasi, dana
+                                        pensiun,
+                                        persekutuan, perkumpulan, yayasan, organisasi massa, organisasi sosial politik,
+                                        atau
+                                        organisasi lainnya, lembaga dan bentuk badan lainnya termasuk kontrak investasi
+                                        kolektif
+                                        dan bentuk usaha tetap. </li>
+                                    <li id='1-14-0'> Pengusaha adalah orang pribadi atau badan dalam bentuk apa pun yang
+                                        dalam
+                                        kegiatan usaha atau pekerjaannya menghasilkan barang, mengimpor barang,
+                                        mengekspor
+                                        barang, melakukan usaha perdagangan, memanfaatkan barang tidak berwujud dari
+                                        luar Daerah
+                                        Pabean, melakukan usaha jasa termasuk mengekspor jasa, atau memanfaatkan jasa
+                                        dari luar
+                                        Daerah Pabean. </li>
+                                    <li id='1-15-0'> Pengusaha Kena Pajak adalah pengusaha yang melakukan penyerahan
+                                        Barang Kena
+                                        Pajak dan/atau penyerahan Jasa Kena Pajak yang dikenai pajak berdasarkan
+                                        Undang-Undang
+                                        ini. </li>
+                                    <li id='1-16-0'> Menghasilkan adalah kegiatan mengolah melalui proses mengubah
+                                        bentuk
+                                        dan/atau sifat suatu barang dari bentuk aslinya menjadi barang baru atau
+                                        mempunyai daya
+                                        guna baru atau kegiatan mengolah sumber daya alam, termasuk menyuruh orang
+                                        pribadi atau
+                                        badan lain melakukan kegiatan tersebut. </li>
+                                    <li id='1-17-0'> Dasar Pengenaan Pajak adalah jumlah Harga Jual, Penggantian, Nilai
+                                        Impor,
+                                        Nilai Ekspor, atau nilai lain yang dipakai sebagai dasar untuk menghitung pajak
+                                        yang
+                                        terutang. </li>
+                                    <li id='1-18-0'> Harga Jual adalah nilai berupa uang, termasuk semua biaya yang
+                                        diminta atau
+                                        seharusnya diminta oleh penjual karena penyerahan Barang Kena Pajak, tidak
+                                        termasuk
+                                        Pajak Pertambahan Nilai yang dipungut menurut Undang-Undang ini dan potongan
+                                        harga yang
+                                        dicantumkan dalam Faktur Pajak. </li>
+                                    <li id='1-19-0'> Penggantian adalah nilai berupa uang, termasuk semua biaya yang
+                                        diminta
+                                        atau seharusnya diminta oleh pengusaha karena penyerahan Jasa Kena Pajak, ekspor
+                                        Jasa
+                                        Kena Pajak, atau ekspor Barang Kena Pajak Tidak Berwujud, tetapi tidak termasuk
+                                        Pajak
+                                        Pertambahan Nilai yang dipungut menurut Undang-Undang ini dan potongan harga
+                                        yang
+                                        dicantumkan dalam Faktur Pajak atau nilai berupa uang yang dibayar atau
+                                        seharusnya
+                                        dibayar oleh Penerima Jasa karena pemanfaatan Jasa Kena Pajak dan/atau oleh
+                                        penerima
+                                        manfaat Barang Kena Pajak Tidak Berwujud karena pemanfaatan Barang Kena Pajak
+                                        Tidak
+                                        Berwujud dari luar Daerah Pabean di dalam Daerah Pabean. </li>
+                                    <li id='1-20-0'> Nilai Impor adalah nilai berupa uang yang menjadi dasar
+                                        penghitungan bea
+                                        masuk ditambah pungutan berdasarkan ketentuan dalam peraturan perundang-undangan
+                                        yang
+                                        mengatur mengenai kepabeanan dan cukai untuk impor Barang Kena Pajak, tidak
+                                        termasuk
+                                        Pajak Pertambahan Nilai dan Pajak Penjualan atas Barang Mewah yang dipungut
+                                        menurut
+                                        Undang-Undang ini. </li>
+                                    <li id='1-21-0'> Pembeli adalah orang pribadi atau badan yang menerima atau
+                                        seharusnya
+                                        menerima penyerahan Barang Kena Pajak dan yang membayar atau seharusnya membayar
+                                        harga
+                                        Barang Kena Pajak tersebut. </li>
+                                    <li id='1-22-0'> Penerima Jasa adalah orang pribadi atau badan yang menerima atau
+                                        seharusnya
+                                        menerima penyerahan Jasa Kena Pajak dan yang membayar atau seharusnya membayar
+                                        Penggantian atas Jasa Kena Pajak tersebut. </li>
+                                    <li id='1-23-0'> Faktur Pajak adalah bukti pungutan pajak yang dibuat oleh Pengusaha
+                                        Kena
+                                        Pajak yang melakukan penyerahan Barang Kena Pajak atau penyerahan Jasa Kena
+                                        Pajak. </li>
+                                    <li id='1-24-0'> Pajak Masukan adalah Pajak Pertambahan Nilai yang seharusnya sudah
+                                        dibayar
+                                        oleh Pengusaha Kena Pajak karena perolehan Barang Kena Pajak dan/atau perolehan
+                                        Jasa
+                                        Kena Pajak dan/atau pemanfaatan Barang Kena Pajak Tidak Berwujud dari luar
+                                        Daerah Pabean
+                                        dan/atau pemanfaatan Jasa Kena Pajak dari luar Daerah Pabean dan/atau impor
+                                        Barang Kena
+                                        Pajak. </li>
+                                    <li id='1-25-0'> Pajak Keluaran adalah Pajak Pertambahan Nilai terutang yang wajib
+                                        dipungut
+                                        oleh Pengusaha Kena Pajak yang melakukan penyerahan Barang Kena Pajak,
+                                        penyerahan Jasa
+                                        Kena Pajak, ekspor Barang Kena Pajak Berwujud, ekspor Barang Kena Pajak Tidak
+                                        Berwujud,
+                                        dan/atau ekspor Jasa Kena Pajak. </li>
+                                    <li id='1-26-0'> Nilai Ekspor adalah nilai berupa uang, termasuk semua biaya yang
+                                        diminta
+                                        atau seharusnya diminta oleh eksportir. </li>
+                                    <li id='1-27-0'> Pemungut Pajak Pertambahan Nilai adalah bendahara pemerintah,
+                                        badan, atau
+                                        instansi pemerintah yang ditunjuk oleh Menteri Keuangan untuk memungut,
+                                        menyetor, dan
+                                        melaporkan pajak yang terutang oleh Pengusaha Kena Pajak atas penyerahan Barang
+                                        Kena
+                                        Pajak dan/atau penyerahan Jasa Kena Pajak kepada bendahara pemerintah, badan,
+                                        atau
+                                        instansi pemerintah tersebut. </li>
+                                    <li id='1-28-0'> Ekspor Barang Kena Pajak Tidak Berwujud adalah setiap kegiatan
+                                        pemanfaatan
+                                        Barang Kena Pajak Tidak Berwujud dari dalam Daerah Pabean di luar Daerah Pabean.
+                                    </li>
+                                    <li id='1-29-0'> Ekspor Jasa Kena Pajak adalah setiap kegiatan penyerahan Jasa Kena
+                                        Pajak ke
+                                        luar Daerah Pabean. </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal1a">
+            <div class="card-header" id="headingpasal1a">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal1a" aria-expanded="true" aria-controls="pasal1a">
+                        Pasal 1A
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal1a" class="collapse" aria-labelledby="headingpasal1a" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 1A'>
+                                <ol id='1A-0-0'>
+                                    <li id='1A-1-0'> Yang termasuk dalam pengertian penyerahan Barang Kena Pajak adalah:
+                                        <ol type='a'>
+                                            <li id='1A-1-1'> penyerahan hak atas Barang Kena Pajak karena suatu
+                                                perjanjian; </li>
+                                            <li id='1A-1-2'> pengalihan Barang Kena Pajak karena suatu perjanjian sewa
+                                                beli dan/atau perjanjian sewa guna usaha
+                                                (leasing); </li>
+                                            <li id='1A-1-3'> penyerahan Barang Kena Pajak kepada pedagang perantara atau
+                                                melalui juru lelang; </li>
+                                            <li id='1A-1-4'> pemakaian sendiri dan/atau pemberian cuma-cuma atas Barang
+                                                Kena Pajak; </li>
+                                            <li id='1A-1-5'> Barang Kena Pajak berupa persediaan dan/atau aktiva yang
+                                                menurut tujuan semula tidak untuk
+                                                diperjualbelikan, yang masih tersisa pada saat pembubaran perusahaan;
+                                            </li>
+                                            <li id='1A-1-6'> penyerahan Barang Kena Pajak dari pusat ke cabang atau
+                                                sebaliknya dan/atau penyerahan Barang Kena Pajak
+                                                antar cabang; </li>
+                                            <li id='1A-1-7'> penyerahan Barang Kena Pajak secara konsinyasi; dan </li>
+                                            <li id='1A-1-8'> penyerahan Barang Kena Pajak oleh Pengusaha Kena Pajak
+                                                dalam rangka perjanjian pembiayaan yang
+                                                dilakukan berdasarkan prinsip syariah, yang penyerahannya dianggap
+                                                langsung dari Pengusaha Kena Pajak kepada pihak
+                                                yang membutuhkan Barang Kena Pajak. </li>
+                                        </ol>
+                                    </li>
+                                    <li id='1A-2-0'> Yang tidak termasuk dalam pengertian penyerahan Barang Kena Pajak
+                                        adalah:
+                                        <ol type='a'>
+                                            <li id='1A-1-1'> penyerahan hak atas Barang Kena Pajak karena suatu
+                                                perjanjian; </li>
+                                            <li id='1A-1-2'> pengalihan Barang Kena Pajak karena suatu perjanjian sewa
+                                                beli dan/atau perjanjian sewa guna usaha
+                                                (leasing); </li>
+                                            <li id='1A-1-3'> penyerahan Barang Kena Pajak kepada pedagang perantara atau
+                                                melalui juru lelang; </li>
+                                            <li id='1A-1-4'> pemakaian sendiri dan/atau pemberian cuma-cuma atas Barang
+                                                Kena Pajak; </li>
+                                            <li id='1A-1-5'> Barang Kena Pajak berupa persediaan dan/atau aktiva yang
+                                                menurut tujuan semula tidak untuk
+                                                diperjualbelikan, yang masih tersisa pada saat pembubaran perusahaan;
+                                            </li>
+                                            <li id='1A-1-6'> penyerahan Barang Kena Pajak dari pusat ke cabang atau
+                                                sebaliknya dan/atau penyerahan Barang Kena Pajak
+                                                antar cabang; </li>
+                                            <li id='1A-1-7'> penyerahan Barang Kena Pajak secara konsinyasi; dan </li>
+                                            <li id='1A-1-8'> penyerahan Barang Kena Pajak oleh Pengusaha Kena Pajak
+                                                dalam rangka perjanjian pembiayaan yang
+                                                dilakukan berdasarkan prinsip syariah, yang penyerahannya dianggap
+                                                langsung dari Pengusaha Kena Pajak kepada pihak
+                                                yang membutuhkan Barang Kena Pajak. </li>
+                                        </ol>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal2">
+            <div class="card-header" id="headingpasal2">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal2" aria-expanded="true" aria-controls="pasal2">
+                        Pasal 2
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal2" class="collapse" aria-labelledby="headingpasal2" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 2'>
+                                <ol id='2-0-0'>
+                                    <li id='2-1-0'> Dalam hal Harga Jual atau Penggantian dipengaruhi oleh hubungan
+                                        istimewa,
+                                        maka Harga Jual atau Penggantian dihitung atas dasar harga pasar wajar pada saat
+                                        penyerahan Barang Kena Pajak atau Jasa Kena Pajak itu dilakukan. </li>
+                                    <li id='2-2-0'> Hubungan istimewa dianggap ada apabila : <ol type='a'>
+                                            <li id='2-2-1'> Pengusaha mempunyai pernyertaan langsung atau tidak langsung
+                                                sebesar 25% (dua puluh lima persen) atau
+                                                lebih pada Pengusaha lain, atau hubungan antara Pengusaha dengan
+                                                penyertaan 25% (dua puluh lima persen) atau lebih
+                                                pada dua Pengusaha atau lebih, demikian pula hubungan antara dua
+                                                Pengusaha atau lebih yang disebut terakhir; atau
+                                            </li>
+                                            <li id='2-2-2'> Pengusaha menguasai Pengusaha lainnya atau dua atau lebih
+                                                Pengusaha berada di bawah penguasaan Pengusaha
+                                                yang sama baik langsung maupun tidak langsung; atau </li>
+                                            <li id='2-2-3'> terdapat hubungan keluarga baik sedarah maupun semenda dalam
+                                                garis keturunan lurus satu derajat dan/atau
+                                                ke samping satu derajat. </li>
+                                        </ol>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card bab-title">
+            <p>Bab II Pengukuhan Pengusaha Kena Pajak</p>
+        </div>
+        <div class="card pasal3">
+            <div class="card-header" id="headingpasal3">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal3" aria-expanded="true" aria-controls="pasal3">
+                        Pasal 3
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal3" class="collapse" aria-labelledby="headingpasal3" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 3'>
+                                <p id='3-0-0'> Dihapus </p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card bab-title">
+            <p>Bab IIA Kewajiban Mempunyai Nomor Pengukuhan Pengusaha Kena Pajak dan Kewajiban Memungut, Menyetor, dan
+                Melaporkan</p>
+        </div>
+        <div class="card pasal3a">
+            <div class="card-header" id="headingpasal3a">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal3a" aria-expanded="true" aria-controls="pasal3a">
+                        Pasal 3A
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal3a" class="collapse" aria-labelledby="headingpasal3a" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 3A'>
+                                <ol id='3A-0-0'>
+                                    <li id='3A-1-0'> Pengusaha yang melakukan penyerahan sebagaimana dimaksud dalam
+                                        Pasal 4 ayat
+                                        (1) huruf a, huruf c, huruf f, huruf g, dan huruf h, kecuali pengusaha kecil
+                                        yang
+                                        batasannya ditetapkan oleh Menteri Keuangan, wajib melaporkan usahanya untuk
+                                        dikukuhkan
+                                        sebagai Pengusaha Kena Pajak dan wajib memungut, menyetor, dan melaporkan Pajak
+                                        Pertambahan Nilai dan Pajak Penjualan atas Barang Mewah yang terutang. </li>
+                                    <div class='subsub'>
+                                        <div>1a.</div>
+                                        <p id='3A-1A-0'>Pengusaha kecil sebagaimana dimaksud pada ayat (1) dapat memilih
+                                            untuk
+                                            dikukuhkan sebagai Pengusaha Kena Pajak.</p>
+                                    </div>
+                                    <li id='3A-2-0'> Pengusaha kecil yang memilih untuk dikukuhkan sebagai Pengusaha
+                                        Kena Pajak
+                                        wajib melaksanakan ketentuan sebagaimana dimaksud pada ayat (1). </li>
+                                    <li id='3A-3-0'> Orang pribadi atau badan yang memanfaatkan Barang Kena Pajak Tidak
+                                        Berwujud
+                                        dari luar Daerah Pabean sebagaimana dimaksud dalam Pasal 4 ayat (1) huruf d
+                                        dan/atau
+                                        yang memanfaatkan Jasa Kena Pajak dari luar Daerah Pabean sebagaimana dimaksud
+                                        dalam
+                                        Pasal 4 ayat (1) huruf e wajib memungut, menyetor, dan melaporkan Pajak
+                                        Pertambahan
+                                        Nilai yang terutang yang penghitungan dan tata caranya diatur dengan Peraturan
+                                        Menteri
+                                        Keuangan </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card bab-title">
+            <p>Bab III Obyek Pajak</p>
+        </div>
+        <div class="card pasal4">
+            <div class="card-header" id="headingpasal4">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal4" aria-expanded="true" aria-controls="pasal4">
+                        Pasal 4
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal4" class="collapse" aria-labelledby="headingpasal4" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 4'>
+                                <ol id='4-0-0'>
+                                    <li id='4-1-0'> Pajak Pertambahan Nilai dikenakan atas: <ol type='a'>
+                                            <li id='4-1-1'> penyerahan Barang Kena Pajak di dalam Daerah Pabean yang
+                                                dilakukan oleh pengusaha; </li>
+                                            <li id='4-1-2'> impor Barang Kena Pajak; </li>
+                                            <li id='4-1-3'> penyerahan Jasa Kena Pajak di dalam Daerah Pabean yang
+                                                dilakukan oleh pengusaha; </li>
+                                            <li id='4-1-4'> pemanfaatan Barang Kena Pajak Tidak Berwujud dari luar
+                                                Daerah Pabean di dalam Daerah Pabean; </li>
+                                            <li id='4-1-5'> pemanfaatan Jasa Kena Pajak dari luar Daerah Pabean di dalam
+                                                Daerah Pabean; </li>
+                                            <li id='4-1-6'> ekspor Barang Kena Pajak Berwujud oleh Pengusaha Kena Pajak;
+                                            </li>
+                                            <li id='4-1-7'> ekspor Barang Kena Pajak Tidak Berwujud oleh Pengusaha Kena
+                                                Pajak; dan </li>
+                                            <li id='4-1-8'> ekspor Jasa Kena Pajak oleh Pengusaha Kena Pajak. </li>
+                                        </ol>
+                                    </li>
+                                    <li id='4-2-0'> Ketentuan mengenai batasan kegiatan dan jenis Jasa Kena Pajak yang
+                                        atas
+                                        ekspornya dikenai Pajak Pertambahan Nilai sebagaimana dimaksud pada ayat (1)
+                                        huruf h
+                                        diatur dengan Peraturan Menteri Keuangan. </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal4a">
+            <div class="card-header" id="headingpasal4a">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal4a" aria-expanded="true" aria-controls="pasal4a">
+                        Pasal 4A
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal4a" class="collapse" aria-labelledby="headingpasal4a" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 4A'>
+                                <ol id='4A-0-0'>
+                                    <li id='4A-1-0'> Dihapus </li>
+                                    <li id='4A-2-0'> Jenis barang yang tidak dikenai Pajak Pertambahan Nilai adalah
+                                        barang
+                                        tertentu dalam kelompok barang sebagai berikut: <ol type='a'>
+                                            <li id='4A-2-1'> barang hasil pertambangan atau hasil pengeboran yang
+                                                diambil langsung dari sumbernya; </li>
+                                            <li id='4A-2-2'> barang kebutuhan pokok yang sangat dibutuhkan oleh rakyat
+                                                banyak; </li>
+                                            <li id='4A-2-3'> makanan dan minuman yang disajikan di hotel, restoran,
+                                                rumah makan, warung, dan sejenisnya, meliputi
+                                                makanan dan minuman baik yang dikonsumsi di tempat maupun tidak,
+                                                termasuk makanan dan minuman yang diserahkan oleh
+                                                usaha jasa boga atau katering; dan </li>
+                                            <li id='4A-2-4'> uang, emas batangan, dan surat berharga. </li>
+                                        </ol>
+                                    </li>
+                                    <li id='4A-3-0'> Jenis jasa yang tidak dikenai Pajak Pertambahan Nilai adalah jasa
+                                        tertentu
+                                        dalam kelompok jasa sebagai berikut: <ol type='a'>
+                                            <li id='4A-3-1'> jasa pelayanan kesehatan medis; </li>
+                                            <li id='4A-3-2'> jasa pelayanan sosial; </li>
+                                            <li id='4A-3-3'> jasa pengiriman surat dengan perangko; </li>
+                                            <li id='4A-3-4'> jasa keuangan; </li>
+                                            <li id='4A-3-5'> jasa asuransi; </li>
+                                            <li id='4A-3-6'> jasa keagamaan; </li>
+                                            <li id='4A-3-7'> jasa pendidikan; </li>
+                                            <li id='4A-3-8'> jasa kesenian dan hiburan; </li>
+                                            <li id='4A-3-9'> jasa penyiaran yang tidak bersifat iklan; </li>
+                                            <li id='4A-3-10'> jasa angkutan umum di darat dan di air serta jasa angkutan
+                                                udara dalam negeri yang menjadi bagian yang
+                                                tidak terpisahkan dari jasa angkutan udara luar negeri; </li>
+                                            <li id='4A-3-11'> jasa tenaga kerja; </li>
+                                            <li id='4A-3-12'> jasa perhotelan; </li>
+                                            <li id='4A-3-13'> jasa yang disediakan oleh pemerintah dalam rangka
+                                                menjalankan pemerintahan secara umum; </li>
+                                            <li id='4A-3-14'> jasa penyediaan tempat parkir; </li>
+                                            <li id='4A-3-15'> jasa telepon umum dengan menggunakan uang logam; </li>
+                                            <li id='4A-3-16'> jasa pengiriman uang dengan wesel pos; dan </li>
+                                            <li id='4A-3-17'> jasa boga atau katering </li>
+                                        </ol>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal5">
+            <div class="card-header" id="headingpasal5">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal5" aria-expanded="true" aria-controls="pasal5">
+                        Pasal 5
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal5" class="collapse" aria-labelledby="headingpasal5" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 5'>
+                                <ol id='5-0-0'>
+                                    <li id='5-1-0'> Di samping pengenaan Pajak Pertambahan Nilai sebagaimana dimaksud
+                                        dalam
+                                        Pasal 4 ayat (1), dikenai juga Pajak Penjualan atas Barang Mewah terhadap: <ol
+                                            type='a'>
+                                            <li id='5-1-1'> penyerahan Barang Kena Pajak yang tergolong mewah yang
+                                                dilakukan oleh pengusaha yang menghasilkan barang
+                                                tersebut di dalam Daerah Pabean dalam kegiatan usaha atau pekerjaannya;
+                                                dan </li>
+                                            <li id='5-1-2'> impor Barang Kena Pajak yang tergolong mewah. </li>
+                                        </ol>
+                                    </li>
+                                    <li id='5-2-0'> Pajak Penjualan atas Barang Mewah dikenakan hanya 1 (satu) kali pada
+                                        waktu
+                                        penyerahan Barang Kena Pajak yang tergolong mewah oleh pengusaha yang
+                                        menghasilkan atau
+                                        pada waktu impor Barang Kena Pajak yang tergolong mewah. </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal5a">
+            <div class="card-header" id="headingpasal5a">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal5a" aria-expanded="true" aria-controls="pasal5a">
+                        Pasal 5A
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal5a" class="collapse" aria-labelledby="headingpasal5a" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 5A'>
+                                <ol id='5A-0-0'>
+                                    <li id='5A-1-0'> Pajak Pertambahan Nilai atau Pajak Pertambahan Nilai dan Pajak
+                                        Penjualan
+                                        atas Barang Mewah atas penyerahan Barang Kena Pajak yang dikembalikan dapat
+                                        dikurangkan
+                                        dari Pajak Pertambahan Nilai atau Pajak Pertambahan Nilai dan Pajak Penjualan
+                                        atas
+                                        Barang Mewah yang terutang dalam Masa Pajak terjadinya pengembalian Barang Kena
+                                        Pajak
+                                        tersebut. </li>
+                                    <li id='5A-2-0'> Pajak Pertambahan Nilai atas penyerahan Jasa Kena Pajak yang
+                                        dibatalkan,
+                                        baik seluruhnya maupun sebagian, dapat dikurangkan dari Pajak Pertambahan Nilai
+                                        yang
+                                        terutang dalam Masa Pajak terjadinya pembatalan tersebut. </li>
+                                    <li id='5A-3-0'> Ketentuan mengenai tata cara pengurangan Pajak Pertambahan Nilai
+                                        atau Pajak
+                                        Pertambahan Nilai dan Pajak Penjualan atas Barang Mewah sebagaimana dimaksud
+                                        pada ayat
+                                        (1) dan pengurangan Pajak Pertambahan Nilai sebagaimana dimaksud pada ayat (2)
+                                        diatur
+                                        dengan Peraturan Menteri Keuangan
+                                        . </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal6">
+            <div class="card-header" id="headingpasal6">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal6" aria-expanded="true" aria-controls="pasal6">
+                        Pasal 6
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal6" class="collapse" aria-labelledby="headingpasal6" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 6'>
+                                <ol id='6-0-0'>
+                                    <li id='6-1-0'> Setiap Pengusaha Kena Pajak diwajibkan mencatat semua jumlah harga
+                                        perolehan
+                                        dan penyerahan Barang Kena Pajak dan/atau Jasa Kena Pajak dalam pembukuan
+                                        perusahaan.
+                                    </li>
+                                    <li id='6-2-0'> Dalam pembukuan itu harus dicatat secara terpisah dan jelas, jumlah
+                                        harga
+                                        perolehan dan penyerahan barang dan/atau jasa yang terutang pajak, yang mendapat
+                                        fasilitas berupa pajak yang terutang tidak dipungut, yang dikenakan tarif 0%
+                                        (nol
+                                        persen), yang mendapat fasilitas berupa pembebasan dari pengenaan pajak, dan
+                                        yang tidak
+                                        dikenakan pajak. </li>
+                                    <li id='6-3-0'> Pengusaha yang berdasarkan Undang-undang Perubahan Kedua
+                                        Undang-undang Pajak
+                                        Penghasilan 1984 memilih dikenakan Pajak Penghasilan berdasarkan norma
+                                        penghitungan,
+                                        wajib membuat catatan nilai peredaran bruto secara teratur yang menjadi Dasar
+                                        Pengenaan
+                                        Pajak Pertambahan Nilai, sepanjang terutang Pajak Pertambahan Nilai Barang dan
+                                        Jasa.
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card bab-title">
+            <p>Bab IV Tarif Pajak dan Cara Menghitung Pajak</p>
+        </div>
+        <div class="card pasal7">
+            <div class="card-header" id="headingpasal7">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal7" aria-expanded="true" aria-controls="pasal7">
+                        Pasal 7
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal7" class="collapse" aria-labelledby="headingpasal7" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 7'>
+                                <ol id='7-0-0'>
+                                    <li id='7-1-0'> Tarif Pajak Pertambahan Nilai adalah 10% (sepuluh persen). </li>
+                                    <li id='7-2-0'> Tarif Pajak Pertambahan Nilai sebesar 0% (nol persen) diterapkan
+                                        atas: <ol type='a'>
+                                            <li id='7-2-1'> ekspor Barang Kena Pajak Berwujud; </li>
+                                            <li id='7-2-2'> ekspor Barang Kena Pajak Tidak Berwujud; dan </li>
+                                            <li id='7-2-3'> ekspor Jasa Kena Pajak. </li>
+                                        </ol>
+                                    </li>
+                                    <li id='7-3-0'> Tarif pajak sebagaimana dimaksud pada ayat (1) dapat diubah menjadi
+                                        paling
+                                        rendah 5% (lima persen) dan paling tinggi 15% (lima belas persen) yang perubahan
+                                        tarifnya diatur dengan Peraturan Pemerintah. </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal8">
+            <div class="card-header" id="headingpasal8">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal8" aria-expanded="true" aria-controls="pasal8">
+                        Pasal 8
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal8" class="collapse" aria-labelledby="headingpasal8" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 8'>
+                                <ol id='8-0-0'>
+                                    <li id='8-1-0'> Tarif Pajak Penjualan atas Barang Mewah ditetapkan paling rendah 10%
+                                        (sepuluh persen) dan paling tinggi 200% (dua ratus persen). </li>
+                                    <li id='8-2-0'> Ekspor Barang Kena Pajak yang tergolong mewah dikenai pajak dengan
+                                        tarif 0%
+                                        (nol persen). </li>
+                                    <li id='8-3-0'> Ketentuan mengenai kelompok Barang Kena Pajak yang tergolong mewah
+                                        yang
+                                        dikenai Pajak Penjualan atas Barang Mewah dengan tarif sebagaimana dimaksud pada
+                                        ayat
+                                        (1) diatur dengan Peraturan Pemerintah. </li>
+                                    <li id='8-4-0'> Ketentuan mengenai jenis barang yang dikenai Pajak Penjualan atas
+                                        Barang
+                                        Mewah sebagaimana dimaksud pada ayat (3) diatur dengan atau berdasarkan
+                                        Peraturan
+                                        Menteri Keuangan. </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal8a">
+            <div class="card-header" id="headingpasal8a">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal8a" aria-expanded="true" aria-controls="pasal8a">
+                        Pasal 8A
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal8a" class="collapse" aria-labelledby="headingpasal8a" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 8A'>
+                                <ol id='8A-0-0'>
+                                    <li id='8A-1-0'> Pajak Pertambahan Nilai yang terutang dihitung dengan cara
+                                        mengalikan tarif
+                                        sebagaimana dimaksud dalam Pasal 7 dengan Dasar Pengenaan Pajak yang meliputi
+                                        Harga
+                                        Jual, Penggantian, Nilai Impor, Nilai Ekspor, atau nilai lain. </li>
+                                    <li id='8A-2-0'> Ketentuan mengenai nilai lain sebagaimana dimaksud pada ayat (1)
+                                        diatur
+                                        dengan atau berdasarkan Peraturan Menteri Keuangan </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal9">
+            <div class="card-header" id="headingpasal9">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal9" aria-expanded="true" aria-controls="pasal9">
+                        Pasal 9
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal9" class="collapse" aria-labelledby="headingpasal9" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 9'>
+                                <ol id='9-0-0'>
+                                    <li id='9-1-0'> Dihapus. </li>
+                                    <li id='9-2-0'> Pajak Masukan dalam suatu Masa Pajak dikreditkan dengan Pajak
+                                        Keluaran dalam
+                                        Masa Pajak yang sama. </li>
+                                    <div class='subsub'>
+                                        <div>2a.</div>
+                                        <p id='9-2A-0'>Bagi Pengusaha Kena Pajak yang belum berproduksi sehingga belum
+                                            melakukan
+                                            penyerahan yang terutang pajak, Pajak Masukan atas perolehan dan/atau impor
+                                            barang
+                                            modal dapat dikreditkan.</p>
+                                    </div>
+                                    <div class='subsub'>
+                                        <div>2b.</div>
+                                        <p id='9-2B-0'>Pajak Masukan yang dikreditkan harus menggunakan Faktur Pajak
+                                            yang
+                                            memenuhi persyaratan sebagaimana dimaksud dalam Pasal 13 ayat (5) dan ayat
+                                            (9).</p>
+                                    </div>
+                                    <li id='9-3-0'> Apabila dalam suatu Masa Pajak, Pajak Keluaran lebih besar daripada
+                                        Pajak
+                                        Masukan, selisihnya merupakan Pajak Pertambahan Nilai yang harus disetor oleh
+                                        Pengusaha
+                                        Kena Pajak. </li>
+                                    <li id='9-4-0'> Apabila dalam suatu Masa Pajak, Pajak Masukan yang dapat dikreditkan
+                                        lebih
+                                        besar daripada Pajak Keluaran, selisihnya merupakan kelebihan pajak yang
+                                        dikompensasikan
+                                        ke Masa Pajak berikutnya. </li>
+                                    <div class='subsub'>
+                                        <div>4a.</div>
+                                        <p id='9-4A-0'>Atas kelebihan Pajak Masukan sebagaimana dimaksud pada ayat (4)
+                                            dapat
+                                            diajukan permohonan pengembalian pada akhir tahun buku.</p>
+                                    </div>
+                                    <div class='subsub'>
+                                        <div>4b.</div>
+                                        <p id='9-4B-0'>Dikecualikan dari ketentuan sebagaimana dimaksud pada ayat (4)
+                                            dan ayat
+                                            (4a), atas kelebihan Pajak Masukan dapat diajukan permohonan pengembalian
+                                            pada
+                                            setiap Masa Pajak oleh:
+                                        <ol type='a'>
+                                            <li id='9-4B-1'> Pengusaha Kena Pajak yang melakukan ekspor Barang Kena
+                                                Pajak Berwujud; </li>
+                                            <li id='9-4B-2'> Pengusaha Kena Pajak yang melakukan penyerahan Barang Kena
+                                                Pajak dan/atau penyerahan Jasa Kena Pajak
+                                                kepada Pemungut Pajak Pertambahan Nilai; </li>
+                                            <li id='9-4B-3'> Pengusaha Kena Pajak yang melakukan penyerahan Barang Kena
+                                                Pajak dan/atau penyerahan Jasa Kena Pajak
+                                                yang Pajak Pertambahan Nilainya tidak dipungut; </li>
+                                            <li id='9-4B-4'> Pengusaha Kena Pajak yang melakukan ekspor Barang Kena
+                                                Pajak Tidak Berwujud; </li>
+                                            <li id='9-4B-5'> Pengusaha Kena Pajak yang melakukan ekspor Jasa Kena Pajak;
+                                                dan/atau </li>
+                                            <li id='9-4B-6'> Pengusaha Kena Pajak dalam tahap belum berproduksi
+                                                sebagaimana dimaksud pada ayat (2a). </li>
+                                        </ol>
+                                        </p>
+                                    </div>
+                                    <div class='subsub'>
+                                        <div>4c.</div>
+                                        <p id='9-4C-0'>Pengembalian kelebihan Pajak Masukan kepada Pengusaha Kena Pajak
+                                            sebagaimana dimaksud pada ayat (4b) huruf a sampai dengan huruf e, yang
+                                            mempunyai
+                                            kriteria sebagai Pengusaha Kena Pajak berisiko rendah, dilakukan dengan
+                                            pengembalian
+                                            pendahuluan kelebihan pajak sesuai ketentuan sebagaimana dimaksud dalam
+                                            Pasal 17C
+                                            ayat (1) Undang-Undang Nomor 6 Tahun 1983 tentang Ketentuan Umum dan Tata
+                                            Cara
+                                            Perpajakan dan perubahannya.</p>
+                                    </div>
+                                    <div class='subsub'>
+                                        <div>4d.</div>
+                                        <p id='9-4D-0'>Ketentuan mengenai Pengusaha Kena Pajak berisiko rendah yang
+                                            diberikan
+                                            pengembalian pendahuluan kelebihan pajak sebagaimana dimaksud pada ayat (4c)
+                                            diatur
+                                            dengan Peraturan Menteri Keuangan.</p>
+                                    </div>
+                                    <div class='subsub'>
+                                        <div>4e.</div>
+                                        <p id='9-4E-0'>Direktur Jenderal Pajak dapat melakukan pemeriksaan terhadap
+                                            Pengusaha
+                                            Kena Pajak sebagaimana dimaksud pada ayat (4c) dan menerbitkan surat
+                                            ketetapan pajak
+                                            setelah melakukan pengembalian pendahuluan kelebihan pajak.</p>
+                                    </div>
+                                    <div class='subsub'>
+                                        <div>4f.</div>
+                                        <p id='9-4F-0'>Apabila berdasarkan hasil pemeriksaan sebagaimana dimaksud pada
+                                            ayat
+                                            (4e), Direktur Jenderal Pajak menerbitkan Surat Ketetapan Pajak Kurang
+                                            Bayar, jumlah
+                                            kekurangan pajak ditambah dengan sanksi administrasi berupa bunga
+                                            sebagaimana
+                                            dimaksud dalam Pasal 13 ayat (2) Undang-Undang Nomor 6 Tahun 1983 tentang
+                                            Ketentuan
+                                            Umum dan Tata Cara Perpajakan dan perubahannya.</p>
+                                    </div>
+                                    <li id='9-5-0'> Apabila dalam suatu Masa Pajak Pengusaha Kena Pajak selain melakukan
+                                        penyerahan yang terutang pajak juga melakukan penyerahan yang tidak terutang
+                                        pajak,
+                                        sepanjang bagian penyerahan yang terutang pajak dapat diketahui dengan pasti
+                                        dari
+                                        pembukuannya, jumlah Pajak Masukan yang dapat dikreditkan adalah Pajak Masukan
+                                        yang
+                                        berkenaan dengan penyerahan yang terutang pajak. </li>
+                                    <li id='9-6-0'> Apabila dalam suatu Masa Pajak Pengusaha Kena Pajak selain melakukan
+                                        penyerahan yang terutang pajak juga melakukan penyerahan yang tidak terutang
+                                        pajak,
+                                        sedangkan Pajak Masukan untuk penyerahan yang terutang pajak tidak dapat
+                                        diketahui
+                                        dengan pasti, jumlah Pajak Masukan yang dapat dikreditkan untuk penyerahan yang
+                                        terutang
+                                        pajak dihitung dengan menggunakan pedoman yang diatur dengan Peraturan Menteri
+                                        Keuangan.
+                                    </li>
+                                    <div class='subsub'>
+                                        <div>6a.</div>
+                                        <p id='9-6A-0'>Pajak Masukan yang telah dikreditkan sebagaimana dimaksud pada
+                                            ayat (2a)
+                                            dan telah diberikan pengembalian wajib dibayar kembali oleh Pengusaha Kena
+                                            Pajak
+                                            dalam hal Pengusaha Kena Pajak tersebut mengalami keadaan gagal berproduksi
+                                            dalam
+                                            jangka waktu paling lama 3 (tiga) tahun sejak Masa Pajak pengkreditan Pajak
+                                            Masukan
+                                            dimulai.</p>
+                                    </div>
+                                    <div class='subsub'>
+                                        <div>6b.</div>
+                                        <p id='9-6B-0'>Ketentuan mengenai penentuan waktu, penghitungan, dan tata cara
+                                            pembayaran kembali sebagaimana dimaksud pada ayat (6a) diatur dengan atau
+                                            berdasarkan Peraturan Menteri Keuangan.</p>
+                                    </div>
+                                    <li id='9-7-0'> Besarnya Pajak Masukan yang dapat dikreditkan oleh Pengusaha Kena
+                                        Pajak yang
+                                        peredaran usahanya dalam 1 (satu) tahun tidak melebihi jumlah tertentu, kecuali
+                                        Pengusaha Kena Pajak sebagaimana dimaksud pada ayat (7a), dapat dihitung dengan
+                                        menggunakan pedoman penghitungan pengkreditan Pajak Masukan. </li>
+                                    <div class='subsub'>
+                                        <div>7a.</div>
+                                        <p id='9-7A-0'>Besarnya Pajak Masukan yang dapat dikreditkan oleh Pengusaha Kena
+                                            Pajak
+                                            yang melakukan kegiatan usaha tertentu dihitung dengan menggunakan pedoman
+                                            penghitungan pengkreditan Pajak Masukan.</p>
+                                    </div>
+                                    <div class='subsub'>
+                                        <div>7b.</div>
+                                        <p id='9-7B-0'>Ketentuan mengenai peredaran usaha sebagaimana dimaksud pada ayat
+                                            (7),
+                                            kegiatan usaha tertentu sebagaimana dimaksud pada ayat (7a), dan pedoman
+                                            penghitungan pengkreditan Pajak Masukan sebagaimana dimaksud pada ayat (7)
+                                            dan ayat
+                                            (7a) diatur dengan atau berdasarkan Peraturan Menteri Keuangan.</p>
+                                    </div>
+                                    <li id='9-8-0'> Pengkreditan Pajak Masukan sebagaimana dimaksud pada ayat (2) tidak
+                                        dapat
+                                        diberlakukan bagi pengeluaran untuk:
+                                        <ol type='a'>
+                                            <li id='9-8-1'> perolehan Barang Kena Pajak atau Jasa Kena Pajak sebelum
+                                                pengusaha dikukuhkan sebagai Pengusaha Kena
+                                                Pajak; </li>
+                                            <li id='9-8-2'> perolehan Barang Kena Pajak atau Jasa Kena Pajak yang tidak
+                                                mempunyai hubungan langsung dengan kegiatan
+                                                usaha; </li>
+                                            <li id='9-8-3'> perolehan dan pemeliharaan kendaraan bermotor berupa sedan
+                                                dan station wagon, kecuali merupakan barang
+                                                dagangan atau disewakan; </li>
+                                            <li id='9-8-4'> pemanfaatan Barang Kena Pajak Tidak Berwujud atau
+                                                pemanfaatan Jasa Kena Pajak dari luar Daerah Pabean
+                                                sebelum pengusaha dikukuhkan sebagai Pengusaha Kena Pajak; </li>
+                                            <li id='9-8-5'> dihapus; </li>
+                                            <li id='9-8-6'> perolehan Barang Kena Pajak atau Jasa Kena Pajak yang Faktur
+                                                Pajaknya tidak memenuhi ketentuan
+                                                sebagaimana dimaksud dalam Pasal 13 ayat (5) atau ayat (9) atau tidak
+                                                mencantumkan nama, alamat, dan Nomor Pokok
+                                                Wajib Pajak pembeli Barang Kena Pajak atau penerima Jasa Kena Pajak;
+                                            </li>
+                                            <li id='9-8-7'> pemanfaatan Barang Kena Pajak Tidak Berwujud atau
+                                                pemanfaatan Jasa Kena Pajak dari luar Daerah Pabean
+                                                yang Faktur Pajaknya tidak memenuhi ketentuan sebagaimana dimaksud dalam
+                                                Pasal 13 ayat (6); </li>
+                                            <li id='9-8-8'> perolehan Barang Kena Pajak atau Jasa Kena Pajak yang Pajak
+                                                Masukannya ditagih dengan penerbitan
+                                                ketetapan pajak; </li>
+                                            <li id='9-8-9'> perolehan Barang Kena Pajak atau Jasa Kena Pajak yang Pajak
+                                                Masukannya tidak dilaporkan dalam Surat
+                                                Pemberitahuan Masa Pajak Pertambahan Nilai, yang ditemukan pada waktu
+                                                dilakukan pemeriksaan; dan </li>
+                                            <li id='9-8-10'> perolehan Barang Kena Pajak selain barang modal atau Jasa
+                                                Kena Pajak sebelum Pengusaha Kena Pajak
+                                                berproduksi sebagaimana dimaksud pada ayat (2a) </li>
+                                        </ol>
+                                    </li>
+                                    <li id='9-9-0'> Pajak Masukan yang dapat dikreditkan, tetapi belum dikreditkan
+                                        dengan Pajak
+                                        Keluaran pada Masa Pajak yang sama, dapat dikreditkan pada Masa Pajak berikutnya
+                                        paling
+                                        lama 3 (tiga) bulan setelah berakhirnya Masa Pajak yang bersangkutan sepanjang
+                                        belum
+                                        dibebankan sebagai biaya dan belum dilakukan pemeriksaan. </li>
+                                    <li id='9-10-0'> Dihapus. </li>
+                                    <li id='9-11-0'> Dihapus. </li>
+                                    <li id='9-12-0'> Dihapus. </li>
+                                    <li id='9-13-0'> Ketentuan mengenai penghitungan dan tata cara pengembalian
+                                        kelebihan Pajak
+                                        Masukan sebagaimana dimaksud pada ayat (4a), ayat (4b), dan ayat (4c) diatur
+                                        dengan atau
+                                        berdasarkan Peraturan Menteri Keuangan. </li>
+                                    <li id='9-14-0'> Dalam hal terjadi pengalihan Barang Kena Pajak dalam rangka
+                                        penggabungan,
+                                        peleburan, pemekaran, pemecahan, dan pengambilalihan usaha, Pajak Masukan atas
+                                        Barang
+                                        Kena Pajak yang dialihkan yang belum dikreditkan oleh Pengusaha Kena Pajak yang
+                                        mengalihkan dapat dikreditkan oleh Pengusaha Kena Pajak yang menerima
+                                        pengalihan,
+                                        sepanjang Faktur Pajaknya diterima setelah terjadinya pengalihan dan Pajak
+                                        Masukan
+                                        tersebut belum dibebankan sebagai biaya atau dikapitalisasi. </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal10">
+            <div class="card-header" id="headingpasal10">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal10" aria-expanded="true" aria-controls="pasal10">
+                        Pasal 10
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal10" class="collapse" aria-labelledby="headingpasal10" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 10'>
+                                <ol id='10-0-0'>
+                                    <li id='10-1-0'> Pajak Penjualan Atas Barang Mewah yang terhutang dalam suatu Masa
+                                        Pajak
+                                        dihitung dengan mengalihkan tarif sebagaimana diatur dalam Pasal 8, dengan Dasar
+                                        Pengenaan Pajak. </li>
+                                    <li id='10-2-0'> Pajak Penjualan Atas Barang Mewah yang sudah dibayar pada waktu
+                                        perolehan
+                                        atau impor Barang Mewah, tidak dapat dikreditkan dengan Pajak Pertambahan Nilai
+                                        yang
+                                        dipungut menurut ketentuan sebagaimana diatur dalam pasal 7. </li>
+                                    <li id='10-3-0'> Pengusaha kena Pajak yang mengekspor Barang Mewah dapat meminta
+                                        kembali
+                                        pajak yang dibayar pada waktu perolehan Barang Mewah yang diekspor itu.
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card bab-title">
+            <p>Bab V Saat dan Tempat Pajak Terutang dan Laporan Penghitungan Pajak</p>
+        </div>
+        <div class="card pasal11">
+            <div class="card-header" id="headingpasal11">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal11" aria-expanded="true" aria-controls="pasal11">
+                        Pasal 11
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal11" class="collapse" aria-labelledby="headingpasal11" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 11'>
+                                <ol id='11-0-0'>
+                                    <li id='11-1-0'> Terutangnya pajak terjadi pada saat: <ol type='a'>
+                                            <li id='11-1-1'> penyerahan Barang Kena Pajak; </li>
+                                            <li id='11-1-2'> impor Barang Kena Pajak; </li>
+                                            <li id='11-1-3'> penyerahan Jasa Kena Pajak; </li>
+                                            <li id='11-1-4'> pemanfaatan Barang Kena Pajak Tidak Berwujud dari luar
+                                                Daerah Pabean; </li>
+                                            <li id='11-1-5'> pemanfaatan Jasa Kena Pajak dari luar Daerah Pabean; </li>
+                                            <li id='11-1-6'> ekspor Barang Kena Pajak Berwujud; </li>
+                                            <li id='11-1-7'> ekspor Barang Kena Pajak Tidak Berwujud; atau </li>
+                                            <li id='11-1-8'> ekspor Jasa Kena Pajak. </li>
+                                        </ol>
+                                    </li>
+                                    <li id='11-2-0'> Dalam hal pembayaran diterima sebelum penyerahan Barang Kena Pajak
+                                        atau
+                                        sebelum penyerahan Jasa Kena Pajak atau dalam hal pembayaran dilakukan sebelum
+                                        dimulainya pemanfaatan Barang Kena Pajak Tidak Berwujud atau Jasa Kena Pajak
+                                        dari luar
+                                        Daerah Pabean, saat terutangnya pajak adalah pada saat pembayaran. </li>
+                                    <li id='11-3-0'> Dihapus. </li>
+                                    <li id='11-4-0'> Direktur Jenderal Pajak dapat menetapkan saat lain sebagai saat
+                                        terutangnya
+                                        pajak dalam hal saat terutangnya pajak sukar ditetapkan atau terjadi perubahan
+                                        ketentuan
+                                        yang dapat menimbulkan ketidakadilan. </li>
+                                    <li id='11-5-0'> Dihapus. </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal12">
+            <div class="card-header" id="headingpasal12">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal12" aria-expanded="true" aria-controls="pasal12">
+                        Pasal 12
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal12" class="collapse" aria-labelledby="headingpasal12" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 12'>
+                                <ol id='12-0-0'>
+                                    <li id='12-1-0'> Pengusaha Kena Pajak yang melakukan penyerahan sebagaimana dimaksud
+                                        dalam
+                                        Pasal 4 ayat (1) huruf a, huruf c, huruf f, huruf g, dan/atau huruf h terutang
+                                        pajak di
+                                        tempat tinggal atau tempat kedudukan dan/atau tempat kegiatan usaha dilakukan
+                                        atau
+                                        tempat lain selain tempat tinggal atau tempat kedudukan dan/atau tempat kegiatan
+                                        usaha
+                                        dilakukan yang diatur dengan Peraturan Direktur Jenderal Pajak. </li>
+                                    <li id='12-2-0'> Atas pemberitahuan secara tertulis dari Pengusaha Kena Pajak,
+                                        Direktur
+                                        Jenderal Pajak dapat menetapkan 1 (satu) tempat atau lebih sebagai tempat pajak
+                                        terutang. </li>
+                                    <li id='12-3-0'> Dalam hal impor, terutangnya pajak terjadi di tempat Barang Kena
+                                        Pajak
+                                        dimasukkan dan dipungut melalui Direktorat Jenderal Bea dan Cukai. </li>
+                                    <li id='12-4-0'> Orang pribadi atau badan yang memanfaatkan Barang Kena Pajak Tidak
+                                        Berwujud
+                                        dan/atau Jasa Kena Pajak dari luar Daerah Pabean di dalam Daerah Pabean
+                                        sebagaimana
+                                        dimaksud dalam Pasal 4 ayat (1) huruf d dan huruf e terutang pajak di tempat
+                                        tinggal
+                                        atau tempat kedudukan dan/atau tempat kegiatan usaha. </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal13">
+            <div class="card-header" id="headingpasal13">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal13" aria-expanded="true" aria-controls="pasal13">
+                        Pasal 13
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal13" class="collapse" aria-labelledby="headingpasal13" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 13'>
+                                <ol id='13-0-0'>
+                                    <li id='13-1-0'> Pengusaha Kena Pajak wajib membuat Faktur Pajak untuk setiap: <ol
+                                            type='a'>
+                                            <li id='13-1-1'> penyerahan Barang Kena Pajak sebagaimana dimaksud dalam
+                                                Pasal 4 ayat (1) huruf a atau huruf f dan/atau
+                                                Pasal 16D; </li>
+                                            <li id='13-1-2'> penyerahan Jasa Kena Pajak sebagaimana dimaksud dalam Pasal
+                                                4 ayat (1) huruf c; </li>
+                                            <li id='13-1-3'> ekspor Barang Kena Pajak Tidak Berwujud sebagaimana
+                                                dimaksud dalam Pasal 4 ayat (1) huruf g; dan/atau
+                                            </li>
+                                            <li id='13-1-4'> ekspor Jasa Kena Pajak sebagaimana dimaksud dalam Pasal 4
+                                                ayat (1) huruf h. </li>
+                                        </ol>
+                                    </li>
+                                    <div class='subsub'>
+                                        <div>1a.</div>
+                                        <p id='13-1A-0'>Faktur Pajak sebagaimana dimaksud pada ayat (1) harus dibuat
+                                            pada:
+                                        <ol type='a'>
+                                            <li id='13-1A-1'> saat penyerahan Barang Kena Pajak dan/atau penyerahan Jasa
+                                                Kena Pajak; </li>
+                                            <li id='13-1A-2'> saat penerimaan pembayaran dalam hal penerimaan pembayaran
+                                                terjadi sebelum penyerahan Barang Kena
+                                                Pajak dan/atau sebelum penyerahan Jasa Kena Pajak; </li>
+                                            <li id='13-1A-3'> saat penerimaan pembayaran termin dalam hal penyerahan
+                                                sebagian tahap pekerjaan; atau </li>
+                                            <li id='13-1A-4'> saat lain yang diatur dengan atau berdasarkan Peraturan
+                                                Menteri Keuangan. </li>
+                                        </ol>
+                                        </p>
+                                    </div>
+                                    <li id='13-2-0'> Dikecualikan dari ketentuan sebagaimana dimaksud pada ayat (1),
+                                        Pengusaha
+                                        Kena Pajak dapat membuat 1 (satu) Faktur Pajak meliputi seluruh penyerahan yang
+                                        dilakukan kepada pembeli Barang Kena Pajak atau penerima Jasa Kena Pajak yang
+                                        sama
+                                        selama 1 (satu) bulan kalender. </li>
+                                    <div class='subsub'>
+                                        <div>2a.</div>
+                                        <p id='13-2A-0'>Faktur Pajak sebagaimana dimaksud pada ayat (2) harus dibuat
+                                            paling lama
+                                            pada akhir bulan penyerahan.</p>
+                                    </div>
+                                    <li id='13-3-0'> Dihapus. </li>
+                                    <li id='13-4-0'> Dihapus. </li>
+                                    <li id='13-5-0'> Dalam Faktur Pajak harus dicantumkan keterangan tentang penyerahan
+                                        Barang
+                                        Kena Pajak dan/atau penyerahan Jasa Kena Pajak yang paling sedikit memuat: <ol
+                                            type='a'>
+                                            <li id='13-5-1'> nama, alamat, dan Nomor Pokok Wajib Pajak yang menyerahkan
+                                                Barang Kena Pajak atau Jasa Kena Pajak;
+                                            </li>
+                                            <li id='13-5-2'> nama, alamat, dan Nomor Pokok Wajib Pajak pembeli Barang
+                                                Kena Pajak atau penerima Jasa Kena Pajak;
+                                            </li>
+                                            <li id='13-5-3'> jenis barang atau jasa, jumlah Harga Jual atau Penggantian,
+                                                dan potongan harga; </li>
+                                            <li id='13-5-4'> Pajak Pertambahan Nilai yang dipungut; </li>
+                                            <li id='13-5-5'> Pajak Penjualan atas Barang Mewah yang dipungut; </li>
+                                            <li id='13-5-6'> kode, nomor seri, dan tanggal pembuatan Faktur Pajak; dan
+                                            </li>
+                                            <li id='13-5-7'> nama dan tanda tangan yang berhak menandatangani Faktur
+                                                Pajak.
+                                            </li>
+                                        </ol>
+                                    </li>
+                                    <li id='13-6-0'> Direktur Jenderal Pajak dapat menetapkan dokumen tertentu yang
+                                        kedudukannya
+                                        dipersamakan dengan Faktur Pajak. </li>
+                                    <li id='13-7-0'> Dihapus. </li>
+                                    <li id='13-8-0'> Ketentuan lebih lanjut mengenai tata cara pembuatan Faktur Pajak
+                                        dan tata
+                                        cara pembetulan atau penggantian Faktur Pajak diatur dengan atau berdasarkan
+                                        Peraturan
+                                        Menteri Keuangan </li>
+                                    <li id='13-9-0'> Faktur Pajak harus memenuhi persyaratan formal dan material. </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal14">
+            <div class="card-header" id="headingpasal14">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal14" aria-expanded="true" aria-controls="pasal14">
+                        Pasal 14
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal14" class="collapse" aria-labelledby="headingpasal14" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 14'>
+                                <ol id='14-0-0'>
+                                    <li id='14-1-0'> Orang atau badan yang tidak dikukuhkan menjadi Pengusaha Kena Pajak
+                                        dilarang membuat Faktur Pajak. </li>
+                                    <li id='14-2-0'> Dalam hal Faktur Pajak telah dibuat, maka orang atau badan dan
+                                        sebagaimana
+                                        dimaksud dalam ayat (1) harus menyetorkan jumlah pajak yang tercantum dalam
+                                        Faktur Pajak
+                                        kepada Kas Negara dan dikenakan sanksi berupa denda administrasi
+                                        sebesar 2% (dua persen) dari Dasar Pengenaan Pajak. </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal15">
+            <div class="card-header" id="headingpasal15">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal15" aria-expanded="true" aria-controls="pasal15">
+                        Pasal 15
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal15" class="collapse" aria-labelledby="headingpasal15" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 15'>
+                                <ol id='15-0-0'>
+                                    <li id='15-1-0'> Pengusaha Kena Pajak wajib melaporkan penghitungan pajak
+                                        sebagaimana
+                                        dimaksud dalam Pasal 9 dan Pasal 10 kepada Direktorat Jendral Pajak dalam jangka
+                                        waktu
+                                        20 (dua puluh) hari setelah akhir Masa Pajak dengan menggunakan Surat
+                                        Pemberitahuan
+                                        Masa. </li>
+                                    <li id='15-2-0'> Keterangan dan dokumen yang harus dicantumkan dan/atau dilampirkan
+                                        pada
+                                        Surat Pemberitahuan Masa ditetapkan oleh Menteri Keuangan. </li>
+                                    <li id='15-3-0'> Surat Pemberitahuan Masa dianggap tidak dimasukkan jika Pengusaha
+                                        Kena
+                                        Pajak tidan dilaksanakan, atau tidak sepenuhnya melaksanakan ketentuan
+                                        sebagaimana
+                                        diatur dalam ayat (1) dan ayat (2). </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal15a">
+            <div class="card-header" id="headingpasal15a">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal15a" aria-expanded="true" aria-controls="pasal15a">
+                        Pasal 15A
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal15a" class="collapse" aria-labelledby="headingpasal15a" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 15A'>
+                                <ol id='15A-0-0'>
+                                    <li id='15A-1-0'> Penyetoran Pajak Pertambahan Nilai oleh Pengusaha Kena Pajak
+                                        sebagaimana
+                                        dimaksud dalam Pasal 9 ayat (3) harus dilakukan paling lama akhir bulan
+                                        berikutnya
+                                        setelah berakhirnya Masa Pajak dan sebelum Surat Pemberitahuan Masa Pajak
+                                        Pertambahan
+                                        Nilai disampaikan. </li>
+                                    <li id='15A-2-0'> Surat Pemberitahuan Masa Pajak Pertambahan Nilai disampaikan
+                                        paling lama
+                                        akhir bulan berikutnya setelah berakhirnya Masa Pajak. </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal16">
+            <div class="card-header" id="headingpasal16">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal16" aria-expanded="true" aria-controls="pasal16">
+                        Pasal 16
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal16" class="collapse" aria-labelledby="headingpasal16" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 16'>
+                                <ol id='16-0-0'>
+                                    <li id='16-1-0'> Atas permohonan tertulis Pengusaha Kena Pajak, kelebihan pembayaran
+                                        Pajak
+                                        yang belum dikompensasikan sebagaimana dimaksud dalam Pasal 9 ayat (4),
+                                        pengembaliannya
+                                        dilaksanakan dalam jangka waktu sebagaimana diatur dalam
+                                        Undang-undang tentang Ketentuan Umum Dan Tata Cara Perpajakan atau dalam jangka
+                                        waktu
+                                        lain yang ditetapkan oleh Menteri Keuangan. </li>
+                                    <li id='16-2-0'> Kelebihan pembayaran pajak atas Barang yang diekspor dikembalikan
+                                        dalam
+                                        waktu satu bulan. </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card bab-title">
+            <p>Bab VA Ketentuan Khusus</p>
+        </div>
+        <div class="card pasal16a">
+            <div class="card-header" id="headingpasal16a">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal16a" aria-expanded="true" aria-controls="pasal16a">
+                        Pasal 16A
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal16a" class="collapse" aria-labelledby="headingpasal16a" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 16A'>
+                                <ol id='16A-0-0'>
+                                    <li id='16A-1-0'> Pajak yang terutang atas penyerahan Barang Kena Pajak dan atau
+                                        penyerahan
+                                        Jasa Kena Pajak kepada Pemungut Pajak Pertambahan Nilai dipungut, disetor, dan
+                                        dilaporkan oleh Pemungut Pajak Pertambahan Nilai. </li>
+                                    <li id='16A-2-0'> Tata cara pemungutan, penyetoran, dan pelaporan pajak oleh
+                                        Pemungut Pajak
+                                        Pertambahan Nilai sebagaimana dimaksud dalam ayat (1), diatur dengan Keputusan
+                                        Menteri
+                                        Keuangan. </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal16b">
+            <div class="card-header" id="headingpasal16b">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal16b" aria-expanded="true" aria-controls="pasal16b">
+                        Pasal 16B
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal16b" class="collapse" aria-labelledby="headingpasal16b" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 16B'>
+                                <ol id='16B-0-0'>
+                                    <li id='16B-1-0'> Pajak terutang tidak dipungut sebagian atau seluruhnya atau
+                                        dibebaskan dari pengenaan pajak, baik untuk sementara waktu
+                                        maupun selamanya, untuk: <ol type='a'>
+                                            <li id='16B-1-1'> kegiatan di kawasan tertentu atau tempat tertentu di dalam
+                                                Daerah Pabean; </li>
+                                            <li id='16B-1-2'> penyerahan Barang Kena Pajak tertentu atau penyerahan Jasa
+                                                Kena Pajak tertentu; </li>
+                                            <li id='16B-1-3'> impor Barang Kena Pajak tertentu; </li>
+                                            <li id='16B-1-4'> pemanfaatan Barang Kena Pajak Tidak Berwujud tertentu dari
+                                                luar Daerah Pabean di dalam Daerah Pabean;
+                                                dan </li>
+                                            <li id='16B-1-5'> pemanfaatan Jasa Kena Pajak tertentu dari luar Daerah
+                                                Pabean di dalam Daerah Pabean, diatur dengan
+                                                Peraturan Pemerintah. </li>
+                                        </ol>
+                                    </li>
+                                    <li id='16B-2-0'> Pajak Masukan yang dibayar untuk perolehan Barang Kena Pajak
+                                        dan/atau
+                                        perolehan Jasa Kena Pajak yang atas penyerahannya tidak dipungut Pajak
+                                        Pertambahan Nilai
+                                        dapat dikreditkan. </li>
+                                    <li id='16B-3-0'> Pajak Masukan yang dibayar untuk perolehan Barang Kena Pajak
+                                        dan/atau
+                                        perolehan Jasa Kena Pajak yang atas penyerahannya dibebaskan dari pengenaan
+                                        Pajak
+                                        Pertambahan Nilai tidak dapat dikreditkan. </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal16c">
+            <div class="card-header" id="headingpasal16c">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal16c" aria-expanded="true" aria-controls="pasal16c">
+                        Pasal 16C
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal16c" class="collapse" aria-labelledby="headingpasal16c" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 16C'>
+                                <p id='16C-0-0'> Pajak Pertambahan Nilai dikenakan atas kegiatan membangun sendiri yang
+                                    dilakukan tidak dalam kegiatan usaha atau pekerjaan oleh orang pribadi atau badan
+                                    yang
+                                    hasilnya digunakan sendiri atau digunakan pihak lain yang batasan dan tata caranya
+                                    diatur
+                                    dengan Keputusan Menteri Keuangan. </p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal16d">
+            <div class="card-header" id="headingpasal16d">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal16d" aria-expanded="true" aria-controls="pasal16d">
+                        Pasal 16D
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal16d" class="collapse" aria-labelledby="headingpasal16d" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 16D'>
+                                <p id='16D-0-0'> Pajak Pertambahan Nilai dikenakan atas penyerahan Barang Kena Pajak
+                                    berupa
+                                    aktiva yang menurut tujuan semula tidak untuk diperjualbelikan oleh Pengusaha Kena
+                                    Pajak,
+                                    kecuali atas penyerahan aktiva yang Pajak Masukannya tidak dapat dikreditkan
+                                    sebagaimana
+                                    dimaksud dalam Pasal 9 ayat (8) huruf b dan huruf c. </p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal16e">
+            <div class="card-header" id="headingpasal16e">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal16e" aria-expanded="true" aria-controls="pasal16e">
+                        Pasal 16E
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal16e" class="collapse" aria-labelledby="headingpasal16e" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 16E'>
+                                <ol id='16E-0-0'>
+                                    <li id='16E-1-0'> Pajak Pertambahan Nilai dan Pajak Penjualan atas Barang Mewah yang
+                                        sudah
+                                        dibayar atas pembelian Barang Kena Pajak yang dibawa ke luar Daerah Pabean oleh
+                                        orang
+                                        pribadi pemegang paspor luar negeri dapat diminta kembali. </li>
+                                    <li id='16E-2-0'> Pajak Pertambahan Nilai dan Pajak Penjualan atas Barang Mewah yang
+                                        dapat
+                                        diminta kembali sebagaimana dimaksud pada ayat (1) harus memenuhi syarat: <ol
+                                            type='a'>
+                                            <li id='16E-2-1'> nilai Pajak Pertambahan Nilai paling sedikit Rp500.000,00
+                                                (lima ratus ribu rupiah) dan dapat
+                                                disesuaikan dengan Peraturan Pemerintah; </li>
+                                            <li id='16E-2-2'> pembelian Barang Kena Pajak dilakukan dalam jangka waktu 1
+                                                (satu) bulan sebelum keberangkatan ke luar
+                                                Daerah Pabean; dan </li>
+                                            <li id='16E-2-3'> Faktur Pajak memenuhi ketentuan sebagaimana dimaksud dalam
+                                                Pasal 13 ayat (5), kecuali pada kolom Nomor
+                                                Pokok Wajib Pajak dan alamat pembeli diisi dengan nomor paspor dan
+                                                alamat lengkap di negara yang menerbitkan paspor
+                                                atas penjualan kepada orang pribadi pemegang paspor luar negeri yang
+                                                tidak mempunyai Nomor Pokok Wajib Pajak. </li>
+                                        </ol>li>
+                                    <li id='16E-3-0'> Permintaan kembali Pajak Pertambahan Nilai dan Pajak Penjualan
+                                        atas Barang
+                                        Mewah sebagaimana dimaksud pada ayat (1) dilakukan pada saat orang pribadi
+                                        pemegang
+                                        paspor luar negeri meninggalkan Indonesia dan disampaikan kepada Direktur
+                                        Jenderal Pajak
+                                        melalui Kantor Direktorat Jenderal Pajak di bandar udara yang ditetapkan oleh
+                                        Menteri
+                                        Keuangan. </li>
+                                    <li id='16E-4-0'> Dokumen yang harus ditunjukkan pada saat meminta kembali Pajak
+                                        Pertambahan
+                                        Nilai dan Pajak Penjualan atas Barang Mewah adalah: <ol type='a'>
+                                            <li id='16E-4-1'> paspor; </li>
+                                            <li id='16E-4-2'> pas naik (boarding pass) untuk keberangkatan orang pribadi
+                                                sebagaimana dimaksud pada ayat (1) ke luar
+                                                Daerah Pabean; dan </li>
+                                            <li id='16E-4-3'> Faktur Pajak sebagaimana dimaksud pada ayat (2) huruf c.
+                                            </li>
+                                        </ol>
+                                    </li>
+                                    <li id='16E-5-0'> Ketentuan mengenai tata cara pengajuan dan penyelesaian permintaan
+                                        kembali
+                                        Pajak Pertambahan Nilai dan Pajak Penjualan atas Barang Mewah sebagaimana
+                                        dimaksud pada
+                                        ayat (1) diatur dengan atau berdasarkan Peraturan Menteri Keuangan. </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal16f">
+            <div class="card-header" id="headingpasal16f">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal16f" aria-expanded="true" aria-controls="pasal16f">
+                        Pasal 16F
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal16f" class="collapse" aria-labelledby="headingpasal16f" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 16F'>
+                                <p id='16F-0-0'> Pembeli Barang Kena Pajak atau penerima Jasa Kena Pajak bertanggung
+                                    jawab
+                                    secara renteng atas pembayaran pajak, sepanjang tidak dapat menunjukkan bukti bahwa
+                                    pajak
+                                    telah dibayar. </p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card bab-title">
+            <p>Bab VI Ketentuan Lain-lain</p>
+        </div>
+        <div class="card pasal17">
+            <div class="card-header" id="headingpasal17">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal17" aria-expanded="true" aria-controls="pasal17">
+                        Pasal 17
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal17" class="collapse" aria-labelledby="headingpasal17" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 17'>
+                                <p id='17-0-0'> Hal-hal yang menyangkut pengertian, tata cara pemungutan dan sanksi
+                                    administrasi
+                                    dan sanksi pidana berkenaan dengan pelaksanaan undang-undang ini, yang secara khusus
+                                    belum
+                                    diatur dalam undang-undang ini, berlaku ketentuan dalam Undang - undang tentang
+                                    Ketentuan
+                                    Umum Dan Tata Cara Perpajakan serta peraturan perundang undangan lainnya. </p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal18">
+            <div class="card-header" id="headingpasal18">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal18" aria-expanded="true" aria-controls="pasal18">
+                        Pasal 18
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal18" class="collapse" aria-labelledby="headingpasal18" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 18'>
+                                <ol id='18-0-0'>
+                                    <li id='18-1-0'> Dengan berlakunya undang-undang ini:
+                                        <ol type='a'>
+                                            <li id='18-1-1'> semua Penyerahan Barang Kena Pajak atau Jasa Kena Pajak dan
+                                                Impor Barang Kena Pajak yang telah
+                                                dilakukan sebelum undang-undang ini berlaku, tetap terhutang pajak
+                                                menurut Undang-undang Pajak Penjualan 1951; </li>
+                                            <li id='18-1-2'> selama peraturan pelaksanaan undang-undang ini belum
+                                                dikeluarkan, maka peraturan pelaksanaan yang tidak
+                                                bertentangan dengan undang-undang ini yang belum dicabut dan diganti
+                                                dinyatakan masih berlaku. </li>
+                                        </ol>
+                                    </li>
+                                    <li id='18-2-0'> Ketentuan pelaksanaan sebagaimana dimaksud pada ayat (1) diatur
+                                        lebih
+                                        lanjut oleh Menteri Keuangan. </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card bab-title">
+            <p>Bab VII Ketentuan Penutup</p>
+        </div>
+        <div class="card pasal19">
+            <div class="card-header" id="headingpasal19">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal19" aria-expanded="true" aria-controls="pasal19">
+                        Pasal 19
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal19" class="collapse" aria-labelledby="headingpasal19" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 19'>
+                                <p id='19-0-0'> Hal-hal yang belum diatur dalam Undang-undang ini diatur lebih lanjut
+                                    dengan
+                                    Peraturan Pemerintah. </p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal20">
+            <div class="card-header" id="headingpasal20">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal20" aria-expanded="true" aria-controls="pasal20">
+                        Pasal 20
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal20" class="collapse" aria-labelledby="headingpasal20" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 20'>
+                                <p id='20-0-0'> Undang-undang ini dapat disebut Undang-undang Pajak Pertambahan Nilai
+                                    1984. </p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal21">
+            <div class="card-header" id="headingpasal21">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal21" aria-expanded="true" aria-controls="pasal21">
+                        Pasal 21
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal21" class="collapse" aria-labelledby="headingpasal21" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 21'>
+                                <p id='21-0-0'> Undang-undang ini mulai berlaku pada tanggal 1 Juli 1984.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Keterangan</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quisquam tempore
+                                    laboriosam veritatis, iusto, sapiente delectus corporis recusandae, nihil magnam
+                                    autem tenetur facilis repudiandae enim impedit quia harum dicta? Facere?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+<script src="../../js/jquery-3.5.1.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../script/script.js"></script>
+
+</html>
