@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pajak Penghasilan</title>
+    <title>Pajak Pertambahan Nilai</title>
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../style/style.css">
 </head>
@@ -60,7 +60,7 @@
                         d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z" />
                 </svg>
             </a>
-            <div id="judulUU">Pajak Penghasilan</div>
+            <div id="judulUU">Pajak Pertambahan Nilai</div>
             <a href="" onclick="refresh()" id="refresh-button">
                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-repeat" fill="currentColor"
                     xmlns="http://www.w3.org/2000/svg">
@@ -90,6 +90,7 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="card-body pasal-body brenden" data='Pasal 1'>
+                                <p>Dalam Undang-Undang ini yang dimaksud dengan:</p>
                                 <ol id='1-0-0'>
                                     <li id='1-1-0'> Daerah Pabean adalah wilayah Republik Indonesia yang meliputi
                                         wilayah darat,
@@ -297,9 +298,9 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="card-body pasal-body brenden" data='Pasal 1A'>
-                                <ol id='1A-0-0'>
+                                <ol id='1A-0-0' class="custom-counter">
                                     <li id='1A-1-0'> Yang termasuk dalam pengertian penyerahan Barang Kena Pajak adalah:
-                                        <ol type='a'>
+                                        <ol type='a' class="huruf">
                                             <li id='1A-1-1'> penyerahan hak atas Barang Kena Pajak karena suatu
                                                 perjanjian; </li>
                                             <li id='1A-1-2'> pengalihan Barang Kena Pajak karena suatu perjanjian sewa
@@ -326,29 +327,12 @@
                                     </li>
                                     <li id='1A-2-0'> Yang tidak termasuk dalam pengertian penyerahan Barang Kena Pajak
                                         adalah:
-                                        <ol type='a'>
-                                            <li id='1A-1-1'> penyerahan hak atas Barang Kena Pajak karena suatu
-                                                perjanjian; </li>
-                                            <li id='1A-1-2'> pengalihan Barang Kena Pajak karena suatu perjanjian sewa
-                                                beli dan/atau perjanjian sewa guna usaha
-                                                (leasing); </li>
-                                            <li id='1A-1-3'> penyerahan Barang Kena Pajak kepada pedagang perantara atau
-                                                melalui juru lelang; </li>
-                                            <li id='1A-1-4'> pemakaian sendiri dan/atau pemberian cuma-cuma atas Barang
-                                                Kena Pajak; </li>
-                                            <li id='1A-1-5'> Barang Kena Pajak berupa persediaan dan/atau aktiva yang
-                                                menurut tujuan semula tidak untuk
-                                                diperjualbelikan, yang masih tersisa pada saat pembubaran perusahaan;
-                                            </li>
-                                            <li id='1A-1-6'> penyerahan Barang Kena Pajak dari pusat ke cabang atau
-                                                sebaliknya dan/atau penyerahan Barang Kena Pajak
-                                                antar cabang; </li>
-                                            <li id='1A-1-7'> penyerahan Barang Kena Pajak secara konsinyasi; dan </li>
-                                            <li id='1A-1-8'> penyerahan Barang Kena Pajak oleh Pengusaha Kena Pajak
-                                                dalam rangka perjanjian pembiayaan yang
-                                                dilakukan berdasarkan prinsip syariah, yang penyerahannya dianggap
-                                                langsung dari Pengusaha Kena Pajak kepada pihak
-                                                yang membutuhkan Barang Kena Pajak. </li>
+                                        <ol type='a' class="huruf">
+                                            <li id='1A-2-1'> penyerahan Barang Kena Pajak kepada makelar sebagaimana dimaksud dalam Kitab Undang-Undang Hukum Dagang;</li>
+                                            <li id='1A-2-2'>penyerahan Barang Kena Pajak untuk jaminan utang-piutang;</li>
+                                            <li id='1A-2-3'>penyerahan Barang Kena Pajak sebagaimana dimaksud pada ayat (1) huruf f dalam hal Pengusaha Kena Pajak melakukan pemusatan tempat pajak terutang; </li>
+                                            <li id='1A-2-4'> pengalihan Barang Kena Pajak dalam rangka penggabungan, peleburan, pemekaran, pemecahan, dan pengambilalihan usaha dengan syarat pihak yang melakukan pengalihan dan yang menerima pengalihan adalah Pengusaha Kena Pajak; dan </li>
+                                            <li id='1A-2-5'>Barang Kena Pajak berupa aktiva yang menurut tujuan semula tidak untuk diperjualbelikan, yang masih tersisa pada saat pembubaran perusahaan, dan yang Pajak Masukan atas perolehannya tidak dapat dikreditkan sebagaimana dimaksud dalam Pasal 9 ayat (8) huruf b dan huruf c.</li>
                                         </ol>
                                     </li>
                                 </ol>
@@ -392,12 +376,12 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="card-body pasal-body brenden" data='Pasal 2'>
-                                <ol id='2-0-0'>
+                                <ol id='2-0-0' class="custom-counter">
                                     <li id='2-1-0'> Dalam hal Harga Jual atau Penggantian dipengaruhi oleh hubungan
                                         istimewa,
                                         maka Harga Jual atau Penggantian dihitung atas dasar harga pasar wajar pada saat
                                         penyerahan Barang Kena Pajak atau Jasa Kena Pajak itu dilakukan. </li>
-                                    <li id='2-2-0'> Hubungan istimewa dianggap ada apabila : <ol type='a'>
+                                    <li id='2-2-0'> Hubungan istimewa dianggap ada apabila : <ol type='a' class="huruf">
                                             <li id='2-2-1'> Pengusaha mempunyai pernyertaan langsung atau tidak langsung
                                                 sebesar 25% (dua puluh lima persen) atau
                                                 lebih pada Pengusaha lain, atau hubungan antara Pengusaha dengan
@@ -485,8 +469,7 @@
             </div>
         </div>
         <div class="card bab-title">
-            <p>Bab IIA Kewajiban Mempunyai Nomor Pengukuhan Pengusaha Kena Pajak dan Kewajiban Memungut, Menyetor, dan
-                Melaporkan</p>
+            <p>Bab IIA Kewajiban Melaporkan Usaha dan Kewajiban Memungut, Menyetor dan Melaporkan Pajak yang Terutang</p>
         </div>
         <div class="card pasal3a">
             <div class="card-header" id="headingpasal3a">
@@ -502,7 +485,7 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="card-body pasal-body brenden" data='Pasal 3A'>
-                                <ol id='3A-0-0'>
+                                <ol id='3A-0-0' class="custom-counter">
                                     <li id='3A-1-0'> Pengusaha yang melakukan penyerahan sebagaimana dimaksud dalam
                                         Pasal 4 ayat
                                         (1) huruf a, huruf c, huruf f, huruf g, dan huruf h, kecuali pengusaha kecil
@@ -512,7 +495,7 @@
                                         sebagai Pengusaha Kena Pajak dan wajib memungut, menyetor, dan melaporkan Pajak
                                         Pertambahan Nilai dan Pajak Penjualan atas Barang Mewah yang terutang. </li>
                                     <div class='subsub'>
-                                        <div>1a.</div>
+                                        <div>(1a)</div>
                                         <p id='3A-1A-0'>Pengusaha kecil sebagaimana dimaksud pada ayat (1) dapat memilih
                                             untuk
                                             dikukuhkan sebagai Pengusaha Kena Pajak.</p>
@@ -559,7 +542,7 @@
             </div>
         </div>
         <div class="card bab-title">
-            <p>Bab III Obyek Pajak</p>
+            <p>Bab III Objek Pajak</p>
         </div>
         <div class="card pasal4">
             <div class="card-header" id="headingpasal4">
@@ -575,8 +558,8 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="card-body pasal-body brenden" data='Pasal 4'>
-                                <ol id='4-0-0'>
-                                    <li id='4-1-0'> Pajak Pertambahan Nilai dikenakan atas: <ol type='a'>
+                                <ol id='4-0-0' class="custom-counter">
+                                    <li id='4-1-0'> Pajak Pertambahan Nilai dikenakan atas: <ol type='a' class="huruf">
                                             <li id='4-1-1'> penyerahan Barang Kena Pajak di dalam Daerah Pabean yang
                                                 dilakukan oleh pengusaha; </li>
                                             <li id='4-1-2'> impor Barang Kena Pajak; </li>
@@ -639,11 +622,12 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="card-body pasal-body brenden" data='Pasal 4A'>
-                                <ol id='4A-0-0'>
+                                <ol id='4A-0-0' class="custom-counter">
                                     <li id='4A-1-0'> Dihapus </li>
                                     <li id='4A-2-0'> Jenis barang yang tidak dikenai Pajak Pertambahan Nilai adalah
                                         barang
-                                        tertentu dalam kelompok barang sebagai berikut: <ol type='a'>
+                                        tertentu dalam kelompok barang sebagai berikut: 
+                                        <ol type='a' class="huruf">
                                             <li id='4A-2-1'> barang hasil pertambangan atau hasil pengeboran yang
                                                 diambil langsung dari sumbernya; </li>
                                             <li id='4A-2-2'> barang kebutuhan pokok yang sangat dibutuhkan oleh rakyat
@@ -658,7 +642,8 @@
                                     </li>
                                     <li id='4A-3-0'> Jenis jasa yang tidak dikenai Pajak Pertambahan Nilai adalah jasa
                                         tertentu
-                                        dalam kelompok jasa sebagai berikut: <ol type='a'>
+                                        dalam kelompok jasa sebagai berikut: 
+                                        <ol type='a' class="huruf">
                                             <li id='4A-3-1'> jasa pelayanan kesehatan medis; </li>
                                             <li id='4A-3-2'> jasa pelayanan sosial; </li>
                                             <li id='4A-3-3'> jasa pengiriman surat dengan perangko; </li>
@@ -722,11 +707,11 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="card-body pasal-body brenden" data='Pasal 5'>
-                                <ol id='5-0-0'>
+                                <ol id='5-0-0' class="custom-counter">
                                     <li id='5-1-0'> Di samping pengenaan Pajak Pertambahan Nilai sebagaimana dimaksud
                                         dalam
-                                        Pasal 4 ayat (1), dikenai juga Pajak Penjualan atas Barang Mewah terhadap: <ol
-                                            type='a'>
+                                        Pasal 4 ayat (1), dikenai juga Pajak Penjualan atas Barang Mewah terhadap: 
+                                        <ol type='a' class="huruf">
                                             <li id='5-1-1'> penyerahan Barang Kena Pajak yang tergolong mewah yang
                                                 dilakukan oleh pengusaha yang menghasilkan barang
                                                 tersebut di dalam Daerah Pabean dalam kegiatan usaha atau pekerjaannya;
@@ -780,7 +765,7 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="card-body pasal-body brenden" data='Pasal 5A'>
-                                <ol id='5A-0-0'>
+                                <ol id='5A-0-0' class="custom-counter">
                                     <li id='5A-1-0'> Pajak Pertambahan Nilai atau Pajak Pertambahan Nilai dan Pajak
                                         Penjualan
                                         atas Barang Mewah atas penyerahan Barang Kena Pajak yang dikembalikan dapat
@@ -844,30 +829,7 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="card-body pasal-body brenden" data='Pasal 6'>
-                                <ol id='6-0-0'>
-                                    <li id='6-1-0'> Setiap Pengusaha Kena Pajak diwajibkan mencatat semua jumlah harga
-                                        perolehan
-                                        dan penyerahan Barang Kena Pajak dan/atau Jasa Kena Pajak dalam pembukuan
-                                        perusahaan.
-                                    </li>
-                                    <li id='6-2-0'> Dalam pembukuan itu harus dicatat secara terpisah dan jelas, jumlah
-                                        harga
-                                        perolehan dan penyerahan barang dan/atau jasa yang terutang pajak, yang mendapat
-                                        fasilitas berupa pajak yang terutang tidak dipungut, yang dikenakan tarif 0%
-                                        (nol
-                                        persen), yang mendapat fasilitas berupa pembebasan dari pengenaan pajak, dan
-                                        yang tidak
-                                        dikenakan pajak. </li>
-                                    <li id='6-3-0'> Pengusaha yang berdasarkan Undang-undang Perubahan Kedua
-                                        Undang-undang Pajak
-                                        Penghasilan 1984 memilih dikenakan Pajak Penghasilan berdasarkan norma
-                                        penghitungan,
-                                        wajib membuat catatan nilai peredaran bruto secara teratur yang menjadi Dasar
-                                        Pengenaan
-                                        Pajak Pertambahan Nilai, sepanjang terutang Pajak Pertambahan Nilai Barang dan
-                                        Jasa.
-                                    </li>
-                                </ol>
+                                Dihapus.
                             </div>
                         </div>
                         <div class="carousel-item">
@@ -911,10 +873,10 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="card-body pasal-body brenden" data='Pasal 7'>
-                                <ol id='7-0-0'>
+                                <ol id='7-0-0' class="custom-counter">
                                     <li id='7-1-0'> Tarif Pajak Pertambahan Nilai adalah 10% (sepuluh persen). </li>
                                     <li id='7-2-0'> Tarif Pajak Pertambahan Nilai sebesar 0% (nol persen) diterapkan
-                                        atas: <ol type='a'>
+                                        atas: <ol type='a' class="huruf">
                                             <li id='7-2-1'> ekspor Barang Kena Pajak Berwujud; </li>
                                             <li id='7-2-2'> ekspor Barang Kena Pajak Tidak Berwujud; dan </li>
                                             <li id='7-2-3'> ekspor Jasa Kena Pajak. </li>
@@ -965,7 +927,7 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="card-body pasal-body brenden" data='Pasal 8'>
-                                <ol id='8-0-0'>
+                                <ol id='8-0-0' class="custom-counter">
                                     <li id='8-1-0'> Tarif Pajak Penjualan atas Barang Mewah ditetapkan paling rendah 10%
                                         (sepuluh persen) dan paling tinggi 200% (dua ratus persen). </li>
                                     <li id='8-2-0'> Ekspor Barang Kena Pajak yang tergolong mewah dikenai pajak dengan
@@ -1022,7 +984,7 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="card-body pasal-body brenden" data='Pasal 8A'>
-                                <ol id='8A-0-0'>
+                                <ol id='8A-0-0' class="custom-counter">
                                     <li id='8A-1-0'> Pajak Pertambahan Nilai yang terutang dihitung dengan cara
                                         mengalikan tarif
                                         sebagaimana dimaksud dalam Pasal 7 dengan Dasar Pengenaan Pajak yang meliputi
@@ -1072,13 +1034,13 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="card-body pasal-body brenden" data='Pasal 9'>
-                                <ol id='9-0-0'>
+                                <ol id='9-0-0' class="custom-counter">
                                     <li id='9-1-0'> Dihapus. </li>
                                     <li id='9-2-0'> Pajak Masukan dalam suatu Masa Pajak dikreditkan dengan Pajak
                                         Keluaran dalam
                                         Masa Pajak yang sama. </li>
                                     <div class='subsub'>
-                                        <div>2a.</div>
+                                        <div>(2a)</div>
                                         <p id='9-2A-0'>Bagi Pengusaha Kena Pajak yang belum berproduksi sehingga belum
                                             melakukan
                                             penyerahan yang terutang pajak, Pajak Masukan atas perolehan dan/atau impor
@@ -1086,7 +1048,7 @@
                                             modal dapat dikreditkan.</p>
                                     </div>
                                     <div class='subsub'>
-                                        <div>2b.</div>
+                                        <div>(2b)</div>
                                         <p id='9-2B-0'>Pajak Masukan yang dikreditkan harus menggunakan Faktur Pajak
                                             yang
                                             memenuhi persyaratan sebagaimana dimaksud dalam Pasal 13 ayat (5) dan ayat
@@ -1103,19 +1065,19 @@
                                         dikompensasikan
                                         ke Masa Pajak berikutnya. </li>
                                     <div class='subsub'>
-                                        <div>4a.</div>
+                                        <div>(4a)</div>
                                         <p id='9-4A-0'>Atas kelebihan Pajak Masukan sebagaimana dimaksud pada ayat (4)
                                             dapat
                                             diajukan permohonan pengembalian pada akhir tahun buku.</p>
                                     </div>
                                     <div class='subsub'>
-                                        <div>4b.</div>
+                                        <div>(4b)</div>
                                         <p id='9-4B-0'>Dikecualikan dari ketentuan sebagaimana dimaksud pada ayat (4)
                                             dan ayat
                                             (4a), atas kelebihan Pajak Masukan dapat diajukan permohonan pengembalian
                                             pada
                                             setiap Masa Pajak oleh:
-                                        <ol type='a'>
+                                        <ol type='a' class="huruf">
                                             <li id='9-4B-1'> Pengusaha Kena Pajak yang melakukan ekspor Barang Kena
                                                 Pajak Berwujud; </li>
                                             <li id='9-4B-2'> Pengusaha Kena Pajak yang melakukan penyerahan Barang Kena
@@ -1134,7 +1096,7 @@
                                         </p>
                                     </div>
                                     <div class='subsub'>
-                                        <div>4c.</div>
+                                        <div>(4c)</div>
                                         <p id='9-4C-0'>Pengembalian kelebihan Pajak Masukan kepada Pengusaha Kena Pajak
                                             sebagaimana dimaksud pada ayat (4b) huruf a sampai dengan huruf e, yang
                                             mempunyai
@@ -1147,7 +1109,7 @@
                                             Perpajakan dan perubahannya.</p>
                                     </div>
                                     <div class='subsub'>
-                                        <div>4d.</div>
+                                        <div>(4d)</div>
                                         <p id='9-4D-0'>Ketentuan mengenai Pengusaha Kena Pajak berisiko rendah yang
                                             diberikan
                                             pengembalian pendahuluan kelebihan pajak sebagaimana dimaksud pada ayat (4c)
@@ -1155,7 +1117,7 @@
                                             dengan Peraturan Menteri Keuangan.</p>
                                     </div>
                                     <div class='subsub'>
-                                        <div>4e.</div>
+                                        <div>(4e)</div>
                                         <p id='9-4E-0'>Direktur Jenderal Pajak dapat melakukan pemeriksaan terhadap
                                             Pengusaha
                                             Kena Pajak sebagaimana dimaksud pada ayat (4c) dan menerbitkan surat
@@ -1163,7 +1125,7 @@
                                             setelah melakukan pengembalian pendahuluan kelebihan pajak.</p>
                                     </div>
                                     <div class='subsub'>
-                                        <div>4f.</div>
+                                        <div>(4f)</div>
                                         <p id='9-4F-0'>Apabila berdasarkan hasil pemeriksaan sebagaimana dimaksud pada
                                             ayat
                                             (4e), Direktur Jenderal Pajak menerbitkan Surat Ketetapan Pajak Kurang
@@ -1193,7 +1155,7 @@
                                         Keuangan.
                                     </li>
                                     <div class='subsub'>
-                                        <div>6a.</div>
+                                        <div>(6a)</div>
                                         <p id='9-6A-0'>Pajak Masukan yang telah dikreditkan sebagaimana dimaksud pada
                                             ayat (2a)
                                             dan telah diberikan pengembalian wajib dibayar kembali oleh Pengusaha Kena
@@ -1205,7 +1167,7 @@
                                             dimulai.</p>
                                     </div>
                                     <div class='subsub'>
-                                        <div>6b.</div>
+                                        <div>(6b)</div>
                                         <p id='9-6B-0'>Ketentuan mengenai penentuan waktu, penghitungan, dan tata cara
                                             pembayaran kembali sebagaimana dimaksud pada ayat (6a) diatur dengan atau
                                             berdasarkan Peraturan Menteri Keuangan.</p>
@@ -1216,14 +1178,14 @@
                                         Pengusaha Kena Pajak sebagaimana dimaksud pada ayat (7a), dapat dihitung dengan
                                         menggunakan pedoman penghitungan pengkreditan Pajak Masukan. </li>
                                     <div class='subsub'>
-                                        <div>7a.</div>
+                                        <div>(7a)</div>
                                         <p id='9-7A-0'>Besarnya Pajak Masukan yang dapat dikreditkan oleh Pengusaha Kena
                                             Pajak
                                             yang melakukan kegiatan usaha tertentu dihitung dengan menggunakan pedoman
                                             penghitungan pengkreditan Pajak Masukan.</p>
                                     </div>
                                     <div class='subsub'>
-                                        <div>7b.</div>
+                                        <div>(7b)</div>
                                         <p id='9-7B-0'>Ketentuan mengenai peredaran usaha sebagaimana dimaksud pada ayat
                                             (7),
                                             kegiatan usaha tertentu sebagaimana dimaksud pada ayat (7a), dan pedoman
@@ -1234,7 +1196,7 @@
                                     <li id='9-8-0'> Pengkreditan Pajak Masukan sebagaimana dimaksud pada ayat (2) tidak
                                         dapat
                                         diberlakukan bagi pengeluaran untuk:
-                                        <ol type='a'>
+                                        <ol type='a' class="huruf">
                                             <li id='9-8-1'> perolehan Barang Kena Pajak atau Jasa Kena Pajak sebelum
                                                 pengusaha dikukuhkan sebagai Pengusaha Kena
                                                 Pajak; </li>
@@ -1336,7 +1298,7 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="card-body pasal-body brenden" data='Pasal 10'>
-                                <ol id='10-0-0'>
+                                <ol id='10-0-0' class="custom-counter">
                                     <li id='10-1-0'> Pajak Penjualan Atas Barang Mewah yang terhutang dalam suatu Masa
                                         Pajak
                                         dihitung dengan mengalihkan tarif sebagaimana diatur dalam Pasal 8, dengan Dasar
@@ -1378,7 +1340,7 @@
             </div>
         </div>
         <div class="card bab-title">
-            <p>Bab V Saat dan Tempat Pajak Terutang dan Laporan Penghitungan Pajak</p>
+            <p>Bab V Saat dan Tempat Terutang dan Laporan Penghitungan Pajak</p>
         </div>
         <div class="card pasal11">
             <div class="card-header" id="headingpasal11">
@@ -1394,8 +1356,8 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="card-body pasal-body brenden" data='Pasal 11'>
-                                <ol id='11-0-0'>
-                                    <li id='11-1-0'> Terutangnya pajak terjadi pada saat: <ol type='a'>
+                                <ol id='11-0-0' class="custom-counter">
+                                    <li id='11-1-0'> Terutangnya pajak terjadi pada saat: <ol type='a' class="huruf">
                                             <li id='11-1-1'> penyerahan Barang Kena Pajak; </li>
                                             <li id='11-1-2'> impor Barang Kena Pajak; </li>
                                             <li id='11-1-3'> penyerahan Jasa Kena Pajak; </li>
@@ -1461,7 +1423,7 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="card-body pasal-body brenden" data='Pasal 12'>
-                                <ol id='12-0-0'>
+                                <ol id='12-0-0' class="custom-counter">
                                     <li id='12-1-0'> Pengusaha Kena Pajak yang melakukan penyerahan sebagaimana dimaksud
                                         dalam
                                         Pasal 4 ayat (1) huruf a, huruf c, huruf f, huruf g, dan/atau huruf h terutang
@@ -1526,9 +1488,9 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="card-body pasal-body brenden" data='Pasal 13'>
-                                <ol id='13-0-0'>
-                                    <li id='13-1-0'> Pengusaha Kena Pajak wajib membuat Faktur Pajak untuk setiap: <ol
-                                            type='a'>
+                                <ol id='13-0-0' class="custom-counter">
+                                    <li id='13-1-0'> Pengusaha Kena Pajak wajib membuat Faktur Pajak untuk setiap: 
+                                        <ol type='a' class="huruf">
                                             <li id='13-1-1'> penyerahan Barang Kena Pajak sebagaimana dimaksud dalam
                                                 Pasal 4 ayat (1) huruf a atau huruf f dan/atau
                                                 Pasal 16D; </li>
@@ -1542,10 +1504,10 @@
                                         </ol>
                                     </li>
                                     <div class='subsub'>
-                                        <div>1a.</div>
+                                        <div>(1a)</div>
                                         <p id='13-1A-0'>Faktur Pajak sebagaimana dimaksud pada ayat (1) harus dibuat
                                             pada:
-                                        <ol type='a'>
+                                        <ol type='a' class="huruf">
                                             <li id='13-1A-1'> saat penyerahan Barang Kena Pajak dan/atau penyerahan Jasa
                                                 Kena Pajak; </li>
                                             <li id='13-1A-2'> saat penerimaan pembayaran dalam hal penerimaan pembayaran
@@ -1565,7 +1527,7 @@
                                         sama
                                         selama 1 (satu) bulan kalender. </li>
                                     <div class='subsub'>
-                                        <div>2a.</div>
+                                        <div>(2a)</div>
                                         <p id='13-2A-0'>Faktur Pajak sebagaimana dimaksud pada ayat (2) harus dibuat
                                             paling lama
                                             pada akhir bulan penyerahan.</p>
@@ -1574,8 +1536,8 @@
                                     <li id='13-4-0'> Dihapus. </li>
                                     <li id='13-5-0'> Dalam Faktur Pajak harus dicantumkan keterangan tentang penyerahan
                                         Barang
-                                        Kena Pajak dan/atau penyerahan Jasa Kena Pajak yang paling sedikit memuat: <ol
-                                            type='a'>
+                                        Kena Pajak dan/atau penyerahan Jasa Kena Pajak yang paling sedikit memuat: 
+                                        <ol type='a' class="huruf">
                                             <li id='13-5-1'> nama, alamat, dan Nomor Pokok Wajib Pajak yang menyerahkan
                                                 Barang Kena Pajak atau Jasa Kena Pajak;
                                             </li>
@@ -1644,15 +1606,14 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="card-body pasal-body brenden" data='Pasal 14'>
-                                <ol id='14-0-0'>
+                                <ol id='14-0-0' class="custom-counter">
                                     <li id='14-1-0'> Orang atau badan yang tidak dikukuhkan menjadi Pengusaha Kena Pajak
                                         dilarang membuat Faktur Pajak. </li>
                                     <li id='14-2-0'> Dalam hal Faktur Pajak telah dibuat, maka orang atau badan dan
                                         sebagaimana
                                         dimaksud dalam ayat (1) harus menyetorkan jumlah pajak yang tercantum dalam
                                         Faktur Pajak
-                                        kepada Kas Negara dan dikenakan sanksi berupa denda administrasi
-                                        sebesar 2% (dua persen) dari Dasar Pengenaan Pajak. </li>
+                                        kepada Kas Negara. </li>
                                 </ol>
                             </div>
                         </div>
@@ -1694,23 +1655,7 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="card-body pasal-body brenden" data='Pasal 15'>
-                                <ol id='15-0-0'>
-                                    <li id='15-1-0'> Pengusaha Kena Pajak wajib melaporkan penghitungan pajak
-                                        sebagaimana
-                                        dimaksud dalam Pasal 9 dan Pasal 10 kepada Direktorat Jendral Pajak dalam jangka
-                                        waktu
-                                        20 (dua puluh) hari setelah akhir Masa Pajak dengan menggunakan Surat
-                                        Pemberitahuan
-                                        Masa. </li>
-                                    <li id='15-2-0'> Keterangan dan dokumen yang harus dicantumkan dan/atau dilampirkan
-                                        pada
-                                        Surat Pemberitahuan Masa ditetapkan oleh Menteri Keuangan. </li>
-                                    <li id='15-3-0'> Surat Pemberitahuan Masa dianggap tidak dimasukkan jika Pengusaha
-                                        Kena
-                                        Pajak tidan dilaksanakan, atau tidak sepenuhnya melaksanakan ketentuan
-                                        sebagaimana
-                                        diatur dalam ayat (1) dan ayat (2). </li>
-                                </ol>
+                                Dihapus.
                             </div>
                         </div>
                         <div class="carousel-item">
@@ -1751,7 +1696,7 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="card-body pasal-body brenden" data='Pasal 15A'>
-                                <ol id='15A-0-0'>
+                                <ol id='15A-0-0' class="custom-counter">
                                     <li id='15A-1-0'> Penyetoran Pajak Pertambahan Nilai oleh Pengusaha Kena Pajak
                                         sebagaimana
                                         dimaksud dalam Pasal 9 ayat (3) harus dilakukan paling lama akhir bulan
@@ -1803,19 +1748,7 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="card-body pasal-body brenden" data='Pasal 16'>
-                                <ol id='16-0-0'>
-                                    <li id='16-1-0'> Atas permohonan tertulis Pengusaha Kena Pajak, kelebihan pembayaran
-                                        Pajak
-                                        yang belum dikompensasikan sebagaimana dimaksud dalam Pasal 9 ayat (4),
-                                        pengembaliannya
-                                        dilaksanakan dalam jangka waktu sebagaimana diatur dalam
-                                        Undang-undang tentang Ketentuan Umum Dan Tata Cara Perpajakan atau dalam jangka
-                                        waktu
-                                        lain yang ditetapkan oleh Menteri Keuangan. </li>
-                                    <li id='16-2-0'> Kelebihan pembayaran pajak atas Barang yang diekspor dikembalikan
-                                        dalam
-                                        waktu satu bulan. </li>
-                                </ol>
+                                Dihapus.
                             </div>
                         </div>
                         <div class="carousel-item">
@@ -1859,7 +1792,7 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="card-body pasal-body brenden" data='Pasal 16A'>
-                                <ol id='16A-0-0'>
+                                <ol id='16A-0-0' class="custom-counter">
                                     <li id='16A-1-0'> Pajak yang terutang atas penyerahan Barang Kena Pajak dan atau
                                         penyerahan
                                         Jasa Kena Pajak kepada Pemungut Pajak Pertambahan Nilai dipungut, disetor, dan
@@ -1910,10 +1843,11 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="card-body pasal-body brenden" data='Pasal 16B'>
-                                <ol id='16B-0-0'>
+                                <ol id='16B-0-0' class="custom-counter">
                                     <li id='16B-1-0'> Pajak terutang tidak dipungut sebagian atau seluruhnya atau
                                         dibebaskan dari pengenaan pajak, baik untuk sementara waktu
-                                        maupun selamanya, untuk: <ol type='a'>
+                                        maupun selamanya, untuk: 
+                                        <ol type='a' class="huruf">
                                             <li id='16B-1-1'> kegiatan di kawasan tertentu atau tempat tertentu di dalam
                                                 Daerah Pabean; </li>
                                             <li id='16B-1-2'> penyerahan Barang Kena Pajak tertentu atau penyerahan Jasa
@@ -2071,7 +2005,7 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="card-body pasal-body brenden" data='Pasal 16E'>
-                                <ol id='16E-0-0'>
+                                <ol id='16E-0-0' class="custom-counter">
                                     <li id='16E-1-0'> Pajak Pertambahan Nilai dan Pajak Penjualan atas Barang Mewah yang
                                         sudah
                                         dibayar atas pembelian Barang Kena Pajak yang dibawa ke luar Daerah Pabean oleh
@@ -2079,8 +2013,8 @@
                                         pribadi pemegang paspor luar negeri dapat diminta kembali. </li>
                                     <li id='16E-2-0'> Pajak Pertambahan Nilai dan Pajak Penjualan atas Barang Mewah yang
                                         dapat
-                                        diminta kembali sebagaimana dimaksud pada ayat (1) harus memenuhi syarat: <ol
-                                            type='a'>
+                                        diminta kembali sebagaimana dimaksud pada ayat (1) harus memenuhi syarat: 
+                                        <ol type='a' class="huruf">
                                             <li id='16E-2-1'> nilai Pajak Pertambahan Nilai paling sedikit Rp500.000,00
                                                 (lima ratus ribu rupiah) dan dapat
                                                 disesuaikan dengan Peraturan Pemerintah; </li>
@@ -2093,7 +2027,7 @@
                                                 alamat lengkap di negara yang menerbitkan paspor
                                                 atas penjualan kepada orang pribadi pemegang paspor luar negeri yang
                                                 tidak mempunyai Nomor Pokok Wajib Pajak. </li>
-                                        </ol>li>
+                                        </ol>
                                     <li id='16E-3-0'> Permintaan kembali Pajak Pertambahan Nilai dan Pajak Penjualan
                                         atas Barang
                                         Mewah sebagaimana dimaksud pada ayat (1) dilakukan pada saat orang pribadi
@@ -2105,7 +2039,7 @@
                                         Keuangan. </li>
                                     <li id='16E-4-0'> Dokumen yang harus ditunjukkan pada saat meminta kembali Pajak
                                         Pertambahan
-                                        Nilai dan Pajak Penjualan atas Barang Mewah adalah: <ol type='a'>
+                                        Nilai dan Pajak Penjualan atas Barang Mewah adalah: <ol type='a' class="huruf">
                                             <li id='16E-4-1'> paspor; </li>
                                             <li id='16E-4-2'> pas naik (boarding pass) untuk keberangkatan orang pribadi
                                                 sebagaimana dimaksud pada ayat (1) ke luar
@@ -2241,6 +2175,9 @@
                 </div>
             </div>
         </div>
+        <div class="card bab-title">
+            <p>Bab VII Ketentuan Peralihan</p>
+        </div>
         <div class="card pasal18">
             <div class="card-header" id="headingpasal18">
                 <h2 class="mb-0">
@@ -2255,9 +2192,9 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="card-body pasal-body brenden" data='Pasal 18'>
-                                <ol id='18-0-0'>
+                                <ol id='18-0-0' class="custom-counter">
                                     <li id='18-1-0'> Dengan berlakunya undang-undang ini:
-                                        <ol type='a'>
+                                        <ol type='a' class="huruf">
                                             <li id='18-1-1'> semua Penyerahan Barang Kena Pajak atau Jasa Kena Pajak dan
                                                 Impor Barang Kena Pajak yang telah
                                                 dilakukan sebelum undang-undang ini berlaku, tetap terhutang pajak
@@ -2297,9 +2234,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="card bab-title">
-            <p>Bab VII Ketentuan Penutup</p>
         </div>
         <div class="card pasal19">
             <div class="card-header" id="headingpasal19">
