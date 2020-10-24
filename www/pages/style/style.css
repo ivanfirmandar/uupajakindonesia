@@ -79,8 +79,8 @@ p, li{
     height: 20px;
     width: 20px;
 }
-.search-highlight{
-    background-color: yellow;
+.search-highlight{  
+    display: contents;
 }
 .accordion{
     padding-top: 60px;
@@ -128,7 +128,6 @@ p, li{
     padding: 15px 0px;
     background-color: #0A0D16;
     color: black;
-
 }
 .navbar-kup{
     position: fixed;
