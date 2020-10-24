@@ -93,6 +93,9 @@ p, li{
 }
 .search-highlight{  
     display: contents;
+    font-weight: bold;
+    text-transform: uppercase;
+    color:  lime;
 }
 .accordion{
     padding-top: 60px;
