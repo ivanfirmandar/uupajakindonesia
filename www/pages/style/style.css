@@ -1,3 +1,15 @@
+body{
+    transition: ease 1s;
+    background-color:  #1A3B50;
+}
+.body{
+    padding-left: 400px;
+    transition: ease 1s;
+    background-color: #1A3B50;
+}
+.full{
+    padding-left: 0px;
+}
 p, li{
     text-align: justify;
     font-size: 15px;

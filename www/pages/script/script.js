@@ -25,9 +25,11 @@ function setDatas(datas) {
 }
 
 function setLink(isi, namapasal) {
-    let pattern = "Pasal\\s+(\\w\\w\\w|\\w\\w|\\w)\\s+ayat\\s+\\((\\w\\w|\\w)\\)\\s+\\huruf\\s+\\w|Pasal\\s+(\\w\\w\\w|\\w\\w|\\w)\\s+ayat\\s+\\((\\w|\\w\\w)\\)|Pasal\\s+(\\w\\w\\w|\\w\\w|\\w)|Pasal\\s+(\\w\\w\\w|\\w\\w|\\w)|ayat\\s+\\((\\w|\\w\\w)\\)\\s+huruf\\s+\\w|ayat\\s+\\((\\w|\\w\\w)\\)|huruf\\s+\\w";
+    let pattern = "Pasal\\s+(\\w\\w\\w|\\w\\w|\\w)\\s+ayat\\s+\\((\\w\\w|\\w)\\)\\s+\\huruf\\s+\\w|Pasal\\s+(\\w\\w\\w|\\w\\w|\\w)\\s+ayat\\s+\\((\\w|\\w\\w)\\)|Pasal\\s+(\\w\\w\\w|\\w\\w|\\w)|Pasal\\s+(\\w\\w\\w|\\w\\w|\\w)|ayat\\s+\\((\\w|\\w\\w)\\)\\s+huruf\\s+\\w|ayat\\s+\\((\\w|\\w\\w)\\)|\\,\\s+huruf\\s+\\w|dan\\s+huruf\\s+\\w|huruf\\s+\\w$";
     let regexss = new RegExp(pattern, 'gi')
     let regexss2 = new RegExp(pattern, '')
+    let index = 0
+    let identityParsed;
     namapasal = namapasal.split(" ")[1]
     let matchedIsi = isi.match(regexss)
     if (matchedIsi !== null) {
@@ -35,11 +37,36 @@ function setLink(isi, namapasal) {
             element = element.toUpperCase()
             let regeee = new RegExp('\\s+', 'gim')
             element = element.replace(regeee, ' ')
+            let arrayElement = element.split(" ");
+            if (arrayElement[0] == "," || arrayElement[0] == "DAN") {
+                let index2 = 0;
+                // console.log("Element[0] : " + arrayElement[0])
+                let index3 = index;
+                while (index2 == 0) {
+                    identityParsed = matchedIsi[index - 1];
+                    index--
+                    // console.log(namapasal + " " + identityParsed)
+                    if (identityParsed.match(/pasal/gi)) {
+                        // console.log("KETEMU! PASAL!")
+                        index2 = 1;
+                    } else {
+                        if (identityParsed.match(/ayat/g)) {
+                            // console.log("KETEMU AYAT!")
+                            index2 = 1;
+                        } else {
+                            index2 = 0;
+                        }
+                    }
+                }
+            }
             isi = isi.replace(regexss2, `<span class='keterangan' data=${namapasal}>${element}</span>`)
+            index++
         });
     } else {
         isi = isi;
+        index++
     }
+    // console.log(matchedIsi)
     return (isi)
 }
 
@@ -48,7 +75,8 @@ function domHandler(datas) {
     let toolbarButton = document.getElementsByClassName('toolbar')[0]
     toolbarButton.addEventListener('click', () => {
         document.getElementsByClassName('toolbar')[1].classList.toggle('find')
-        document.getElementsByClassName('toolbar')[2].classList.toggle('note')
+        document.getElementsByClassName('modal-toolbar')[0].classList.add('modal-toolbar-hide')
+        // document.getElementsByClassName('toolbar')[2].classList.toggle('note')
     })
     let buttonCari = document.getElementById('button-cari')
     buttonCari.addEventListener('click', () => {
@@ -58,6 +86,9 @@ function domHandler(datas) {
     toolbarSearch.addEventListener('click', () => {
         document.getElementsByClassName('modal-toolbar')[0].classList.toggle('modal-toolbar-hide')
     })
+    window.addEventListener('load', () => {
+        document.getElementById("body").classList.remove("body");
+    })
 }
 
 async function findThings() {
@@ -65,12 +96,13 @@ async function findThings() {
     let dataNeeds = await fetchData()
     for (let ind = 0; ind < dataNeeds.length; ind++) {
         document.getElementsByClassName('card-header')[ind].classList.remove('hide')
-        let regexExp = new RegExp(query, 'gi')
+        let regexExp = new RegExp(`\\s+${query}`, 'gi')
+        console.log(dataNeeds[ind]);
         let matchedData = dataNeeds[ind].innerHTML.match(regexExp)
         if (matchedData == null) {
             document.getElementsByClassName('card-header')[ind].classList.add('hide')
         }
-        let replacedText = dataNeeds[ind].innerHTML.replace(regexExp, `<span class='search-highlight'>${query}</span>`)
+        let replacedText = dataNeeds[ind].innerHTML.replace(regexExp, ` <span class='search-highlight'>${query}</span>`)
         dataNeeds[ind].innerHTML = replacedText
     }
 }
@@ -217,11 +249,13 @@ function openKeterangan() {
 
 function setKeterangan(id, name) {
     let content = document.getElementById(id);
-    document.getElementsByClassName("modal-keterangan")[0].childNodes[1].childNodes[1].innerHTML = name;
+
     try {
+        document.getElementsByClassName("modal-keterangan")[0].childNodes[1].childNodes[1].innerHTML = name;
         document.getElementsByClassName("modal-keterangan")[0].childNodes[1].childNodes[3].innerHTML = content.innerHTML
     } catch (error) {
-        document.getElementsByClassName("modal-keterangan")[0].childNodes[1].childNodes[3].innerHTML = "Pasal Tidak Ada"
+        document.getElementsByClassName("modal-keterangan")[0].childNodes[1].childNodes[1].innerHTML = "";
+        // document.getElementsByClassName("modal-keterangan")[0].childNodes[1].childNodes[3].innerHTML = "Pasal Tidak Ada"
     }
 
 }
