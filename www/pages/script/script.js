@@ -38,27 +38,27 @@ function setLink(isi, namapasal) {
             let regeee = new RegExp('\\s+', 'gim')
             element = element.replace(regeee, ' ')
             let arrayElement = element.split(" ");
-            if (arrayElement[0] == "," || arrayElement[0] == "DAN") {
-                let index2 = 0;
-                // console.log("Element[0] : " + arrayElement[0])
-                let index3 = index;
-                while (index2 == 0) {
-                    identityParsed = matchedIsi[index - 1];
-                    index--
-                    // console.log(namapasal + " " + identityParsed)
-                    if (identityParsed.match(/pasal/gi)) {
-                        // console.log("KETEMU! PASAL!")
-                        index2 = 1;
-                    } else {
-                        if (identityParsed.match(/ayat/g)) {
-                            // console.log("KETEMU AYAT!")
-                            index2 = 1;
-                        } else {
-                            index2 = 0;
-                        }
-                    }
-                }
-            }
+            // if (arrayElement[0] == "," || arrayElement[0] == "DAN") {
+            //     let index2 = 0;
+            //     // console.log("Element[0] : " + arrayElement[0])
+            //     let index3 = index;
+            //     while (index2 == 0) {
+            //         identityParsed = matchedIsi[index - 1];
+            //         index--
+            //         // console.log(namapasal + " " + identityParsed)
+            //         if (identityParsed.match(/pasal/gi)) {
+            //             // console.log("KETEMU! PASAL!")
+            //             index2 = 1;
+            //         } else {
+            //             if (identityParsed.match(/ayat/g)) {
+            //                 // console.log("KETEMU AYAT!")
+            //                 index2 = 1;
+            //             } else {
+            //                 index2 = 0;
+            //             }
+            //         }
+            //     }
+            // }
             isi = isi.replace(regexss2, `<span class='keterangan' data=${namapasal}>${element}</span>`)
             index++
         });
