@@ -360,19 +360,15 @@ p, li{
     margin-right: 0.2rem ;
 }
 table {
-    border: 1px solid;
     border-collapse: collapse;
     width: 100%;
 }
 th {
     border: 1px solid;
-}
-td {
-    border-right: 1px solid;
+    text-align: center;
 }
 th, td {
     height: 25px;
-    padding-left: 5px;
-    padding-right: 5px;
-    text-align: center;
+    padding-left: 3px;
+    padding-right: 3px;
 }
