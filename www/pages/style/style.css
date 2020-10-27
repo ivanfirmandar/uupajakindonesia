@@ -1,11 +1,14 @@
 body{
     transition: ease 1s;
-    background-color:  #1A3B50;
+    background-color:  #2F4D83;
+}
+.btn-link:focus{
+    text-decoration: none;
 }
 .body{
     padding-left: 400px;
     transition: ease 1s;
-    background-color: #1A3B50;
+    background-color: #2F4D83;
 }
 .full{
     padding-left: 0px;
@@ -19,6 +22,7 @@ p, li{
     color: black;
     display: flex;
     align-items: stretch;
+    /* height: 200px; */
 }
 .pasal-nama svg{
     position: absolute;
@@ -81,6 +85,7 @@ p, li{
 #judulUU{
     width: 400px;
     position: absolute;
+    size: ;
     line-height: 12px;
     top: 23px;
     left: 50px;

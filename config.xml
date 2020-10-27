@@ -1,11 +1,12 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.ivanfirmanda.uupajak" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>uupajak</name>
+    <name>UU Pajak Indonesia</name>
+
     <description>
-        A sample Apache Cordova application that responds to the deviceready event.
+        Undang - Undang Pajak Lengkap dengan berbagai Fitur yang membantu kalian untuk memahami isiny
     </description>
-    <author email="dev@cordova.apache.org" href="http://cordova.io">
-        Apache Cordova Team
+    <author email="ivanfirmandar@gmail.com" href="http://ivanfirmanda.rf.gd">
+        Ivan Firmanda
     </author>
     <content src="index.html" />
     <access origin="*" />
@@ -17,6 +18,12 @@
     <allow-intent href="geo:*" />
     <platform name="android">
         <allow-intent href="market:*" />
+         <icon src="icon.png" density="ldpi" />
+        <icon src="icon.png" density="mdpi" />
+        <icon src="icon.png" density="hdpi" />
+        <icon src="icon.png" density="xhdpi" />
+        <icon src="icon.png" density="xxhdpi" />
+        <icon src="icon.png" density="xxxhdpi" />
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
