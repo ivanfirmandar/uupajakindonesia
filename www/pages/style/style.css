@@ -54,13 +54,20 @@ p, li{
     border: solid gray 0,5px;
 }
 .note-container .addNote{
-    background-color: white;
+    background-color: #2F4D83;
     display: flex;
     grid-area: b;
 }
 .note-container .addNote #namaPasalNote{
     line-height: 50px ;
     width: 100%;
+    color: white;
+    text-align: center;
+}
+.note-container .addNote #saveNoteButton{
+    line-height: 50px ;
+    width: 100%;
+    color: white;
     text-align: center;
 }
 .note-container .addNote button{
@@ -68,7 +75,7 @@ p, li{
     width: 100px;
     height: 100%;
     margin: 0px;
-    background-color: #1A3B50 ;
+    background-color:  #2F4D83 ;
     color: white;
 }
 #judulUU{
@@ -165,7 +172,7 @@ p, li{
     height: 150px;
     transition: ease 1s;
     width: 350px;
-    background-color: #1A3B50;
+    background-color: #2F4D83;
     border-radius: 8px;
     overflow: hidden;
 }

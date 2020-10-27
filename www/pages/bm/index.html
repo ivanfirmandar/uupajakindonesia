@@ -1,0 +1,1278 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bea Meterai</title>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../style/style.css">
+</head>
+
+<body id="body" class="body">
+    <div class="note-container hide">
+    </div>
+    <div class="modal-toolbar modal-toolbar-hide">
+        <label for="cari">Search</label>
+        <input type="text" id="cari" name="cari" placeholder="Kata Kunci">
+        <button id="button-cari">Cari</button>
+    </div>
+    <div class="card modal-keterangan hide" id="keteranganAyat">
+        <div class="card-body">
+            <h6>Judul</h6>
+            <p class="card-text"></p>
+            <button href="#" class="card-link" onclick="closeKeterangan()">Close</button>
+        </div>
+    </div>
+    <div class="toolbar toolbar-main">
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cursor-fill toolbar-icon" fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+                d="M14.082 2.182a.5.5 0 0 1 .103.557L8.528 15.467a.5.5 0 0 1-.917-.007L5.57 10.694.803 8.652a.5.5 0 0 1-.006-.916l12.728-5.657a.5.5 0 0 1 .556.103z" />
+        </svg>
+    </div>
+    <div class="toolbar toolbar2">
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search  toolbar-icon" fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+                d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z" />
+            <path fill-rule="evenodd"
+                d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
+        </svg>
+    </div>
+    <!-- <div class="toolbar toolbar2">
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-journal-text toolbar-icon" fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z" />
+            <path
+                d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z" />
+            <path fill-rule="evenodd"
+                d="M5 10.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z" />
+        </svg>
+    </div> -->
+    <nav>
+        <div class="navbar-kup">
+            <a href="../../index.html">
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-left-short back-button"
+                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z" />
+                </svg>
+            </a>
+            <div id="judulUU">Bea Meterai</div>
+            <a href="" onclick="refresh()" id="refresh-button">
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-repeat" fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z" />
+                    <path fill-rule="evenodd"
+                        d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z" />
+                </svg>
+            </a>
+        </div>
+    </nav>
+    <div class="accordion" id="accordionExample">
+        <div class="card bab-title">
+            <p>Bab I Ketentuan Umum</p>
+        </div>
+        <div class="card pasal1">
+            <div class="card-header" id="headingpasal1">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal1" aria-expanded="true" aria-controls="pasal1">
+                        Pasal 1
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal1" class="collapse" aria-labelledby="headingpasal1" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 1'>
+                                <ol id='1-0-0' class="custom-counter">
+                                    <li id='1-1-0'> Dengan nama Bea Meterai dikenakan pajak atas dokumen yang disebut
+                                        dalam
+                                        Undangundang ini. </li>
+                                    <li id='1-2-0'> Dalam Undang-undang ini yang dimaksud dengan : <ol type='a'
+                                            class='huruf'>
+                                            <li id='1-2-1'> Dokumen adalah kertas yang berisikan tulisan yang mengandung
+                                                arti dan maksud
+                                                tentang perbuatan, keadaan atau kenyataan bagi seseorang dan/atau
+                                                pihak-pihak
+                                                yang berkepentingan; </li>
+                                            <li id='1-2-2'> Benda meterai adalah meterai tempel dan kertas meterai yang
+                                                dikeluarkan oleh
+                                                Pemerintah Republik Indonesia; </li>
+                                            <li id='1-2-3'> Tandatangan adalah tandatangan sebagaimana lazimnya
+                                                dipergunakan, termasuk
+                                                pula parap, teraan atau cap tandatangan atau cap parap, teraan cap nama
+                                                atau
+                                                tanda lainnya sebagai pengganti tandatangan; </li>
+                                            <li id='1-2-4'> Pemeteraian kemudian adalah suatu cara pelunasan Bea Meterai
+                                                yang dilakukan
+                                                oleh Pejabat Pos atas permintaan pemegang dokumen yang Bea Meterai-nya
+                                                belum
+                                                dilunasi sebagaimana mestinya; </li>
+                                            <li id='1-2-5'> Pejabat Pos adalah Pejabat Perusahaan Umum Pos dan Giro yang
+                                                diserahi tugas
+                                                melayani permintaan pemeteraian kemudian. </li>
+                                        </ol>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Penjelasan</h5>
+                                <p><b>Ayat (1)</b><br>
+                                    Cukup jelas.<br>
+                                    <b>Ayat (2)</b><br>
+                                    Cukup jelas.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card bab-title">
+            <p>Bab II Obyek, Tarif, dan Yang Terhutang Bea Meterai</p>
+        </div>
+        <div class="card pasal2">
+            <div class="card-header" id="headingpasal2">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal2" aria-expanded="true" aria-controls="pasal2">
+                        Pasal 2
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal2" class="collapse" aria-labelledby="headingpasal2" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 2'>
+                                <ol id='2-0-0' class="custom-counter">
+                                    <li id='2-1-0'> Dikenakan Bea Meterai atas dokumen yang berbentuk : <ol type='a'
+                                            class='huruf'>
+                                            <li id='2-1-1'> Surat perjanjian dan surat-surat lainnya yang dibuat dengan
+                                                tujuan untuk digunakan
+                                                sebagai alat pembuktian mengenai perbuatan, kenyataan atau keadaan yang
+                                                bersifat perdata; </li>
+                                            <li id='2-1-2'> akta-akta notaris termasuk salinannya; </li>
+                                            <li id='2-1-3'> akta-akta yang dibuat oleh Pejabat Pembuat Akta Tanah
+                                                termasuk rangkaprangkapnya;<br>
+                                                1) yang menyebutkan penerimaan uang;<br>
+                                                2) yang menyatakan pembukuan uang atau penyimpanan uang dalam
+                                                rekening di
+                                                bank;<br>
+                                                3) yang berisi pemberitahuan saldo rekening di bank;<br>
+                                                4) yang berisi pengakuan bahwa hutang uang seluruhnya atau
+                                                sebagiannya telah
+                                                dilunasi atau diperhitungkan;
+                                            </li>
+                                            <li id='2-1-4'> surat yang memuat jumlah uang lebih dari Rp.1.000.000,-
+                                                (satu juta rupiah) : </li>
+                                            <li id='2-1-5'> surat berharga seperti wesel, promes, aksep, dan cek yang
+                                                harga nominalnya lebih
+                                                dari Rp.1.000.000,- (satu juta rupiah); </li>
+                                            <li id='2-1-6'> efek dengan nama dan dalam bentuk apapun, sepanjang harga
+                                                nominalnya lebih
+                                                dari Rp.1.000.000,- (satu juta rupiah) </li>
+                                        </ol>
+                                    </li>
+                                    <li id='2-2-0'> Terhadap dokumen sebagaimana dalam ayat (1) huruf a, huruf b, huruf
+                                        c, huruf
+                                        d, huruf e,
+                                        dan huruf f dikenakan Bea Meterai dengan tarif sebesar Rp.1.000,- (seribu
+                                        rupiah). </li>
+                                    <li id='2-3-0'> Dikenakan pula Bea Meterai sebesar Rp.1000,- (seribu rupiah) atas
+                                        dokumen
+                                        yang akan
+                                        digunakan sebagai alat pembuktian di muka Pengadilan: <ol type='a'
+                                            class='huruf'>
+                                            <li id='2-3-1'> surat-surat biasa dan surat-surat kerumahtanggaan; </li>
+                                            <li id='2-3-2'> surat-surat yang semula tidak dikenakan Bea Meterai
+                                                berdasarkan tujuannya, jika
+                                                digunakan untuk tujuan lain atau digunakan oleh orang lain, lain dari
+                                                maksud semula; </li>
+                                        </ol>
+                                    </li>
+                                    <li id='2-4-0'> Terhadap dokumen sebagaimana dimaksud dalam ayat (1) huruf d, huruf
+                                        e, dan
+                                        huruf f,
+                                        yang mempunyai harga nominal lebih dari Rp.100.000,- (seratus ribu rupiah)
+                                        tetapi tidak
+                                        lebih dari Rp.1.000.000,- (satu juta rupiah) dikenakan Bea Meterai dengan tarif
+                                        Rp.500,-
+                                        (lima ratus rupiah) dan apabila harga nominalnya tidak lebih dari Rp.100.000,-
+                                        (seratus
+                                        ribu rupiah) tidak terhutang Bea Meterai. </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Penjelasan</h5>
+                                <p><b>Ayat (1)</b><br>
+                                    Huruf a<br>
+                                    Pihak-pihak yang memegang surat perjanjian atau surat-surat lainnya tersebut,
+                                    dibebani
+                                    kewajiban untuk membayar Bea Meterai atas surat perjanjian atau surat-surat yang
+                                    dipegangnya.
+                                    Yang dimaksud surat-surat lainnya pada huruf a ini antara lain surat kuasa, surat
+                                    hibah, surat
+                                    pernyataan.<br>
+                                    Huruf b<br>
+                                    Cukup jelas.<br>
+                                    Huruf c<br>
+                                    Cukup jelas.<br>
+                                    Huruf d, huruf e, dan huruf f<br>
+                                    Jumlah uang ataupun harga nominal yang disebut dalam huruf d, huruf e, dan huruf f
+                                    ini juga
+                                    dimaksudkan jumlah uang ataupun harga nominal yang dinyatakan dalam mata uang asing.
+                                    Untuk menentukan nilai rupiahnya maka jumlah uang atau harga nominal tersebut
+                                    dikalikan
+                                    dengan nilai tukar yang ditetapkan oleh Menteri Keuangan yang berlaku pada saat
+                                    dokumen itu
+                                    dibuat, sehingga dapat diketahui apakah dokumen tersebut dikenakan atau tidak
+                                    dikenakan
+                                    Bea Meterai.<br>
+                                    <b>Ayat (2)</b><br>
+                                    Cukup jelas.<br>
+                                    <b>Ayat (3)</b><br>
+                                    Ayat ini dimaksudkan untuk mengenakan Bea Meterai atas surat-surat yang semula tidak
+                                    kena
+                                    Bea Meterai, tetapi karena kemudian digunakan sebagai alat pembuktian di muka
+                                    pengadilan
+                                    maka lebih dahulu harus dilakukan pemeteraian-kemudian.<br>
+                                    Huruf a<br>
+                                    Surat-surat biasa yang dimaksud dalam huruf a ayat ini dibuat tidak untuk tujuan
+                                    sesuatu
+                                    pembuktian misalnya seseorang mengirim surat biasa kepada orang lain untuk
+                                    menjualkan
+                                    sebuah barang.
+                                    Surat semacam ini pada saat dibuat tidak kena Bea Meterai, tetapi apabila kemudian
+                                    dipakai
+                                    sebagai alat pembuktian dimuka Pengadilan, maka terlebih dahulu dilakukan
+                                    pemeteraiankemudian.
+                                    Surat-surat kerumahtanggaan misalnya daftar barang.
+                                    Daftar ini dibuat tidak dimaksudkan untuk digunakan sebagai alat pembuktian, oleh
+                                    karena itu
+                                    tidak dikenakan Bea Meterai.
+                                    Apabila kemudian ada sengketa dan daftar harga barang ini digunakan sebagai alat
+                                    pembuktian,
+                                    maka daftar harga barang ini terlebih dahulu dilakukan pemeteraian-kemudian.<br>
+                                    Huruf b<br>
+                                    Surat-surat yang dimaksud dalam huruf b ayat ini ialah surat-surat yang karena
+                                    tujuannya tidak
+                                    dikenakan Bea Meterai, tetapi apabila tujuannya kemudian diubah maka surat yang
+                                    demikian
+                                    itu dikenakan Bea Meterai. Misalnya tanda penerimaan tidak dikenakan Bea Meterai.
+                                    Apabila kemudian tanda penerimaan
+                                    uang tersebut digunakan sebagai alat pembuktian di muka Pengadilan, maka tanda
+                                    penerimaan
+                                    uang tersebut harus dilakukan pemeteraian-kemudian terlebih dahulu.<br>
+                                    <b>Ayat (4)</b><br>
+                                    Lihat penjelasan ayat (1) huruf d, huruf e, dan huruf f.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal3">
+            <div class="card-header" id="headingpasal3">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal3" aria-expanded="true" aria-controls="pasal3">
+                        Pasal 3
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal3" class="collapse" aria-labelledby="headingpasal3" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 3'>
+                                <p id='3-0-0'> Dengan Peraturan Pemerintah dapat ditetapkan besarnya tarif Bea Meterai
+                                    dan
+                                    besarnya
+                                    batas pengenaan harga nominal yang dikenakan Bea Meterai, dapat ditiadakan,
+                                    diturunkan,
+                                    dinaikkan setinggi-tingginya enam kali atas dokumen-dokumen sebagaimana dimaksud
+                                    dalam
+                                    Pasal 2. </p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Penjelasan</h5>
+                                <p>Cukup Jelas</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal4">
+            <div class="card-header" id="headingpasal4">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal4" aria-expanded="true" aria-controls="pasal4">
+                        Pasal 4
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal4" class="collapse" aria-labelledby="headingpasal4" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 4'>
+                                <p id='4-0-0'> Tidak dikenakan Bea Meterai atas :
+                                <ol type='a' class='huruf'>
+                                    <li id='4-0-1'> dokumen yang berupa : <br>
+                                        1) surat penyimpanan barang;<br>
+                                        2) konosemen;<br>
+                                        3) surat angkutan penumpang dan barang;<br>
+                                        4) keterangan pemindahan yang dituliskan di atas dokumen sebagaimana dimaksud
+                                        dalam angka 1), angka 2), dan angka 3);<br>
+                                        5) bukti untuk pengiriman dan penerimaan barang;<br>
+                                        6) surat pengiriman barang untuk dijual atas tanggungan pengirim;<br>
+                                        7) surat-surat lainnya yang dapat disamakan dengan surat-surat sebagaimana
+                                        dimaksud
+                                        dalam angka 1) sampai angka 6).
+                                    </li>
+                                    <li id='4-0-2'> segala bentuk Ijazah; </li>
+                                    <li id='4-0-3'> tanda terima gaji, uang tunggu, pensiun, uang tunjangan, dan
+                                        pembayaran lainnya
+                                        yang ada kaitannya dengan hubungan kerja serta surat-surat yang diserahkan untuk
+                                        mendapatkan pembayaran itu; </li>
+                                    <li id='4-0-4'> tanda bukti penerimaan uang Negara dari kas Negara, Kas Pemerintah
+                                        Daerah, dan bank; </li>
+                                    <li id='4-0-5'> kuitansi untuk semua jenis pajak dan untuk penerimaan lainnya yang
+                                        dapat disamakan
+                                        dengan itu dari Kas Negara, Kas Pemerintahan Daerah dan bank; </li>
+                                    <li id='4-0-6'> tanda penerimaan uang yang dibuat untuk keperluan intern organisasi;
+                                    </li>
+                                    <li id='4-0-7'> dokumen yang menyebutkan tabungan, pembayaran uang tabungan kepada
+                                        penabung
+                                        oleh bank, koperasi, dan badan-badan lainnya yang bergerak di bidang tersebut;
+                                    </li>
+                                    <li id='4-0-8'> surat gadai yang diberikan oleh Perusahaan Jawatan Pegadaian; </li>
+                                    <li id='4-0-9'> tanda pembagian keuntungan atau bunga dari efek, dengan nama dan
+                                        dalam bentuk
+                                        apapun. </li>
+                                </ol>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Penjelasan</h5>
+                                <p><b>Huruf a</b> <br>
+                                    Angka 1<br>
+                                    Cukup jelas.<br>
+                                    Angka 2<br>
+                                    Cukup jelas.<br>
+                                    Angka 3<br>
+                                    Cukup jelas.<br>
+                                    Angka 4<br>
+                                    Cukup jelas.<br>
+                                    Angka 5<br>
+                                    Cukup jelas.<br>
+                                    Angka 6<br>
+                                    Cukup jelas.<br>
+                                    Angka 7<br>
+                                    Yang dimaksud dengan surat-surat lainnya dalam angka 7 ini ialah surat-surat yang
+                                    tidak disebut
+                                    pada angka 1 sampai dengan angka 6 namun karena isi dan kegunaannya dapat disamakan
+                                    surat-surat yang dimaksud, seperti surat titipan barang, ceel gudang, manifest
+                                    penumpang,
+                                    maka surat yang demikian ini tidak dikenakan Bea Meterai , menurut Pasal 4 huruf a
+                                    ini.<br>
+                                    <b>Huruf b</b><br>
+                                    Termasuk dalam pengertian segala bentuk ijazah ini ialah surat tanda tamat belajar,
+                                    tanda lulus,
+                                    surat keterangan telah mengikuti sesuatu pendidikan, latihan, kursus dan penataran.
+                                    Bea Meterai terhutang pada saat ditandatanganinya perjanjian tersebut.<br>
+                                    <b>Huruf c</b><br>
+                                    Cukup jelas.<br>
+                                    <b>Huruf d</b><br>
+                                    Cukup jelas.<br>
+                                    <b>Huruf e</b><br>
+                                    Bank yang dimaksud dalam huruf e ini adalah bank yang ditunjuk oleh Pemerintah untuk
+                                    menerima setoran pajak, bea dan cukai.<br>
+                                    <b>Huruf f</b><br>
+                                    Cukup jelas.<br>
+                                    <b>Huruf g</b><br>
+                                    Cukup jelas.<br>
+                                    <b>Huruf h</b><br>
+                                    Cukup jelas.<br>
+                                    <b>Huruf i</b><br>
+                                    Cukup jelas</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal5">
+            <div class="card-header" id="headingpasal5">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal5" aria-expanded="true" aria-controls="pasal5">
+                        Pasal 5
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal5" class="collapse" aria-labelledby="headingpasal5" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 5'>
+                                <p id='5-0-0'> Saat terhutang Bea Meterai ditentukan dalam hal :
+                                <ol type='a' class='huruf'>
+                                    <li id='5-0-1'> dokumen yang dibuat oleh satu pihak, adalah pada saat dokumen itu
+                                        diserahkan; </li>
+                                    <li id='5-0-2'> dokumen yang dibuat oleh lebih dari salah satu pihak, adalah pada
+                                        saat selesainya
+                                        dokumen itu dibuat; </li>
+                                    <li id='5-0-3'> dokumen yang dibuat di luar negeri adalah pada saat digunakan di
+                                        Indonesia. </li>
+                                </ol>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Penjelasan</h5>
+                                <p><b>Huruf a</b><br>
+                                    Saat terhutang Bea Meterai atas dokumen yang termasuk pada huruf a, adalah pada saat
+                                    dokumen itu diserahkan dan diterima oleh pihak untuk siapa dokumen itu dibuat, bukan
+                                    pada
+                                    saat ditandatangani, misalnya kuintansi, cek, dan sebagainya.<br>
+                                    <b>Huruf b</b><br>
+                                    Saat terhutang Bea Meterai atas dokumen yang termasuk pada huruf b, adalah pada saat
+                                    dokumen itu telah selesai dibuat, yang ditutup dengan pembubuhan tanda tangan dari
+                                    yang
+                                    bersangkutan. Sebagai contoh surat perjanjian jual beli. Bea Meterai terhutang pada
+                                    saat
+                                    ditandatanganinya perjanjian tersebut.<br>
+                                    <b>Huruf c</b><br>
+                                    Cukup jelas.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal6">
+            <div class="card-header" id="headingpasal6">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal6" aria-expanded="true" aria-controls="pasal6">
+                        Pasal 6
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal6" class="collapse" aria-labelledby="headingpasal6" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 6'>
+                                <p id='6-0-0'> Bea Meterai terhutang oleh pihak yang menerima atau pihak yang mendapat
+                                    manfaat
+                                    dari
+                                    dokumen, kecuali pihak atau pihak-pihak yang bersangkutan menentukan lain. </p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Penjelasan</h5>
+                                <p>Dalam hal dokumen dibuat sepihak, misalnya kuitansi, Bea Meterai terhutang oleh
+                                    penerima
+                                    kuitansi. Dalam hal dokumen dibuat oleh 2 (dua) pihak atau lebih, misalnya surat
+                                    perjanjian di bawah
+                                    tangan, maka masing-masing pihak terhutang Bea Meterai atas dokumen yang
+                                    diterimanya.
+                                    Jika surat perjanjian dibuat dengan Akta Notaris, maka Bea Meterai yang terhutang
+                                    baik atas
+                                    asli sahih yang disimpan oleh Notaris maupun salinannya yang diperuntukkan
+                                    pihak-pihak yang
+                                    bersangkutan terhutang oleh pihak-pihak yang mendapat manfaat dari dokumen tersebut,
+                                    yang dalam contoh ini adalah pihak-pihak yang mengadakan perjanjian.
+                                    Jika pihak atau pihak-pihak yang bersangkutan menentukan lain, maka Bea Meterai
+                                    terhutang
+                                    oleh pihak atau pihak-pihak yang ditentukan dalam dokumen tersebut.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card bab-title">
+            <p>Bab III Benda Meterai, Penggunaan, dan Cara Pelunasannya</p>
+        </div>
+        <div class="card pasal7">
+            <div class="card-header" id="headingpasal7">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal7" aria-expanded="true" aria-controls="pasal7">
+                        Pasal 7
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal7" class="collapse" aria-labelledby="headingpasal7" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 7'>
+                                <ol id='7-0-0' class="custom-counter">
+                                    <li id='7-1-0'> Bentuk, ukuran, warna meterai tempel, dan kertas meterai, demikian
+                                        pula
+                                        pencetakan,
+                                        pengurusan, penjualan serta penelitian keabsahannya ditetapkan oleh Menteri
+                                        Keuangan
+                                    </li>
+                                    <li id='7-2-0'> Bea Meterai atas dokumen dilunasi dengan cara : <ol type='a'
+                                            class='huruf'>
+                                            <li id='7-2-1'> menggunakan benda meterai; </li>
+                                            <li id='7-2-2'> menggunakan cara lain yang ditetapkan oleh Menteri Keuangan.
+                                            </li>
+                                        </ol>
+                                    </li>
+                                    <li id='7-3-0'> Meterai tempel direkatkan seluruhnya dengan utuh dan tidak rusak di
+                                        atas
+                                        dokumen yang
+                                        dikenakan Bea Meterai. </li>
+                                    <li id='7-4-0'> Meterai tempel direkatkan di tempat dimana tanda tangan akan
+                                        dibubuhkan.
+                                    </li>
+                                    <li id='7-5-0'> Pembubuhan tanda tangan disertai dengan pencantuman tanggal, bulan,
+                                        dan
+                                        tahun
+                                        dilakukan dengan tinta atau yang sejenis dengan itu, sehingga sebagian tanda
+                                        tangan ada
+                                        di atas kertas dan sebagian lagi di atas meterai tempel. </li>
+                                    <li id='7-6-0'> Jika digunakan lebih dari satu meterai tempel, tanda tangan harus
+                                        dibubuhkan
+                                        sebagian
+                                        di atas semua meterai tempel dan sebagian di atas kertas. </li>
+                                    <li id='7-7-0'> Kertas meterai yang sudah digunakan, tidak boleh digunakan lagi.
+                                    </li>
+                                    <li id='7-8-0'> Jika isi dokumen yang dikenakan Bea Meterai terlalu panjang untuk
+                                        dimuat
+                                        seluruhnya
+                                        di atas meterai yang digunakan, maka untuk bagian isi yang masih tertinggal
+                                        dapat
+                                        digunakan kertas tidak bermeterai </li>
+                                    <li id='7-9-0'> Apabila ketentuan sebagaimana dimaksud dalam ayat (1) sampai dengan
+                                        ayat (8)
+                                        tidak
+                                        dipenuhi, dokumen yang bersangkutan dianggap tidak bermeterai. </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Penjelasan</h5>
+                                <p><b>Ayat (1)</b><br>
+                                    Cukup jelas<br>
+                                    <b>Ayat (2)</b><br>
+                                    Pada umumnya Bea Meterai atas dokumen dilunasi dengan benda meterai menurut tarif
+                                    yang
+                                    ditentukan dalam Undang-undang ini.
+                                    Disamping itu dengan Keputusan Menteri Keuangan dapat ditetapkan cara lain bagi
+                                    pelunasan
+                                    Bea Meterai, misalnya membubuhkan tanda-tera sebagai pengganti benda meterai di
+                                    atas dokumen dengan mesin-teraan, sesuai dengan peraturan perundang-undangan yang
+                                    ditentukan untuk itu.<br>
+                                    <b>Ayat (3)</b><br>
+                                    Cukup jelas.<br>
+                                    <b>Ayat (4)</b><br>
+                                    Cukup jelas.<br>
+                                    <b>Ayat (5)</b><br>
+                                    Yang sejenis dengan tinta misalnya pensil tinta, ballpoint dan sebagainya.<br>
+                                    <b>Ayat (6)</b><br>
+                                    Cukup jelas.<br>
+                                    <b>Ayat (7)</b><br>
+                                    Ayat ini menegaskan bahwa sehelai kertas meterai hanya dapat digunakan untuk sekali
+                                    pemakaian, sekalipun dapat saja terjadi tulisan atau keterangan yang dimuat dalam
+                                    kertas
+                                    meterai tersebut hanya menggunakan sebagian saja dari kertas meterai.
+                                    Andaikata bagian yang masih kosong atau tidak terisi tulisan atau keterangan, akan
+                                    dimuat
+                                    tulisan atau keterangan lain, maka atas pemuatan tulisan atau keterangan lain
+                                    tersebut
+                                    terhutang Bea Meterai tersendiri yang besarnya disesuaikan dengan besarnya tarif
+                                    sebagaimana dimaksud dalam Pasal 2.
+                                    Jika sehelai kertas meterai karena sesuatu hal tidak jadi digunakan dan dalam hal
+                                    ini belum
+                                    ditandatangani oleh pembuat atau yang berkepentingan, sedangkan dalam kertas meterai
+                                    telah terlanjur ditulis dengan beberapa kata atau kalimat yang belum merupakan suatu
+                                    dokumen yang selesai dan kemudian tulisan yang ada pada kertas meterai tersebut
+                                    dicoret
+                                    dan dimuat tulisan atau keterangan baru maka kertas meterai yang demikian dapat
+                                    digunakan
+                                    dan tidak perlu dibubuhi meterai lagi.<br>
+                                    <b>Ayat (8)</b><br>
+                                    Cukup jelas.<br>
+                                    <b>Ayat (9)</b><br>
+                                    Cukup jelas.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal8">
+            <div class="card-header" id="headingpasal8">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal8" aria-expanded="true" aria-controls="pasal8">
+                        Pasal 8
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal8" class="collapse" aria-labelledby="headingpasal8" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 8'>
+                                <ol id='8-0-0' class="custom-counter">
+                                    <li id='8-1-0'> Dokumen sebagaimana dimaksud dalam Pasal 2 yang Bea Meterainya tidak
+                                        atau
+                                        kurang
+                                        dilunasi sebagaimana mestinya dikenakan denda administrasi sebesar 200% (dua
+                                        ratus
+                                        persen) dari Bea Meterai yang tidak atau kurang dibayar. </li>
+                                    <li id='8-2-0'> pemegang dokumen atas dokumen sebagaimana dimaksud dalam ayat (1)
+                                        harus
+                                        melunasi
+                                        Bea Meterai yang terhutang berikut dendanya dengan cara pemeteraian-kemudian.
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Penjelasan</h5>
+                                <p><b>Ayat (1)</b><br>
+                                    Cukup jelas.<br>
+                                    <b>Ayat (2)</b><br>
+                                    Cukup jelas.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal9">
+            <div class="card-header" id="headingpasal9">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal9" aria-expanded="true" aria-controls="pasal9">
+                        Pasal 9
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal9" class="collapse" aria-labelledby="headingpasal9" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 9'>
+                                <p id='9-0-0'> Dokumen yang dibuat di luar negeri pada saat digunakan di Indonesia harus
+                                    telah
+                                    dilunasi bea
+                                    Meterai yang terhutang dengan cara pemeteraian-kemudian. </p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Penjelasan</h5>
+                                <p>Dokumen yang dibuat di luar negeri tidak dikenakan Bea Meterai sepanjang tidak
+                                    digunakan
+                                    di Indonesia.
+                                    Jika dokumen tersebut hendak digunakan di Indonesia harus dibubuhi meterai terlebih
+                                    dahulu yang besarnya sesuai dengan tarif sebagaimana dimaksud dalam Pasal 2 dengan
+                                    cara
+                                    pemeteraian-kemudian tanpa denda.
+                                    Namun apabila dokumen tersebut baru dilunasi Bea Meterainya sesudah digunakan, maka
+                                    pemeteraian-kemudian dilakukan berikut dendanya sebesar 200% (dua ratus persen).</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal10">
+            <div class="card-header" id="headingpasal10">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal10" aria-expanded="true" aria-controls="pasal10">
+                        Pasal 10
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal10" class="collapse" aria-labelledby="headingpasal10" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 10'>
+                                <p id='10-0-0'> Pemeteraian-kemudian atas dokumen sebagaimana dimaksud dalam Pasal 2
+                                    ayat (3),
+                                    Pasal
+                                    8, dan Pasal 9 dilakukan oleh Pejabat Pos menurut tata cara yang tetapkan oleh
+                                    Menteri
+                                    Keuangan. </p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Penjelasan</h5>
+                                <p>Cukup Jelas</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card bab-title">
+            <p>Bab IV Ketentuan Khusus</p>
+        </div>
+        <div class="card pasal11">
+            <div class="card-header" id="headingpasal11">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal11" aria-expanded="true" aria-controls="pasal11">
+                        Pasal 11
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal11" class="collapse" aria-labelledby="headingpasal11" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 11'>
+                                <ol id='11-0-0' class="custom-counter">
+                                    <li id='11-1-0'> Pejabat pemerintah, hakim, panitera, jurusita, notaris, dan pejabat
+                                        umum
+                                        lainnya, masingmasing dalam tugas atau jabatannya tidak dibenarkan : <ol
+                                            type='a' class='huruf'>
+                                            <li id='11-1-1'> menerima, mempertimbangkan atau menyimpan dokumen yang Bea
+                                                Meterai-nya
+                                                atau kurang dibayar; </li>
+                                            <li id='11-1-2'> meletakan dokumen yang Bea Meterai-nya tidak atau kurang
+                                                dibayar sesuai dengan
+                                                tarifnya pada dokumen lain yang berkaitan; </li>
+                                            <li id='11-1-3'> meletakan dokumen yang Bea Meterai-nya tidak atau kurang
+                                                dibayar sesuai dengan
+                                                tarifnya pada dokumen lain yang berkaitan; </li>
+                                            <li id='11-1-4'> memberikan keterangan atau catatan pada dokumen yang tidak
+                                                atau kurang dibayar
+                                                sesuai dengan tarif Bea Meterai-nya </li>
+                                        </ol>
+                                    </li>
+                                    <li id='11-2-0'> Pelanggaran terhadap ketentuan-ketentuan sebagaimana dimaksud dalam
+                                        ayat
+                                        (1)
+                                        dikenakan sanksi administratif dengan peraturan perundang-undangan yang berlaku.
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Penjelasan</h5>
+                                <p>Cukup Jelas</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal12">
+            <div class="card-header" id="headingpasal12">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal12" aria-expanded="true" aria-controls="pasal12">
+                        Pasal 12
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal12" class="collapse" aria-labelledby="headingpasal12" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 12'>
+                                <p id='12-0-0'> Kewajiban pemenuhan Bea Meterai dan denda administrasi yang terhutang
+                                    menurut
+                                    Undangundang ini daluwarsa setelah lampau waktu lima tahun, terhitung sejak tanggal
+                                    dokumen
+                                    dibuat. </p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Penjelasan</h5>
+                                <p>Ditinjau dari segi kepastian hukum daluwarsa 5 lima) tahun dihitung sejak tanggal
+                                    dokumen
+                                    dibuat, berlaku untuk seluruh dokumen termasuk kuitansi.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card bab-title">
+            <p>Bab V Ketentuan Pidana</p>
+        </div>
+        <div class="card pasal13">
+            <div class="card-header" id="headingpasal13">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal13" aria-expanded="true" aria-controls="pasal13">
+                        Pasal 13
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal13" class="collapse" aria-labelledby="headingpasal13" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 13'>
+                                <p id='13-0-0'> Dipidana sesuai dengan ketentuan dalam Kitab Undang-Undang Hukum Pidana
+                                    :
+                                <ol type='a' class='huruf'>
+                                    <li id='13-0-1'> barang siapa meniru atau memalsukan meterai tempel dan kertas
+                                        meterai atau meniru
+                                        dan memalsukan tanda tangan yang perlu untuk mensahkan meterai; </li>
+                                    <li id='13-0-2'> barang siapa dengan sengaja menyimpan dengan maksud untuk diedarkan
+                                        atau memasukan ke
+                                        Negara Indonesia meterai palsu, yang dipalsukan atau yang dibuat dengan melawan
+                                        hak; </li>
+                                    <li id='13-0-3'> barang siapa dengan sengaja menggunakan, menjual, menawarkan,
+                                        menyerahkan,
+                                        menyediakan untuk dijual atau dimasukan ke Negara Indonesia meterai yang
+                                        mereknya,
+                                        capnya, tanda-tangannya, tanda sahnya atau tanda waktunya mempergunakan telah
+                                        dihilangkan seolah-olah meterai itu belum dipakai dan atau menyuruh orang lain
+                                        menggunakan dengan melawan hak; </li>
+                                    <li id='13-0-4'> barang siapa menyimpan bahan-bahan atau perkakas-perkakas yang
+                                        diketahuinya
+                                        digunakan untuk melakukan salah satu kejahatan untuk meniru dan memalsukan benda
+                                        meterai. </li>
+                                </ol>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Penjelasan</h5>
+                                <p>Cukup Jelas</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal14">
+            <div class="card-header" id="headingpasal14">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal14" aria-expanded="true" aria-controls="pasal14">
+                        Pasal 14
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal14" class="collapse" aria-labelledby="headingpasal14" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 14'>
+                                <ol id='14-0-0' class="custom-counter">
+                                    <li id='14-1-0'> Barang siapa dengan sengaja menggunakan cara lain sebagaimana
+                                        dimaksud
+                                        dalam Pasal
+                                        7 ayat (2) huruf b tanpa izin Menteri Keuangan, dipidana dengan pidana penjara
+                                        selamalamanya 7 (tujuh) tahun. </li>
+                                    <li id='14-2-0'> Tindak Pidana sebagaimana dimaksud dalam ayat (1) adalah kejahatan.
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Penjelasan</h5>
+                                <p><b>Ayat (1)</b><br>
+                                    Melakukan perbuatan sebagaimana dimaksud dalam penjelasan Pasal 7 ayat (2) tanpa
+                                    izin
+                                    Menteri Keuangan, akan menimbulkan keuntungan bagi pemilik atau yang menggunakannya,
+                                    dan sebaliknya akan menimbulkan kerugian bagi Negara. Oleh karena itu harus
+                                    dikenakan
+                                    sanksi pidana berupa hukuman setimpal dengan kejahatan yang diperbuatnya.<br>
+                                    <b>Ayat (2)</b><br>
+                                    Cukup jelas.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card bab-title">
+            <p>Bab VI Ketentuan Peralihan</p>
+        </div>
+        <div class="card pasal15">
+            <div class="card-header" id="headingpasal15">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal15" aria-expanded="true" aria-controls="pasal15">
+                        Pasal 15
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal15" class="collapse" aria-labelledby="headingpasal15" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 15'>
+                                <ol id='15-0-0' class="custom-counter">
+                                    <li id='15-1-0'> Atas dokumen yang tidak atau kurang dibayar Bea Meterainya yang
+                                        dibuat
+                                        sebelum
+                                        Undang-undang ini berlaku, bea meterainya tetap terhutang berdasarkan aturan Bea
+                                        Meterai 1921 (Zegelverordening 1921). </li>
+                                    <li id='15-2-0'> Pelaksanaan ketentuan sebagaimana dimaksud dalam ayat (1) diatur
+                                        oleh
+                                        Menteri Keuangan. </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Penjelasan</h5>
+                                <p><b>Ayat (1)</b><br>
+                                    Cukup jelas.<br>
+                                    <b>Ayat (2)</b><br>
+                                    Cukup jelas.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal16">
+            <div class="card-header" id="headingpasal16">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal16" aria-expanded="true" aria-controls="pasal16">
+                        Pasal 16
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal16" class="collapse" aria-labelledby="headingpasal16" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 16'>
+                                <p id='16-0-0'> Selama peraturan pelaksanaan Undang-undang ini belum dikeluarkan, maka
+                                    peraturan
+                                    pelaksanaan berdasarkan Aturan Bea Meterai 1921 (Zegelverordening 1921) yang tidak
+                                    bertentangan dengan Undang-undang ini yang belum dicabut dan diganti dinyatakan
+                                    masih
+                                    tetap berlaku sampai dengan tanggal 31 Desember 1988. </p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Penjelasan</h5>
+                                <p>Cukup Jelas</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card bab-title">
+            <p>Bab VII Ketentuan Penutup</p>
+        </div>
+        <div class="card pasal17">
+            <div class="card-header" id="headingpasal17">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal17" aria-expanded="true" aria-controls="pasal17">
+                        Pasal 17
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal17" class="collapse" aria-labelledby="headingpasal17" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 17'>
+                                <p id='17-0-0'> Pelaksanaan Undang-undang ini selanjutnya akan diatur dengan Peraturan
+                                    Pemerintah. </p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Penjelasan</h5>
+                                <p>Cukup Jelas</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pasal18">
+            <div class="card-header" id="headingpasal18">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left pasal-nama" type="button" data-toggle="collapse"
+                        data-target="#pasal18" aria-expanded="true" aria-controls="pasal18">
+                        Pasal 18
+                    </button>
+                </h2>
+            </div>
+            <div id="pasal18" class="collapse" aria-labelledby="headingpasal18" data-parent="#accordionExample">
+                <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card-body pasal-body brenden" data='Pasal 18'>
+                                <p id='18-0-0'> Undang-undang ini mulai berlaku pada tanggal 1 Januari 1986. </p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card-body pasal-body">
+                                <h5>Penjelasan</h5>
+                                <p>Cukup Jelas</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideButton">
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                            data-slide="prev">
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span> -->
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                            data-slide="next">
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../../js/jquery-3.5.1.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../script/script.js"></script>
+
+</html>
