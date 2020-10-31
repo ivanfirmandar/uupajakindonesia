@@ -242,7 +242,12 @@ p, li{
     font-weight: bold;
     display: contents;
 }
-
+.keterangan2{
+     color: tomato;
+    font-weight: bold;
+    display: contents;
+    text-transform: uppercase;
+}
 #pasal-wrapper {
     text-align: justify;
 }

@@ -6,68 +6,77 @@ let keteranganTemplength;
 async function main() {
     let datas = await fetchData()
     setDatas(datas);
-    addNote()
     domHandler(datas);
+    // console.log(linkIndex);
+    beautifyArray(linkIndex);
+    change();
+}
+function change(params) {
+    let yokai = document.getElementsByClassName('keterangan2');
+    for (let index = 0; index < yokai.length; index++) {
+        let result = yokai[index].innerHTML;
+        result = result.replace(/\-/g, " ")
+        yokai[index].innerHTML = result;
+    }
 }
 
 async function fetchData() {
     return document.getElementsByClassName("brenden")
 }
-
+let otherIndex = 0;
 function setDatas(datas) {
     //Untuk Setiap Data :
+    let otherIndex = 0;
     for (let i = 0; i < datas.length; i++) {
         let pasalIni = datas[i].getAttribute('data');
         let isiPasal = datas[i].innerHTML;
         let newData = `<span hidden>${pasalIni}</span><span hidden> ${i}</span>${setLink(isiPasal, pasalIni)}`
+        // console.log(newData)
         document.getElementsByClassName("brenden")[i].innerHTML = newData
     }
 }
-
+let linkIndex = [];
 function setLink(isi, namapasal) {
-    let pattern = "Pasal\\s+(\\w\\w\\w|\\w\\w|\\w)\\s+ayat\\s+\\((\\w\\w|\\w)\\)\\s+\\huruf\\s+\\w|Pasal\\s+(\\w\\w\\w|\\w\\w|\\w)\\s+ayat\\s+\\((\\w|\\w\\w)\\)|Pasal\\s+(\\w\\w\\w|\\w\\w|\\w)|Pasal\\s+(\\w\\w\\w|\\w\\w|\\w)|ayat\\s+\\((\\w|\\w\\w)\\)\\s+huruf\\s+\\w|ayat\\s+\\((\\w|\\w\\w)\\)|\\,\\s+huruf\\s+\\w|dan\\s+huruf\\s+\\w|huruf\\s+\\w$";
+    let pattern = "Pasal\\s+(\\w\\w\\w|\\w\\w|\\w)\\s+ayat\\s+\\((\\w\\w|\\w)\\)\\s+\\huruf\\s+\\w|Pasal\\s+(\\w\\w\\w|\\w\\w|\\w)\\s+ayat\\s+\\((\\w|\\w\\w)\\)|Pasal\\s+(\\w\\w\\w|\\w\\w|\\w)\\s+huruf\\s+\\((\\w|\\w\\w)\\)|Pasal\\s+(\\w\\w\\w|\\w\\w|\\w)|Pasal\\s+(\\w\\w\\w|\\w\\w|\\w)|ayat\\s+\\((\\w|\\w\\w)\\)\\s+huruf\\s+\\w|ayat\\s+\\((\\w|\\w\\w)\\)|huruf\\s+\\w\\s";
     let regexss = new RegExp(pattern, 'gi')
     let regexss2 = new RegExp(pattern, '')
     let index = 0
     let identityParsed;
+    let tmpIsi = [];
     namapasal = namapasal.split(" ")[1]
     let matchedIsi = isi.match(regexss)
     if (matchedIsi !== null) {
         matchedIsi.forEach(element => {
             element = element.toUpperCase()
+            // console.log(isi);
             let regeee = new RegExp('\\s+', 'gim')
             element = element.replace(regeee, ' ')
             let arrayElement = element.split(" ");
-            // if (arrayElement[0] == "," || arrayElement[0] == "DAN") {
-            //     let index2 = 0;
-            //     // console.log("Element[0] : " + arrayElement[0])
-            //     let index3 = index;
-            //     while (index2 == 0) {
-            //         identityParsed = matchedIsi[index - 1];
-            //         index--
-            //         // console.log(namapasal + " " + identityParsed)
-            //         if (identityParsed.match(/pasal/gi)) {
-            //             // console.log("KETEMU! PASAL!")
-            //             index2 = 1;
-            //         } else {
-            //             if (identityParsed.match(/ayat/g)) {
-            //                 // console.log("KETEMU AYAT!")
-            //                 index2 = 1;
-            //             } else {
-            //                 index2 = 0;
-            //             }
-            //         }
-            //     }
-            // }
-            isi = isi.replace(regexss2, `<span class='keterangan' data=${namapasal}>${element}</span>`)
+            console.log(namapasal)
+            console.log(element)
+            isi = isi.replace(regexss2, `<span class='keterangan' data=${namapasal} data2=${otherIndex}>${element}</span>`)
+            // tmpIsi.push(`<span class='keterangan' data=${namapasal} data2=${otherIndex}>${element}</span>`)
             index++
+            // otherIndex++
         });
     } else {
         isi = isi;
         index++
+        // otherIndex++
     }
-    // console.log(matchedIsi)
+    // console.log(tmpIsi)
+    // linkIndex.push(tmpIsi);
     return (isi)
+}
+let beautifiedArray = [];
+function beautifyArray(linkIndex) {
+    // console.log(linkIndex)
+    linkIndex.forEach(element => {
+        element.forEach(elemeee => {
+            beautifiedArray.push(element);
+        })
+    });
+    // console.log(beautifiedArray);
 }
 
 function domHandler(datas) {
@@ -97,7 +106,7 @@ async function findThings() {
     for (let ind = 0; ind < dataNeeds.length; ind++) {
         document.getElementsByClassName('card-header')[ind].classList.remove('hide')
         let regexExp = new RegExp(`\\s+${query}`, 'gi')
-        console.log(dataNeeds[ind]);
+        // console.log(dataNeeds[ind]);
         let matchedData = dataNeeds[ind].innerHTML.match(regexExp)
         if (matchedData == null) {
             document.getElementsByClassName('card-header')[ind].classList.add('hide')
@@ -110,62 +119,14 @@ async function findThings() {
 function refresh() {
     location.reload()
 }
-function addNote() {
-    let judulPasal = document.getElementsByClassName('pasal-nama')
-    for (let index = 0; index < judulPasal.length; index++) {
-        let namaPasal = judulPasal[index].innerHTML.replace(/\s+/g, " ")
-        let id = judulPasal[index].innerHTML.replace(/\s+/g, "")
-        judulPasal[index].innerHTML += `<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-journal-text toolbar-icon tombol-note" fill="currentColor" onclick="showNote('${id}','${namaPasal}')"
-            xmlns="http://www.w3.org/2000/svg" data="${id}">
-            <path
-                d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z" />
-            <path
-                d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z" />
-            <path fill-rule="evenodd"
-                d="M5 10.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z" />
-        </svg>`
 
-    }
-}
-function showNote(id, namaPasal) {
-    document.getElementsByClassName('note-container')[0].classList.remove('hide')
-    let uuName = document.getElementById('judulUU').innerHTML
-    document.getElementsByClassName('note-container')[0].innerHTML = `<div class="note">
-    <textarea id="noteText" placeholder="Belum ada Catatan">${showNoteText(id, uuName)}</textarea>
-     <div class="addNote">  
-    <span><button onclick="closeNote()">Tutup</button></span><span><button onclick="saveNote('${id}','${uuName}')" id="saveNoteButton">Tersimpan</button>    </span><h5 id="namaPasalNote">${namaPasal}</h5>
-    </div>
-    </div>
-   `
-    let noteText = document.getElementById('noteText')
-    noteText.addEventListener('keyup', () => {
-        document.getElementById('saveNoteButton').setAttribute('style', 'background-color : red')
-        document.getElementById('saveNoteButton').innerHTML = "Simpan"
-    })
-}
-function showNoteText(id, uuName) {
-    let note = localStorage.getItem(`${uuName} ${id}`)
-    if (note == null) {
-        return ""
-    } else {
-        return note;
-    }
-
-}
-function saveNote(id, uuName) {
-    let note = document.getElementById('noteText').value
-    localStorage.setItem(`${uuName} ${id}`, note);
-    document.getElementById('saveNoteButton').setAttribute('style', 'background-color : #1A3B50')
-    document.getElementById('saveNoteButton').innerHTML = "Tersimpan"
-}
-function closeNote() {
-    document.getElementsByClassName('note-container')[0].classList.add('hide')
-}
 function showKeterangan(datas) {
     let keterangan = document.getElementsByClassName("keterangan");
     keteranganPermLength = keterangan.length;
     for (let index = 0; index < keterangan.length; index++) {
         keterangan[index].addEventListener("click", () => {
+            console.log(keteranganPermLength);
+            console.log(keteranganTemplength)
             openKeterangan();
             let selisih = 0;
             if (keteranganPermLength < keteranganTemplength) {
@@ -177,9 +138,11 @@ function showKeterangan(datas) {
             let keteranganContent = keterangan[index].textContent;
             let encodedId = keteranganParser(keteranganContent, attribute);
             setKeterangan(encodedId.encodedid, encodedId.name);
-            console.log(encodedId.encodedid);
+            // console.log(encodedId.encodedid);
             keteranganTemplength = keterangan.length;
             index = index - selisih;
+            console.log(keteranganPermLength);
+            console.log(keteranganTemplength)
         })
     }
 }
@@ -189,7 +152,7 @@ function closeKeterangan() {
 }
 
 function keteranganParser(keterangan, attribute) {
-    console.log(`Keterangan ${keterangan}`)
+    // console.log(`Keterangan ${keterangan}`)
     let pasal = 0;
     let ayat = 0;
     let huruf = 0;
@@ -213,11 +176,15 @@ function keteranganParser(keterangan, attribute) {
         default:
             break;
     }
+    // console.log(attribute)
     return encodeId(pasal, ayat, huruf, attribute);
 }
 
 function encodeId(pasal, ayat, huruf, attribute) {
     let hurufs = huruf;
+    console.log(pasal)
+    console.log(ayat);
+    console.log(huruf);
     if (ayat !== 0) {
         ayat = ayat.match(/\w+/g)[0];
         if (typeof huruf == "string") {
@@ -237,6 +204,7 @@ function encodeId(pasal, ayat, huruf, attribute) {
             }
         }
     }
+    // console.log(encodedId)
     return {
         encodedid: `${pasal}-${ayat}-${huruf}`,
         name: `pasal ${pasal} ayat ${ayat} huruf ${hurufs}`
@@ -249,14 +217,35 @@ function openKeterangan() {
 
 function setKeterangan(id, name) {
     let content = document.getElementById(id);
-
+    // content.innerHTML.replace(/\<span.*>/g, "Makan")
+    name = name.toUpperCase();
+    // console.log(id)
+    console.log(id);
     try {
         document.getElementsByClassName("modal-keterangan")[0].childNodes[1].childNodes[1].innerHTML = name;
         document.getElementsByClassName("modal-keterangan")[0].childNodes[1].childNodes[3].innerHTML = content.innerHTML
     } catch (error) {
-        document.getElementsByClassName("modal-keterangan")[0].childNodes[1].childNodes[1].innerHTML = "";
-        // document.getElementsByClassName("modal-keterangan")[0].childNodes[1].childNodes[3].innerHTML = "Pasal Tidak Ada"
+        // content = createDifferent()
+        document.getElementsByClassName("modal-keterangan")[0].childNodes[1].childNodes[1].innerHTML = "Pemberitahuan";
+        document.getElementsByClassName("modal-keterangan")[0].childNodes[1].childNodes[3].innerHTML = "Tidak Terdapat di Dalam Undang - Undang Ini"
     }
-
+}
+function createDifferent(id, name) {
+    let content = document.getElementById(id);
+    name = name.replace(/\-/g, " ")
+    name = name.toUpperCase();
+    // console.log(content.innerHTML)
+    let bucok = content.innerHTML.replace(/\<span.*keterangan\"/g, "<span class='keterangan2'")
+    console.log(name);
+    openKeterangan();
+    try {
+        document.getElementsByClassName("modal-keterangan")[0].childNodes[1].childNodes[1].innerHTML = name;
+        document.getElementsByClassName("modal-keterangan")[0].childNodes[1].childNodes[3].innerHTML = bucok
+        keteranganTemplength = keteranganPermLength
+    } catch (error) {
+        // content = createDifferent()
+        document.getElementsByClassName("modal-keterangan")[0].childNodes[1].childNodes[1].innerHTML = "Pemberitahuan";
+        document.getElementsByClassName("modal-keterangan")[0].childNodes[1].childNodes[3].innerHTML = "Tidak Terdapat di Dalam Undang - Undang Ini"
+    }
 }
 main();
